@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblioteca - Red de Integridad</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/biblioteca.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <svg class="navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span class="navbar-title">Red de Integridad</span>
+            </div>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="estandares.html" class="nav-link">Estándares</a>
+                <a href="biblioteca.html" class="nav-link active">Biblioteca</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Biblioteca</h2>
+            <p>Repositorio de documentos, guías, reportes y multimedia de la Red de Integridad</p>
+        </div>
+
+        <div class="filters-container">
+            <span class="filter-label">Filtrar por:</span>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="todos">Todos</button>
+                <button class="filter-btn" data-filter="PDF">PDF</button>
+                <button class="filter-btn" data-filter="Imagen">Imagen</button>
+                <button class="filter-btn" data-filter="Video">Video</button>
+                <button class="filter-btn" data-filter="Datos">Datos</button>
+            </div>
+        </div>
+
+        <div class="documents-grid" id="documentsGrid">
+            <div class="document-card" data-type="PDF">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">PDF</span>
+                    <h3 class="document-title">Guía de Estándares de Integridad</h3>
+                    <p class="document-description">Documento completo con los 15 estándares de integridad y su aplicación</p>
+                    <span class="document-date">15/1/2024</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="Datos">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">Datos</span>
+                    <h3 class="document-title">Matriz de Cumplimiento</h3>
+                    <p class="document-description">Herramienta Excel para evaluar cumplimiento de estándares</p>
+                    <span class="document-date">10/1/2024</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="PDF">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">PDF</span>
+                    <h3 class="document-title">Informe de Transparencia 2023</h3>
+                    <p class="document-description">Reporte anual sobre transparencia en proyectos de inversión pública</p>
+                    <span class="document-date">5/1/2024</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="Video">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">Video</span>
+                    <h3 class="document-title">Video: Introducción a Integridad</h3>
+                    <p class="document-description">Capacitación introductoria sobre conceptos de integridad</p>
+                    <span class="document-date">20/12/2023</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="Imagen">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">Imagen</span>
+                    <h3 class="document-title">Casos de Éxito</h3>
+                    <p class="document-description">Galería de proyectos exitosos implementando estándares</p>
+                    <span class="document-date">15/12/2023</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="PDF">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">PDF</span>
+                    <h3 class="document-title">Manual de Veeduría</h3>
+                    <p class="document-description">Guía práctica para veedores en la supervisión de proyectos</p>
+                    <span class="document-date">10/12/2023</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="Datos">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">Datos</span>
+                    <h3 class="document-title">Estadísticas de Cumplimiento</h3>
+                    <p class="document-description">Datos sobre cumplimiento de estándares por sector</p>
+                    <span class="document-date">5/12/2023</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="Video">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">Video</span>
+                    <h3 class="document-title">Webinar: Gestión de Conflictos</h3>
+                    <p class="document-description">Sesión en línea sobre gestión de conflictos de interés</p>
+                    <span class="document-date">30/11/2023</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="Imagen">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">Imagen</span>
+                    <h3 class="document-title">Infografía: Estándares Clave</h3>
+                    <p class="document-description">Resumen visual de los estándares más importantes</p>
+                    <span class="document-date">25/11/2023</span>
+                </div>
+            </div>
+
+            <div class="document-card" data-type="PDF">
+                <div class="document-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                </div>
+                <div class="document-info">
+                    <span class="document-type">PDF</span>
+                    <h3 class="document-title">Política de Transparencia</h3>
+                    <p class="document-description">Política institucional de transparencia y acceso a información</p>
+                    <span class="document-date">20/11/2023</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-section">
+            <h3>Dashboard de Transparencia</h3>
+            <div class="dashboard-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Proyecto</th>
+                            <th>Estándares Cumplidos</th>
+                            <th>Porcentaje</th>
+                        </tr>
+                    </thead>
+                    <tbody id="dashboardBody">
+                        <tr>
+                            <td>Proyecto A</td>
+                            <td>14/15</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 93.3333%"></div>
+                                </div>
+                                93%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Proyecto B</td>
+                            <td>12/15</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                                80%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Proyecto C</td>
+                            <td>15/15</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                                100%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Proyecto D</td>
+                            <td>11/15</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 73.3333%"></div>
+                                </div>
+                                73%
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Proyecto E</td>
+                            <td>13/15</td>
+                            <td>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 86.6667%"></div>
+                                </div>
+                                87%
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Red de Integridad</h4>
+                <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Sistemas de Integridad</a></li>
+                    <li><a href="#">Capacitación</a></li>
+                    <li><a href="#">Auditorías</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Casos de éxito</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>info@redintegridad.org</li>
+                    <li>+51 (74) 123-4567</li>
+                    <li>Chiclayo, Lambayeque</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+</body>
+</html>

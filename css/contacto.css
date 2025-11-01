@@ -1,0 +1,120 @@
+/* Contacto Section */
+.contact-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  margin-top: 36px;
+}
+
+.contact-form {
+  background: var(--surface);
+  padding: 36px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--smoke-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--smoke-dark);
+  border-radius: var(--border-radius);
+  font-family: inherit;
+  font-size: 1rem;
+  transition: var(--transition);
+  color: var(--text-dark);
+  background: #fbfdff;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 4px rgba(47, 111, 224, 0.12);
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.info-item {
+  background: var(--surface);
+  padding: 22px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--smoke-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.info-item h4 {
+  color: var(--primary-blue);
+  margin-bottom: 8px;
+  font-size: 1rem;
+}
+
+.info-item p {
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+.social-links {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.social-link {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #f0f5ff;
+  color: var(--primary-blue);
+  text-decoration: none;
+  border-radius: 8px;
+  font-size: 0.88rem;
+  transition: var(--transition);
+  border: 1px solid #d7e3ff;
+  box-shadow: var(--shadow-md);
+}
+
+.social-link:hover {
+  background: var(--primary-blue);
+  color: var(--white);
+  border-color: transparent;
+}
+
+@media (max-width: 768px) {
+  .contact-container {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+
+  .contact-form {
+    padding: 24px;
+  }
+
+  .contact-info {
+    grid-template-columns: 1fr;
+  }
+
+  .info-item {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Red de Integridad</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/contacto.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <svg class="navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                </svg>
+                <span class="navbar-title">Red de Integridad</span>
+            </div>
+            
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="nosotros.html" class="nav-link">Nosotros</a>
+                <a href="estandares.html" class="nav-link">Estándares</a>
+                <a href="biblioteca.html" class="nav-link">Biblioteca</a>
+                <a href="contacto.html" class="nav-link active">Contacto</a>
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2>Contacto</h2>
+            <p>¿Listo para fortalecer la integridad de su organización?</p>
+        </div>
+
+        <div class="contact-container">
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Correo Electrónico</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="organization">Organización</label>
+                    <input type="text" id="organization" name="organization" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+            </form>
+
+            <div class="contact-info">
+                <div class="info-item">
+                    <h4>Correo Electrónico</h4>
+                    <p>info@redintegridad.org</p>
+                </div>
+                <div class="info-item">
+                    <h4>Teléfono</h4>
+                    <p>+51 (74) 123-4567</p>
+                </div>
+                <div class="info-item">
+                    <h4>Ubicación</h4>
+                    <p>Chiclayo, Lambayeque, Perú</p>
+                </div>
+                <div class="info-item">
+                    <h4>Redes Sociales</h4>
+                    <div class="social-links">
+                        <a href="#" class="social-link">Facebook</a>
+                        <a href="#" class="social-link">Twitter</a>
+                        <a href="#" class="social-link">LinkedIn</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Red de Integridad</h4>
+                <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Sistemas de Integridad</a></li>
+                    <li><a href="#">Capacitación</a></li>
+                    <li><a href="#">Auditorías</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Casos de éxito</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>info@redintegridad.org</li>
+                    <li>+51 (74) 123-4567</li>
+                    <li>Chiclayo, Lambayeque</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+</body>
+</html>

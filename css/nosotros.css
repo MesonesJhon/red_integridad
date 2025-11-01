@@ -1,0 +1,63 @@
+/* Nosotros Section */
+.about-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.about-card {
+  background: var(--surface);
+  padding: 32px;
+  border-radius: var(--border-radius);
+  border: 1px solid var(--smoke-dark);
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+}
+
+.about-card:hover {
+  box-shadow: var(--shadow-lg);
+  border-color: rgba(47, 111, 224, 0.35);
+}
+
+.about-card h3 {
+  color: var(--primary-blue);
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+
+.about-card p {
+  line-height: 1.75;
+  color: var(--text-light);
+}
+
+.values-list {
+  list-style: none;
+  margin-top: 12px;
+}
+
+.values-list li {
+  padding: 10px 0 10px 26px;
+  position: relative;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+.values-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: var(--primary-blue);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .about-card {
+    padding: 24px;
+  }
+
+  .about-card h3 {
+    font-size: 1.25rem;
+  }
+}
