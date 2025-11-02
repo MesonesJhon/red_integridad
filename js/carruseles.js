@@ -1,78 +1,61 @@
-(function() {
-    // Hero background carousel
-    var slides = Array.prototype.slice.call(document.querySelectorAll('.hero-carousel .carousel-slide'));
-    if (!slides.length) return;
-
-    var nextBtn = document.getElementById('carouselNext');
-    var prevBtn = document.getElementById('carouselPrev');
-    var current = 0;
-    var autoMs = 5000;
-    var timerId = null;
-
-    function setActive(index) {
-        slides.forEach(function(slide, i) {
-            if (i === index) {
-                slide.classList.add('is-active');
-            } else {
-                slide.classList.remove('is-active');
-            }
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('.carousel-slide');
+    const indicators = document.querySelectorAll('.carousel-indicator');
+    const prevButton = document.getElementById('carouselPrev');
+    const nextButton = document.getElementById('carouselNext');
+    let currentSlide = 0;
+    let autoPlayInterval;
+    
+    function updateCarousel() {
+        // Actualizar slides
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('is-active', index === currentSlide);
+        });
+        
+        // Actualizar indicadores
+        indicators.forEach((indicator, index) => {
+            indicator.classList.toggle('active', index === currentSlide);
         });
     }
-
-    function showNext() {
-        current = (current + 1) % slides.length;
-        setActive(current);
+    
+    function goToSlide(index) {
+        currentSlide = index;
+        updateCarousel();
+        resetAutoPlay();
     }
-
-    function showPrev() {
-        current = (current - 1 + slides.length) % slides.length;
-        setActive(current);
+    
+    function goToNext() {
+        currentSlide = (currentSlide + 1) % slides.length;
+        updateCarousel();
     }
-
-    function startAuto() {
-        stopAuto();
-        timerId = window.setInterval(showNext, autoMs);
+    
+    function goToPrevious() {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        updateCarousel();
     }
-
-    function stopAuto() {
-        if (timerId) {
-            window.clearInterval(timerId);
-            timerId = null;
-        }
+    
+    function startAutoPlay() {
+        autoPlayInterval = setInterval(goToNext, 5000);
     }
-
-    // Init
-    setActive(current);
-    startAuto();
-
-    // Controls
-    if (nextBtn) nextBtn.addEventListener('click', function() { showNext(); startAuto(); });
-    if (prevBtn) prevBtn.addEventListener('click', function() { showPrev(); startAuto(); });
-
-    // Pause on hover over hero
-    var hero = document.getElementById('hero') || document.querySelector('.hero');
-    if (hero) {
-        hero.addEventListener('mouseenter', stopAuto);
-        hero.addEventListener('mouseleave', startAuto);
+    
+    function resetAutoPlay() {
+        clearInterval(autoPlayInterval);
+        startAutoPlay();
     }
-
-    // Make hero overlap main-content paddings and touch header
-    function adjustHeroGutters() {
-        var main = document.querySelector('.main-content');
-        if (!main || !hero) return;
-        var cs = window.getComputedStyle(main);
-        var pL = parseFloat(cs.paddingLeft) || 0;
-        var pR = parseFloat(cs.paddingRight) || 0;
-        var pT = parseFloat(cs.paddingTop) || 0;
-
-        var extraWidth = pL + pR;
-        hero.style.marginLeft = (-pL) + 'px';
-        hero.style.marginRight = (-pR) + 'px';
-        hero.style.width = 'calc(100% + ' + extraWidth + 'px)';
-        hero.style.marginTop = (-pT) + 'px';
-    }
-
-    adjustHeroGutters();
-    window.addEventListener('resize', adjustHeroGutters);
-})();
-
+    
+    // Event listeners
+    prevButton.addEventListener('click', goToPrevious);
+    nextButton.addEventListener('click', goToNext);
+    
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => goToSlide(index));
+    });
+    
+    // Pausar carrusel al hacer hover
+    const hero = document.querySelector('.hero');
+    hero.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+    hero.addEventListener('mouseleave', startAutoPlay);
+    
+    // Iniciar carrusel
+    startAutoPlay();
+});

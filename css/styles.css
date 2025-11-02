@@ -164,7 +164,7 @@ p {
   background: linear-gradient(180deg, #0f1f35 0%, #12243d 100%);
   color: var(--white);
   padding: 48px 20px 24px;
-  margin-top: 64px;
+  margin-top: 10px;
 }
 
 .footer-content {
@@ -225,6 +225,6 @@ p {
 }
 
 .main-content {
-  max-width: 1500px;  
+  max-width: 1750px;
   margin: 0 auto;
 }

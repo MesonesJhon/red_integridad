@@ -36,28 +36,30 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="hero" id="hero">
+        <!-- Hero Section Mejorada -->
+        <section class="hero" id="hero">
             <div class="hero-carousel" aria-hidden="true">
-                <div class="carousel-slide is-active" style="background-image:url('img/ACIL.jpg')"></div>
-                <div class="carousel-slide" style="background-image:url('img/COREJU NUEVO.jpg')"></div>
-                <div class="carousel-slide" style="background-image:url('img/COVAG.jpg')"></div>
-                <div class="carousel-slide" style="background-image:url('img/EMSOLAM.jpg')"></div>
-                <div class="carousel-slide" style="background-image:url('img/MESA DE CONCERTACION.jpg')"></div>
-                <div class="carousel-slide" style="background-image:url('img/MMUVAL.webp')"></div>
-                <div class="carousel-slide" style="background-image:url('img/USS.jpg')"></div>
-                <div class="carousel-slide" style="background-image:url('img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg')"></div>
+                <div class="carousel-slide is-active" style="background-image:url('img/Carrusel01.png')"></div>
+                <div class="carousel-slide" style="background-image:url('img/Carrusel02.png')"></div>
+                <div class="carousel-slide" style="background-image:url('img/Carrusel03.png')"></div>
             </div>
             
+            <!-- Overlay para mejorar legibilidad -->
+            <div class="hero-overlay"></div>
+            
             <div class="hero-inner">
-                <div class="hero-content hero-panel">
-                    <h1 class="hero-title">Construyendo organizaciones íntegras y transparentes</h1>
-                    <p class="hero-subtitle">Acompañamos a instituciones públicas y privadas en la implementación de sistemas robustos de integridad, transparencia y prevención de la corrupción.</p>
-                    <div class="hero-buttons">
-                        <button class="btn btn-primary">Agendar consultoría</button>
-                        <button class="btn btn-secondary">Conocer más</button>
+                <div class="hero-content">
+                    <div class="hero-panel">
+                        <h1 class="hero-title">Red de Integridad Lambayeque: Monitoreando la Inversión Pública por la Integridad</h1>
+                        <p class="hero-subtitle">Espacio de colaboración de organizaciones sociales, públicas y privadas comprometidas con la transparencia, el gobierno abierto y la rendición de cuentas en obras públicas en Lambayeque.</p>
+                        <div class="hero-buttons">
+                            <a href="#impacto" class="btn btn-primary">Conoce Nuestro Impacto</a>
+                            <a href="#metodologia" class="btn btn-secondary">Metodología: Estándares de Integridad</a>
+                        </div>
                     </div>
                 </div>
             </div>
+            
             <div class="carousel-controls">
                 <button class="carousel-button" id="carouselPrev" aria-label="Imagen anterior" title="Anterior">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
@@ -66,231 +68,196 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
                 </button>
             </div>
+            
+            <!-- Indicadores del carrusel -->
+            <div class="carousel-indicators">
+                <button class="carousel-indicator active" data-slide="0" aria-label="Ir a imagen 1"></button>
+                <button class="carousel-indicator" data-slide="1" aria-label="Ir a imagen 2"></button>
+                <button class="carousel-indicator" data-slide="2" aria-label="Ir a imagen 3"></button>
+            </div>
+        </section>
+    
+        <!-- Sección de Impacto -->
+        <section id="impacto" class="impact-section">
+            <div class="container-impacto">
+                <h2 class="section-title">Red de Integridad Lambayeque</h2>
+                <p class="section-intro">La Red de Integridad Lambayeque impulsa acciones de veeduría 
+                    multiactor en los procesos de contratación e inversión de obras públicas, aplicando 
+                    la metodología de Estándares de Integridad. Este proceso ha permitido fortalecer las 
+                    capacidades de sus integrantes, quienes han desarrollado diversas veedurías orientadas 
+                    a promover la transparencia y la rendición de cuentas en la gestión pública. A través de estas acciones, la Red contribuye activamente a restablecer
+                    la confianza ciudadana en las instituciones públicas y en el sector privado, especialmente en
+                     lo relacionado con la ejecución de obras de infraestructura
+                    Asimismo, la Red de Integridad Lambayeque realiza la verificación del 
+                    cumplimiento de los Estándares de Integridad en las obras públicas, mediante la ejecución de 
+                    veedurías y visitas técnicas. El cumplimiento de estos estándares representa una disminución de
+                     los riesgos de corrupción y de ineficiencia en la inversión pública, promoviendo así una gestión
+                      más ética, eficiente y orientada al bienestar ciudadano.</p>
+                
+                      <div class="impact-grid">
+                        <div class="impact-card">
+                            <div class="impact-number">22</div>
+                            <div class="impact-label">Obras Públicas Monitoreadas</div>
+                            <div class="impact-note">
+                                Supervisadas mediante veeduría multiactor para promover la transparencia en la gestión pública.
+                            </div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">S/. 147 M</div>
+                            <div class="impact-label">Monto de Inversión</div>
+                            <div class="impact-note">
+                                Recursos públicos acompañados y observados para asegurar un uso eficiente y responsable.
+                            </div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">55</div>
+                            <div class="impact-label">Estándares Verificados</div>
+                            <div class="impact-note">
+                                El cumplimiento de los estándares reduce los riesgos de corrupción y mejora la eficiencia en la inversión.
+                            </div>
+                        </div>
+                        <div class="impact-card">
+                            <div class="impact-number">133,309</div>
+                            <div class="impact-label">Beneficiarios Esperados</div>
+                            <div class="impact-note">
+                                Ciudadanas y ciudadanos beneficiados con obras públicas más transparentes y de mayor calidad.
+                            </div>
+                        </div>
+                    </div>                    
+                </div>
+                
+                <p class="impact-conclusion">El resultado de estas acciones ha contribuido a restablecer la confianza de los ciudadanos en las entidades públicas y en el sector privado, especialmente en el proceso de contratación de las obras.</p>
+            </div>
+        </section>
+    
+        <!-- Sección de Metodología -->
+        <section id="metodologia" class="methodology-section">
+            <div class="container-metodologia">
+                <h2 class="section-title">Ejes de Acción por la Integridad en Lambayeque</h2>
+        
+                <div class="methodology-content">
+                    
+                    <h3>Veeduría Multiactor con Estándares de Integridad</h3>
+                    <p>
+                        La Red de Integridad Lambayeque desarrolla acciones de <strong>veeduría multiactor</strong> 
+                        en los procesos de contratación e inversión de obras públicas, aplicando la 
+                        <strong>metodología de Estándares de Integridad</strong>.
+                        Este enfoque permite identificar riesgos potenciales de corrupción e ineficiencia, 
+                        promoviendo la transparencia y la rendición de cuentas en cada etapa de ejecución de las obras.
+                    </p>
+                    <p>
+                        Gracias a esta labor conjunta entre sociedad civil, academia, sector privado y entidades públicas, 
+                        se fortalece la vigilancia ciudadana y se impulsa una gestión pública más ética y eficiente.
+                    </p>
+        
+                    <h3>Defensores de Estándares y Comunidad de Aprendizaje</h3>
+                    <p>
+                        La Red se constituye como una <strong>comunidad de aprendizaje</strong> que fomenta el intercambio 
+                        de conocimientos y experiencias en temas como la integridad pública, la gestión de la inversión y 
+                        la aplicación práctica de los Estándares de Integridad en la contratación de obras.
+                    </p>
+                    <p>
+                        Los <strong>Defensores de Estándares</strong> son integrantes de la Red que, desde sus diversas 
+                        especialidades —ingeniería, derecho, economía, arquitectura y ciencias sociales—, aportan 
+                        perspectivas complementarias que enriquecen el análisis y la supervisión. Este enfoque interdisciplinario 
+                        permite asegurar que la infraestructura pública no solo cumpla con los requisitos técnicos, 
+                        sino que también garantice derechos fundamentales como la salud, la educación y el acceso equitativo 
+                        a los servicios.
+                    </p>
+        
+                    <h3>Desarrollo de Capacidades</h3>
+                    <p>
+                        Uno de los pilares del trabajo de la Red es el <strong>fortalecimiento de capacidades</strong> 
+                        en los distintos actores de la región. A través de talleres, capacitaciones y asesorías técnicas, 
+                        se promueve una <strong>cultura de integridad</strong> en la gestión pública y en las contrataciones del Estado.
+                    </p>
+                    <p>
+                        Estas acciones buscan dotar a las y los participantes de herramientas prácticas para la identificación temprana 
+                        de riesgos, la vigilancia de obras y la implementación de <strong>buenas prácticas</strong> en transparencia, 
+                        participación ciudadana y rendición de cuentas.
+                    </p>
+        
+                    <h3>Participación en la Mesa Propositiva Público-Privada</h3>
+                    <p>
+                        La Red de Integridad Lambayeque forma parte activa de la 
+                        <strong>Mesa Propositiva Público-Privada para la Gestión de Inversiones</strong>, un espacio de diálogo y 
+                        colaboración donde confluyen autoridades, empresas y sociedad civil.
+                    </p>
+                    <p>
+                        Desde este espacio, la Red contribuye con <strong>propuestas y observaciones técnicas</strong> destinadas a mejorar 
+                        la calidad de los expedientes de inversión pública, fortaleciendo así la eficiencia y sostenibilidad de las obras 
+                        priorizadas en la región. Esta participación refuerza el compromiso con una gobernanza colaborativa, donde la 
+                        integridad se convierte en un eje transversal del desarrollo regional.
+                    </p>
+                </div>
+        
+                <div class="download-guide">
+                    <a href="enlaces-externos/guia.html" class="btn btn-download">
+                        Descarga nuestra Guía de Estándares de Integridad (con enfoque de accesibilidad)
+                    </a>
+                </div>
+            </div>
+        </section>
+    
+        <!-- Sección de Colaboración -->
+        <section id="colaboracion" class="collaboration-section">
+            <div class="container-colaboracion">
+                <h2 class="section-title">Nuestra Estructura y Red de Colaboración</h2>
+                <p>
+                    La <strong>Red de Integridad Lambayeque</strong> es un espacio de colaboración entre organizaciones sociales, 
+                    públicas y privadas comprometidas con la <strong>transparencia</strong>, el <strong>gobierno abierto</strong> y la 
+                    <strong>rendición de cuentas</strong> en obras públicas de la región.
+                </p>
+                <p>
+                    Desde su creación en <strong>2020</strong>, la Red trabaja para reducir los riesgos de corrupción y fortalecer 
+                    una cultura de integridad en la gestión pública. Está conformada por <strong>14 organizaciones y 27 integrantes</strong>, 
+                    coordinados a través de una <strong>Secretaría Técnica</strong> elegida por sus miembros.
+                </p>
+                <p>
+                    Entre sus integrantes destacan la <em>Mesa de Concertación para la Lucha contra la Pobreza</em>, el 
+                    <em>Colegio de Ingenieros</em>, la <em>Oficina Regional de Integridad Institucional</em>, la 
+                    <em>Mancomunidad del Valle La Leche</em>, la <em>Universidad Señor de Sipán</em> y diversas 
+                    asociaciones civiles y redes juveniles comprometidas con la integridad.
+                </p>
+            </div>
+        </section>       
+    
+        <!-- Sección de Aliados -->
+        <div class="collab-section">
+            <div class="collab-strip" aria-label="Colaboradores">
+                <div class="collab-track">
+                    <img class="collab-logo" src="img/ACIL.jpg" alt="ACIL">
+                    <img class="collab-logo" src="img/COLEGIO DE ING DEL PERU.png" alt="Colegio de Ingenieros del Perú">
+                    <img class="collab-logo" src="img/COREJU NUEVO.jpg" alt="COREJU">
+                    <img class="collab-logo" src="img/COVAG.jpg" alt="COVAG">
+                    <img class="collab-logo" src="img/EMSOLAM.jpg" alt="EMSOLAM">
+                    <img class="collab-logo" src="img/GOBIERNO REGIONAL DE LAMBAYEQUE.png" alt="Gobierno Regional de Lambayeque">
+                    <img class="collab-logo" src="img/JM.jpg" alt="JM">
+                    <img class="collab-logo" src="img/LOGO oficial - SANTA ÁNGELA SIN FONDO.png" alt="Santa Ángela">
+                    <img class="collab-logo" src="img/MESA DE CONCERTACION.jpg" alt="Mesa de Concertación">
+                    <img class="collab-logo" src="img/MMUVAL.webp" alt="MMUVAL">
+                    <img class="collab-logo" src="img/RED DE MUJERES LIDERESAS DE LAMBAYEQUE.png" alt="Red de Mujeres Líderes">
+                    <img class="collab-logo" src="img/USS.jpg" alt="USS">
+                    <img class="collab-logo" src="img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg" alt="Veedores Ciudadanos">
+                    
+                    <!-- duplicado para loop continuo -->
+                    <img class="collab-logo" src="img/ACIL.jpg" alt="ACIL">
+                    <img class="collab-logo" src="img/COLEGIO DE ING DEL PERU.png" alt="Colegio de Ingenieros del Perú">
+                    <img class="collab-logo" src="img/COREJU NUEVO.jpg" alt="COREJU">
+                    <img class="collab-logo" src="img/COVAG.jpg" alt="COVAG">
+                    <img class="collab-logo" src="img/EMSOLAM.jpg" alt="EMSOLAM">
+                    <img class="collab-logo" src="img/GOBIERNO REGIONAL DE LAMBAYEQUE.png" alt="Gobierno Regional de Lambayeque">
+                    <img class="collab-logo" src="img/JM.jpg" alt="JM">
+                    <img class="collab-logo" src="img/LOGO oficial - SANTA ÁNGELA SIN FONDO.png" alt="Santa Ángela">
+                    <img class="collab-logo" src="img/MESA DE CONCERTACION.jpg" alt="Mesa de Concertación">
+                    <img class="collab-logo" src="img/MMUVAL.webp" alt="MMUVAL">
+                    <img class="collab-logo" src="img/RED DE MUJERES LIDERESAS DE LAMBAYEQUE.png" alt="Red de Mujeres Líderes">
+                    <img class="collab-logo" src="img/USS.jpg" alt="USS">
+                    <img class="collab-logo" src="img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg" alt="Veedores Ciudadanos">
+                </div>
+            </div>
         </div>
-
-        
-
-        <div class="stats-section">
-            <div class="stats-container">
-                <div class="stat-card">
-                    <div class="stat-number">150+</div>
-                    <div class="stat-label">Organizaciones asesoradas</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">98%</div>
-                    <div class="stat-label">Índice de satisfacción</div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-number">12</div>
-                    <div class="stat-label">Años de experiencia</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="services-section">
-            <div class="section-header">
-                <h2>Nuestros servicios</h2>
-                <p>Soluciones integrales para fortalecer la cultura de integridad en su organización</p>
-            </div>
-
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
-                        </svg>
-                    </div>
-                    <h3>Sistemas de Integridad</h3>
-                    <p>Diseño e implementación de sistemas de gestión de integridad adaptados a su organización</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
-                            <circle cx="9" cy="7" r="4"></circle>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
-                        </svg>
-                    </div>
-                    <h3>Capacitación</h3>
-                    <p>Programas de formación para equipos en ética, compliance y prevención de corrupción</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                            <polyline points="14 2 14 8 20 8"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Auditorías</h3>
-                    <p>Evaluación independiente de controles internos y procesos de transparencia</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="23 6 13.5 15.5 8.5 10.5 1 17"></polyline>
-                            <polyline points="17 6 23 6 23 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Análisis de Riesgos</h3>
-                    <p>Identificación y mapeo de riesgos de corrupción y conflictos de interés</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polyline points="20 6 9 17 4 12"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Compliance</h3>
-                    <p>Implementación de programas de cumplimiento normativo y mejores prácticas</p>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"></circle>
-                            <polyline points="12 6 12 12 16 14"></polyline>
-                        </svg>
-                    </div>
-                    <h3>Certificaciones</h3>
-                    <p>Acompañamiento en procesos de certificación internacional en integridad</p>
-                </div>
-            </div>
-        </div>
-
-
-        <section class="intro">
-            <h2>¿Qué son los Estándares de Integridad?</h2>
-            <p>Los Estándares de Integridad son un conjunto de parámetros de actuación y cumplimiento que buscan gestionar y mitigar riesgos en la obra pública, promoviendo la transparencia, integridad y accesibilidad en todas las fases de la contratación y ejecución.</p>
-            <p>Esta metodología ha sido desarrollada con el apoyo de USAID a través del Proyecto Inversión Pública Transparente, y es implementada por el Instituto Buen Gobierno e Integridad junto a la Red de Integridad Lambayeque y EMSOLAM.</p>
-        </section>
-        
-        <section>
-            <h2 style="color: var(--primary-color); margin-bottom: 1.5rem;">Estándares de Integridad</h2>
-            <div class="standards-grid">
-                <div class="standard-card">
-                    <div class="standard-number">1</div>
-                    <h3 class="standard-title">Expediente Técnico de Calidad</h3>
-                    <p class="standard-description">Elaboración del ETO con criterios de calidad, eficiencia y costo razonable, incluyendo estándares de accesibilidad.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">2</div>
-                    <h3 class="standard-title">Publicación Oportuna</h3>
-                    <p class="standard-description">Publicación completa y oportuna de la convocatoria en plataformas de transparencia pública.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">3</div>
-                    <h3 class="standard-title">Competencia y Transparencia</h3>
-                    <p class="standard-description">Fomento de la competencia y transparencia en el procedimiento de selección.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">4</div>
-                    <h3 class="standard-title">Contrato Conforme</h3>
-                    <p class="standard-description">Suscripción y publicación del contrato conforme a la normativa vigente.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">5</div>
-                    <h3 class="standard-title">Supervisión Permanente</h3>
-                    <p class="standard-description">Supervisión permanente para garantizar la calidad y continuidad de la obra.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">6</div>
-                    <h3 class="standard-title">Adicionales Justificados</h3>
-                    <p class="standard-description">Justificación oportuna de adicionales y/o ampliaciones para garantizar la finalidad pública.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">7</div>
-                    <h3 class="standard-title">Corrección de Situaciones Adversas</h3>
-                    <p class="standard-description">Corrección de situaciones adversas identificadas en informes de control.</p>
-                </div>
-                
-                <div class="standard-card">
-                    <div class="standard-number">8</div>
-                    <h3 class="standard-title">Recepción Conforme</h3>
-                    <p class="standard-description">Recepción de la obra conforme al expediente técnico para su puesta en servicio.</p>
-                </div>
-            </div>
-        </section>
-        
-        <section class="phases">
-            <div class="phase">
-                <div class="phase-title">Actos Preparatorios</div>
-                <div class="phase-description">Fase inicial de planificación y preparación del proyecto</div>
-            </div>
-            <div class="phase">
-                <div class="phase-title">Proceso de Selección</div>
-                <div class="phase-description">Etapa de convocatoria y selección del contratista</div>
-            </div>
-            <div class="phase">
-                <div class="phase-title">Ejecución Contractual</div>
-                <div class="phase-description">Fase de construcción, supervisión y recepción de la obra</div>
-            </div>
-        </section>
-        
-        <section class="partners">
-            <h2>Instituciones Colaboradoras</h2>
-            <div class="partner-logos">
-                <div>Instituto Buen Gobierno e Integridad</div>
-                <div>Red de Integridad Lambayeque</div>
-                <div>EMSOLAM</div>
-                <div>USAID</div>
-                <div>Proyecto Inversión Pública Transparente</div>
-            </div>
-        </section>
-        
-        <section class="cta">
-            <h2>¿Quieres implementar los Estándares de Integridad?</h2>
-            <p>Descarga las guías completas y comienza a promover la transparencia e integridad en las obras públicas de tu región.</p>
-            <a href="#" class="cta-button">Descargar Guías Completas</a>
-        </section>
-
-
     </main>
-
-    <div class="collab-section">
-        <div class="collab-strip" aria-label="Colaboradores">
-            <div class="collab-track">
-                <img class="collab-logo" src="img/ACIL.jpg" alt="ACIL">
-                <img class="collab-logo" src="img/COLEGIO DE ING DEL PERU.png" alt="Colegio de Ingenieros del Perú">
-                <img class="collab-logo" src="img/COREJU NUEVO.jpg" alt="COREJU">
-                <img class="collab-logo" src="img/COVAG.jpg" alt="COVAG">
-                <img class="collab-logo" src="img/EMSOLAM.jpg" alt="EMSOLAM">
-                <img class="collab-logo" src="img/GOBIERNO REGIONAL DE LAMBAYEQUE.png" alt="Gobierno Regional de Lambayeque">
-                <img class="collab-logo" src="img/JM.jpg" alt="JM">
-                <img class="collab-logo" src="img/LOGO oficial - SANTA ÁNGELA SIN FONDO.png" alt="Santa Ángela">
-                <img class="collab-logo" src="img/MESA DE CONCERTACION.jpg" alt="Mesa de Concertación">
-                <img class="collab-logo" src="img/MMUVAL.webp" alt="MMUVAL">
-                <img class="collab-logo" src="img/RED DE MUJERES LIDERESAS DE LAMBAYEQUE.png" alt="Red de Mujeres Líderes">
-                <img class="collab-logo" src="img/USS.jpg" alt="USS">
-                <img class="collab-logo" src="img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg" alt="Veedores Ciudadanos">
-
-                <!-- duplicado para loop continuo -->
-                <img class="collab-logo" src="img/ACIL.jpg" alt="ACIL">
-                <img class="collab-logo" src="img/COLEGIO DE ING DEL PERU.png" alt="Colegio de Ingenieros del Perú">
-                <img class="collab-logo" src="img/COREJU NUEVO.jpg" alt="COREJU">
-                <img class="collab-logo" src="img/COVAG.jpg" alt="COVAG">
-                <img class="collab-logo" src="img/EMSOLAM.jpg" alt="EMSOLAM">
-                <img class="collab-logo" src="img/GOBIERNO REGIONAL DE LAMBAYEQUE.png" alt="Gobierno Regional de Lambayeque">
-                <img class="collab-logo" src="img/JM.jpg" alt="JM">
-                <img class="collab-logo" src="img/LOGO oficial - SANTA ÁNGELA SIN FONDO.png" alt="Santa Ángela">
-                <img class="collab-logo" src="img/MESA DE CONCERTACION.jpg" alt="Mesa de Concertación">
-                <img class="collab-logo" src="img/MMUVAL.webp" alt="MMUVAL">
-                <img class="collab-logo" src="img/RED DE MUJERES LIDERESAS DE LAMBAYEQUE.png" alt="Red de Mujeres Líderes">
-                <img class="collab-logo" src="img/USS.jpg" alt="USS">
-                <img class="collab-logo" src="img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg" alt="Veedores Ciudadanos">
-            </div>
-        </div>
-    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -330,7 +297,6 @@
             <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
         </div>
     </footer>
-
     <script src="js/carruseles.js"></script>
     <script src="js/navbar.js"></script>
 </body>

@@ -37,33 +37,205 @@
 
     <!-- Main Content -->
     <main class="main-content">
-        <div class="section-header">
-            <h2>Sobre Nosotros</h2>
-            <p>Conoce nuestra misión, visión y valores</p>
-        </div>
+        <!-- Hero / Encabezado -->
+        <section class="hero-nos">
+            <div class="hero-nos__inner">
+                <h1 class="hero-nos__title" id="heroTitle">Sobre la Red de Integridad Lambayeque</h1>
+                <p class="hero-nos__subtitle" id="heroSubtitle">Espacio de colaboración de organizaciones sociales, públicas y privadas para promover integridad y transparencia en obras públicas.</p>
+                <div class="hero-nos__actions" id="heroCtas">
+                    <a href="estandares.html" class="btn btn-primary">Ver Estándares</a>
+                    <a href="monitoreo.html" class="btn btn-secondary">Monitoreo ciudadano</a>
+                </div>
+            </div>
+        </section>
 
-        <div class="about-content">
-            <div class="about-card">
-                <h3>Misión</h3>
-                <p>Promover la integridad, transparencia y combate a la corrupción en organizaciones públicas y privadas a través de soluciones innovadoras y acompañamiento especializado.</p>
+        <!-- Quiénes somos (Intro con chips) -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Quiénes somos</h2>
+            </div>
+            <div class="about-intro">
+                <div class="about-intro__text">
+                    <p id="introParrafo">Somos un espacio articulado de organizaciones que promueven prácticas de integridad, transparencia y control social en la obra pública, fortaleciendo la confianza ciudadana desde Lambayeque. La Red de Integridad Lambayeque fue creada en el año 2020 y está conformada por 14 organizaciones comprometidas con la lucha contra la corrupción y el fortalecimiento de la gestión pública en la región.</p>
+                </div>
+                <div class="chips" id="introChips">
+                    <span class="chip">Creación: 2020</span>
+                    <span class="chip">14 organizaciones</span>
+                    <span class="chip">27 integrantes</span>
+                    <span class="chip">Ámbito: Lambayeque</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Organización -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Organización</h2>
+                <p>Estructura de gobernanza y miembros de la Red</p>
             </div>
 
-            <div class="about-card">
-                <h3>Visión</h3>
-                <p>Ser la red de referencia en América Latina para la promoción de estándares de integridad y transparencia en la gestión pública y privada.</p>
+            <div class="org-secretaria">
+                <h3>Secretaría Técnica</h3>
+                <p id="secretariaTexto">La Secretaría Técnica es designada por la Red de manera rotativa y es responsable de coordinar, facilitar acuerdos y dar seguimiento a los compromisos.</p>
             </div>
 
-            <div class="about-card">
-                <h3>Valores</h3>
-                <ul class="values-list">
-                    <li>Integridad en todas nuestras acciones</li>
-                    <li>Transparencia en procesos y resultados</li>
-                    <li>Excelencia en la calidad de nuestro trabajo</li>
-                    <li>Inclusión y participación multiactor</li>
-                    <li>Compromiso con el cambio social</li>
+            <div class="org-miembros">
+                <div class="org-miembros__header">
+                    <h3>Miembros de la Red</h3>
+                    <button id="toggleVistaMiembros" class="btn btn-secondary" aria-pressed="false" aria-controls="miembrosGrid miembrosLista">Ver como lista</button>
+                </div>
+
+                <!-- Vista Grid -->
+                <div class="miembros-grid" id="miembrosGrid" role="region" aria-label="Miembros en cuadrícula">
+                    <a class="miembro" href="#" aria-label="Gobierno Regional de Lambayeque">
+                        <img src="../img/GOBIERNO REGIONAL DE LAMBAYEQUE.png" alt="Logo Gobierno Regional de Lambayeque" loading="lazy">
+                    </a>
+                    <a class="miembro" href="#" aria-label="MMUVALL">
+                        <img src="../img/MMUVAL.webp" alt="Logo MMUVALL" loading="lazy">
+                    </a>
+                    <a class="miembro" href="#" aria-label="USS">
+                        <img src="../img/USS.jpg" alt="Logo USS" loading="lazy">
+                    </a>
+                </div>
+
+                <!-- Vista Lista accesible -->
+                <ul class="miembros-lista" id="miembrosLista" hidden role="list">
+                    <li>Gobierno Regional de Lambayeque</li>
+                    <li>MMUVALL</li>
+                    <li>USS</li>
                 </ul>
             </div>
-        </div>
+        </section>
+
+        <!-- Misión y Visión -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Misión y Visión</h2>
+            </div>
+            <div class="mv-grid">
+                <article class="mv-card">
+                    <h2>Visión</h2>
+                    <p id="visionTexto">Ser una red referente que impulsa la integridad y la transparencia en proyectos de inversión pública en Lambayeque.</p>
+                </article>
+                <article class="mv-card">
+                    <h2>Misión</h2>
+                    <p id="misionTexto">Articular actores y promover estándares, herramientas y monitoreo ciudadano para prevenir la corrupción y fortalecer la gestión pública.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Transparencia / Documentos de gestión -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Transparencia / Documentos de gestión</h2>
+                <p>Planes, informes y actas disponibles para descarga</p>
+            </div>
+            <div class="docs-header">
+                <div class="meta-update" aria-label="Última actualización">
+                    <span class="meta-dot"></span>
+                    <span>Última actualización: <strong id="docsUpdate">2025-11-01</strong></span>
+                </div>
+            </div>
+            <div class="docs-table-wrap">
+                <table class="docs-table">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Tipo</th>
+                            <th>Año</th>
+                            <th>Últ. actualización</th>
+                            <th>Descargar</th>
+                        </tr>
+                    </thead>
+                    <tbody id="docsTbody">
+                        <tr>
+                            <td>Plan anual de trabajo</td>
+                            <td><span class="badge">Plan</span></td>
+                            <td>2025</td>
+                            <td>2025-11-01</td>
+                            <td><span class="btn-link">Disponible pronto</span></td>
+                        </tr>
+                        <tr>
+                            <td>Informe de gestión 2024</td>
+                            <td><span class="badge">Informe</span></td>
+                            <td>2024</td>
+                            <td>2025-11-01</td>
+                            <td><span class="btn-link">Disponible pronto</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="nota-legal">La información publicada se rige por el marco de acceso a la información pública y protección de datos personales vigente.</p>
+        </section>
+
+        <!-- Recursos destacados -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Recursos destacados</h2>
+                <p>Desde el folleto informativo</p>
+            </div>
+            <div class="recursos-grid" id="recursosGrid">
+                <a class="recurso-card" href="estandares.html">
+                    <figure>
+                        <img src="../img/LOGO%20oficial%20-%20SANTA%20%C3%81NGELA%20SIN%20FONDO.png" alt="QR Estándares de Integridad" loading="lazy">
+                        <figcaption>Conoce los 15 estándares y cómo aplicarlos en cada fase.</figcaption>
+                    </figure>
+                    <div class="recurso-content">
+                        <h3>Estándares de Integridad</h3>
+                        <p>Conoce los 15 estándares y cómo aplicarlos en cada fase.</p>
+                    </div>
+                </a>
+                <a class="recurso-card" href="monitoreo.html">
+                    <div class="recurso-content">
+                        <h3>Reportes de monitoreo</h3>
+                        <p>Revisa hallazgos y fichas por obra.</p>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- Equipo de la Secretaría Técnica (opcional) -->
+        <section class="section">
+            <div class="section-header">
+                <h2>Equipo de la Secretaría Técnica</h2>
+                <p>Equipo responsable de la articulación y seguimiento</p>
+            </div>
+            <div class="team-grid" id="teamGrid">
+                <article class="member-card">
+                    <img class="member-photo" src="../img/juan_perez.jpg" alt="Foto de Juan Pérez" loading="lazy">
+                    <h3 class="member-name">Juan Pérez</h3>
+                    <p class="member-role">Coordinador de Secretaría Técnica</p>
+                    <a class="member-email" href="mailto:juan.perez@redintegridad.org">juan.perez@redintegridad.org</a>
+                </article>
+                <article class="member-card">
+                    <img class="member-photo" src="../img/maria_garcia.jpg" alt="Foto de María García" loading="lazy">
+                    <h3 class="member-name">María García</h3>
+                    <p class="member-role">Especialista en Monitoreo</p>
+                    <a class="member-email" href="mailto:maria.garcia@redintegridad.org">maria.garcia@redintegridad.org</a>
+                </article>
+                <article class="member-card">
+                    <img class="member-photo" src="../img/carlos_lopez.jpg" alt="Foto de Carlos López" loading="lazy">
+                    <h3 class="member-name">Carlos López</h3>
+                    <p class="member-role">Responsable de Comunicación</p>
+                    <a class="member-email" href="mailto:carlos.lopez@redintegridad.org">carlos.lopez@redintegridad.org</a>
+                </article>
+            </div>
+        </section>
+
+        <!-- Contacto corto -->
+        <section class="section quick-contact">
+            <div class="section-header">
+                <h2>Contacto</h2>
+            </div>
+            <div class="quick-contact__inner">
+                <div class="quick-contact__text">
+                    <p id="contactoTexto">info@redintegridad.org · +51 (74) 123-4567 · Chiclayo, Lambayeque</p>
+                </div>
+                <div class="quick-contact__actions">
+                    <a class="btn btn-primary" id="contactoBtn" href="contacto.html">Participa / Contacto</a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
@@ -105,6 +277,31 @@
         </div>
     </footer>
 
+    <script>
+      // Alternar vista de miembros Grid/Lista con accesibilidad
+      document.addEventListener('DOMContentLoaded', function(){
+        const btn = document.getElementById('toggleVistaMiembros');
+        const grid = document.querySelector('.miembros-grid');
+        const lista = document.querySelector('.miembros-lista');
+        if(btn && grid && lista){
+          btn.addEventListener('click', ()=>{
+            const pressed = btn.getAttribute('aria-pressed') === 'true';
+            btn.setAttribute('aria-pressed', String(!pressed));
+            btn.textContent = pressed ? 'Ver como lista' : 'Ver como cuadrícula';
+            if(pressed){
+              // volver a grid
+              grid.hidden = false; grid.setAttribute('aria-hidden','false');
+              lista.hidden = true; lista.setAttribute('aria-hidden','true');
+            } else {
+              // cambiar a lista
+              grid.hidden = true; grid.setAttribute('aria-hidden','true');
+              lista.hidden = false; lista.setAttribute('aria-hidden','false');
+            }
+          });
+        }
+      });
+    </script>
+    <script src="../js/nosotros.js"></script>
     <script src="../js/navbar.js"></script>
 </body>
 </html>
