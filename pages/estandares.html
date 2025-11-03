@@ -38,12 +38,59 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="section-header">
-            <h2>Estándares de Integridad</h2>
+            <h2 class="estandares-title">
+                <!-- <span class="title-icon"></span> -->
+                Estándares de Integridad
+            </h2>
             <p>Los 15 Estándares de Integridad son principios fundamentales que guían la veeduría multiactor en proyectos de inversión pública.</p>
         </div>
 
+        <!-- Search and Filters -->
+        <div class="search-filters-wrapper">
+            <div class="search-box">
+                <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Buscar estándar por nombre o contenido..." class="search-input">
+                <button class="search-clear" id="clearSearch" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+
+            <div class="filters-container">
+                <span class="filter-label">Filtrar por:</span>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="todos">
+                        <!-- <span class="filter-icon">🔍</span> -->
+                        Todos
+                        <span class="filter-count">15</span>
+                    </button>
+                    <button class="filter-btn" data-filter="participacion">
+                        <!-- <span class="filter-icon">👥</span> -->
+                        Participación
+                    </button>
+                    <button class="filter-btn" data-filter="transparencia">
+                        <!-- <span class="filter-icon">👁️</span> -->
+                        Transparencia
+                    </button>
+                    <button class="filter-btn" data-filter="gestion">
+                        <!-- <span class="filter-icon">⚙️</span> -->
+                        Gestión
+                    </button>
+                    <button class="filter-btn" data-filter="proteccion">
+                        <!-- <span class="filter-icon">🛡️</span> -->
+                        Protección
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <div class="standards-grid" id="standardsGrid">
-            <div class="standard-card expanded" data-standard="1">
+            <div class="standard-card" data-standard="1" data-category="participacion">
                 <div class="standard-header">
                     <div class="standard-number">1</div>
                     <div class="standard-title">Participación Multiactor</div>
@@ -64,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="2">
+            <div class="standard-card" data-standard="2" data-category="transparencia">
                 <div class="standard-header">
                     <div class="standard-number">2</div>
                     <div class="standard-title">Transparencia en Procesos</div>
@@ -85,7 +132,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="3">
+            <div class="standard-card " data-standard="3" data-category="transparencia">
                 <div class="standard-header">
                     <div class="standard-number">3</div>
                     <div class="standard-title">Rendición de Cuentas</div>
@@ -106,7 +153,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="4">
+            <div class="standard-card " data-standard="4" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">4</div>
                     <div class="standard-title">Gestión de Conflictos de Interés</div>
@@ -127,7 +174,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="5">
+            <div class="standard-card " data-standard="5" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">5</div>
                     <div class="standard-title">Selección Transparente de Contratistas</div>
@@ -148,7 +195,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="6">
+            <div class="standard-card " data-standard="6" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">6</div>
                     <div class="standard-title">Gestión de Presupuesto</div>
@@ -169,7 +216,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="7">
+            <div class="standard-card " data-standard="7" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">7</div>
                     <div class="standard-title">Monitoreo de Ejecución</div>
@@ -190,7 +237,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="8">
+            <div class="standard-card " data-standard="8" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">8</div>
                     <div class="standard-title">Gestión de Riesgos</div>
@@ -211,7 +258,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="9">
+            <div class="standard-card " data-standard="9" data-category="proteccion">
                 <div class="standard-header">
                     <div class="standard-number">9</div>
                     <div class="standard-title">Protección de Denunciantes</div>
@@ -231,7 +278,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="10">
+            <div class="standard-card " data-standard="10" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">10</div>
                     <div class="standard-title">Capacitación en Integridad</div>
@@ -252,7 +299,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="11">
+            <div class="standard-card " data-standard="11" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">11</div>
                     <div class="standard-title">Gestión de Información</div>
@@ -273,7 +320,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="12">
+            <div class="standard-card " data-standard="12" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">12</div>
                     <div class="standard-title">Evaluación de Impacto</div>
@@ -294,7 +341,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="13">
+            <div class="standard-card " data-standard="13" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">13</div>
                     <div class="standard-title">Sostenibilidad</div>
@@ -315,7 +362,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="14">
+            <div class="standard-card " data-standard="14" data-category="participacion">
                 <div class="standard-header">
                     <div class="standard-number">14</div>
                     <div class="standard-title">Equidad y Acceso</div>
@@ -336,7 +383,7 @@
                 </div>
             </div>
 
-            <div class="standard-card expanded" data-standard="15">
+            <div class="standard-card " data-standard="15" data-category="gestion">
                 <div class="standard-header">
                     <div class="standard-number">15</div>
                     <div class="standard-title">Mejora Continua</div>
@@ -358,31 +405,58 @@
             </div>
         </div>
 
+        <div class="no-results" id="noResults" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <h3>No se encontraron estándares</h3>
+            <p>Intenta con otros términos de búsqueda o filtros</p>
+        </div>
+
         <div class="resources-section">
-            <h3>Recursos Complementarios</h3>
+            <div class="resources-header">
+                <h3>📚 Recursos Complementarios</h3>
+                <p>Herramientas y documentos para aplicar los estándares</p>
+            </div>
             <div class="resources-grid">
                 <div class="resource-card">
+                    <div class="resource-icon">📄</div>
                     <h4>Guía Completa de Estándares</h4>
                     <p>Documento integral con todos los estándares, marco legal, indicadores y mejores prácticas.</p>
-                    <button class="btn btn-link">
+                    <button class="resource-btn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        Descargar PDF
+                        <span>Descargar PDF</span>
                     </button>
                 </div>
                 <div class="resource-card">
+                    <div class="resource-icon">📊</div>
                     <h4>Matriz de Cumplimiento</h4>
                     <p>Herramienta para evaluar el cumplimiento de estándares en proyectos específicos.</p>
-                    <button class="btn btn-link">
+                    <button class="resource-btn">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                             <polyline points="7 10 12 15 17 10"></polyline>
                             <line x1="12" y1="15" x2="12" y2="3"></line>
                         </svg>
-                        Descargar Excel
+                        <span>Descargar Excel</span>
+                    </button>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-icon">📋</div>
+                    <h4>Checklist de Veeduría</h4>
+                    <p>Lista de verificación para asegurar el cumplimiento de cada estándar en proyectos.</p>
+                    <button class="resource-btn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                            <polyline points="7 10 12 15 17 10"></polyline>
+                            <line x1="12" y1="15" x2="12" y2="3"></line>
+                        </svg>
+                        <span>Descargar Checklist</span>
                     </button>
                 </div>
             </div>
@@ -428,6 +502,30 @@
         </div>
     </footer>
 
+
+
+
+    <!-- Modal Container -->
+<div id="modalContainer" class="modal-container">
+    <div class="modal-overlay" id="modalOverlay"></div>
+    <div class="modal" id="modal">
+      <button class="modal-close" id="modalClose">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="modal-content" id="modalContent">
+        <!-- El contenido del modal se cargará aquí dinámicamente -->
+      </div>
+    </div>
+  </div>
+
+
+
+
+
     <script src="../js/navbar.js"></script>
+    <script src="../js/estandares.js"></script>
 </body>
 </html>

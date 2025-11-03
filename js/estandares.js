@@ -1,190 +1,365 @@
-// Estándares Section Content
-const standards = [
-  {
-    number: 1,
-    title: "Participación Multiactor",
-    risks: "Falta de inclusión de actores relevantes en la toma de decisiones",
-    indicators: "Número de actores participantes, frecuencia de reuniones, representatividad",
-    actions: "Establecer espacios de participación, documentar decisiones, garantizar transparencia",
-  },
-  {
-    number: 2,
-    title: "Transparencia en Procesos",
-    risks: "Información no accesible o incompleta sobre procesos de inversión",
-    indicators: "Disponibilidad de información pública, acceso a documentos, claridad de procesos",
-    actions: "Publicar información, crear portales de transparencia, capacitar en acceso a información",
-  },
-  {
-    number: 3,
-    title: "Rendición de Cuentas",
-    risks: "Falta de responsabilidad en la ejecución de proyectos",
-    indicators: "Reportes de avance, auditorías realizadas, respuesta a denuncias",
-    actions: "Establecer mecanismos de reporte, realizar auditorías periódicas, crear canales de denuncia",
-  },
-  {
-    number: 4,
-    title: "Gestión de Conflictos de Interés",
-    risks: "Decisiones sesgadas por intereses particulares",
-    indicators: "Declaraciones de interés, conflictos identificados, resoluciones documentadas",
-    actions: "Implementar políticas de conflicto de interés, capacitar funcionarios, documentar decisiones",
-  },
-  {
-    number: 5,
-    title: "Selección Transparente de Contratistas",
-    risks: "Favoritismo en la selección de proveedores",
-    indicators: "Procesos de selección documentados, criterios claros, participantes registrados",
-    actions: "Publicar convocatorias, establecer criterios objetivos, documentar evaluaciones",
-  },
-  {
-    number: 6,
-    title: "Gestión de Presupuesto",
-    risks: "Desviación de recursos, gastos no justificados",
-    indicators: "Presupuesto ejecutado vs. planificado, justificación de gastos, auditorías",
-    actions: "Establecer presupuestos detallados, realizar seguimiento, auditar gastos",
-  },
-  {
-    number: 7,
-    title: "Monitoreo de Ejecución",
-    risks: "Proyectos no ejecutados según lo planificado",
-    indicators: "Avance físico, cumplimiento de cronograma, calidad de obra",
-    actions: "Establecer indicadores, realizar inspecciones, documentar avances",
-  },
-  {
-    number: 8,
-    title: "Gestión de Riesgos",
-    risks: "Identificación tardía de problemas en proyectos",
-    indicators: "Riesgos identificados, planes de mitigación, seguimiento de riesgos",
-    actions: "Realizar análisis de riesgos, crear planes de contingencia, monitorear riesgos",
-  },
-  {
-    number: 9,
-    title: "Protección de Denunciantes",
-    risks: "Represalias contra personas que denuncian irregularidades",
-    indicators: "Denuncias recibidas, protección implementada, seguimiento de casos",
-    actions: "Crear canales seguros de denuncia, proteger identidad, investigar denuncias",
-  },
-  {
-    number: 10,
-    title: "Capacitación en Integridad",
-    risks: "Falta de conocimiento sobre estándares de integridad",
-    indicators: "Personal capacitado, cobertura de capacitación, evaluación de conocimiento",
-    actions: "Diseñar programas de capacitación, capacitar regularmente, evaluar aprendizaje",
-  },
-  {
-    number: 11,
-    title: "Gestión de Información",
-    risks: "Pérdida o manipulación de información importante",
-    indicators: "Sistemas de información implementados, acceso controlado, respaldos realizados",
-    actions: "Implementar sistemas seguros, controlar acceso, realizar respaldos periódicos",
-  },
-  {
-    number: 12,
-    title: "Evaluación de Impacto",
-    risks: "Proyectos que no generan impacto esperado",
-    indicators: "Impacto medido, beneficiarios identificados, resultados documentados",
-    actions: "Establecer línea base, medir impacto, documentar resultados",
-  },
-  {
-    number: 13,
-    title: "Sostenibilidad",
-    risks: "Proyectos que no se mantienen en el tiempo",
-    indicators: "Capacidad de mantenimiento, recursos asignados, planes de sostenibilidad",
-    actions: "Planificar sostenibilidad, asignar recursos, capacitar en mantenimiento",
-  },
-  {
-    number: 14,
-    title: "Equidad y Acceso",
-    risks: "Beneficios no llegan a poblaciones vulnerables",
-    indicators: "Cobertura en poblaciones vulnerables, acceso equitativo, participación inclusiva",
-    actions: "Diseñar acciones inclusivas, monitorear cobertura, garantizar participación",
-  },
-  {
-    number: 15,
-    title: "Mejora Continua",
-    risks: "Falta de aprendizaje de experiencias previas",
-    indicators: "Lecciones aprendidas documentadas, mejoras implementadas, retroalimentación",
-    actions: "Documentar lecciones, implementar mejoras, crear ciclos de retroalimentación",
-  },
-]
-
+// Estándares Section - Enhanced JavaScript
 document.addEventListener("DOMContentLoaded", () => {
-  const estandaresSection = document.getElementById("estandares")
+  // Initialize all functionality
+  initSearch();
+  initFilters();
+  initStandardCards();
+  initResourceActions();
+  updateFilterCounts();
+});
 
-  let standardsHTML = `
-        <div class="section-header">
-            <h2>Estándares de Integridad</h2>
-            <p>Los 15 Estándares de Integridad son principios fundamentales que guían la veeduría multiactor en proyectos de inversión pública.</p>
-        </div>
+// Search functionality
+function initSearch() {
+  const searchInput = document.getElementById("searchInput");
+  const clearSearch = document.getElementById("clearSearch");
+  const noResults = document.getElementById("noResults");
 
-        <div class="standards-grid" id="standardsGrid">
-    `
+  if (!searchInput) return;
 
-  standards.forEach((standard) => {
-    standardsHTML += `
-            <div class="standard-card" data-standard="${standard.number}">
-                <div class="standard-header">
-                    <div class="standard-number">${standard.number}</div>
-                    <div class="standard-title">${standard.title}</div>
-                </div>
-                <div class="standard-content">
-                    <div class="standard-detail">
-                        <h4>Riesgos</h4>
-                        <p>${standard.risks}</p>
-                    </div>
-                    <div class="standard-detail">
-                        <h4>Indicadores</h4>
-                        <p>${standard.indicators}</p>
-                    </div>
-                    <div class="standard-detail">
-                        <h4>Acciones para Veedores</h4>
-                        <p>${standard.actions}</p>
-                    </div>
-                </div>
-            </div>
-        `
-  })
+  searchInput.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
+    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
+    
+    if (searchTerm.length > 0) {
+      clearSearch.style.display = "flex";
+    } else {
+      clearSearch.style.display = "none";
+    }
 
-  standardsHTML += `
-        </div>
+    filterAndSearchStandards(searchTerm, filterActive);
+  });
 
-        <div class="resources-section">
-            <h3>Recursos Complementarios</h3>
-            <div class="resources-grid">
-                <div class="resource-card">
-                    <h4>Guía Completa de Estándares</h4>
-                    <p>Documento integral con todos los estándares, marco legal, indicadores y mejores prácticas.</p>
-                    <button class="btn btn-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Descargar PDF
-                    </button>
-                </div>
-                <div class="resource-card">
-                    <h4>Matriz de Cumplimiento</h4>
-                    <p>Herramienta para evaluar el cumplimiento de estándares en proyectos específicos.</p>
-                    <button class="btn btn-link">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                            <polyline points="7 10 12 15 17 10"></polyline>
-                            <line x1="12" y1="15" x2="12" y2="3"></line>
-                        </svg>
-                        Descargar Excel
-                    </button>
-                </div>
-            </div>
-        </div>
-    `
+  clearSearch.addEventListener("click", () => {
+    searchInput.value = "";
+    clearSearch.style.display = "none";
+    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
+    filterAndSearchStandards("", filterActive);
+    searchInput.focus();
+  });
+}
 
-  estandaresSection.innerHTML = standardsHTML
+// Filter functionality with enhanced animations
+function initFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
 
-  // Add click handlers for expanding standards
-  const standardCards = document.querySelectorAll(".standard-card")
+  filterBtns.forEach((btn) => {
+    btn.addEventListener("click", function () {
+      const filter = this.getAttribute("data-filter");
+      const searchInput = document.getElementById("searchInput");
+      const searchTerm = searchInput?.value.toLowerCase().trim() || "";
+
+      // Remove active class from all buttons
+      filterBtns.forEach((b) => {
+        b.classList.remove("active");
+        b.style.transform = "scale(1)";
+      });
+
+      // Add active class and animation to clicked button
+      this.classList.add("active");
+      this.style.transform = "scale(0.95)";
+      
+      setTimeout(() => {
+        this.style.transform = "scale(1)";
+      }, 150);
+
+      // Filter standards
+      filterAndSearchStandards(searchTerm, filter);
+    });
+  });
+}
+
+// Filter and search standards
+function filterAndSearchStandards(searchTerm, filterType) {
+  const standardCards = document.querySelectorAll(".standard-card");
+  const noResults = document.getElementById("noResults");
+  let visibleCount = 0;
+
+  standardCards.forEach((card, index) => {
+    const standardNumber = card.getAttribute("data-standard");
+    const category = card.getAttribute("data-category") || "otros";
+    const title = card.querySelector(".standard-title")?.textContent.toLowerCase() || "";
+    const risks = card.querySelector(".standard-detail:nth-child(1) p")?.textContent.toLowerCase() || "";
+    const indicators = card.querySelector(".standard-detail:nth-child(2) p")?.textContent.toLowerCase() || "";
+    const actions = card.querySelector(".standard-detail:nth-child(3) p")?.textContent.toLowerCase() || "";
+    
+    const matchesFilter = filterType === "todos" || category === filterType;
+    const matchesSearch = !searchTerm || 
+                         title.includes(searchTerm) || 
+                         risks.includes(searchTerm) || 
+                         indicators.includes(searchTerm) || 
+                         actions.includes(searchTerm);
+    
+    if (matchesFilter && matchesSearch) {
+      card.setAttribute("data-visible", "true");
+      card.style.display = "block";
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+      
+      setTimeout(() => {
+        card.style.transition = "all 0.4s ease";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 50 * visibleCount);
+      
+      visibleCount++;
+    } else {
+      card.setAttribute("data-visible", "false");
+      card.style.transition = "all 0.3s ease";
+      card.style.opacity = "0";
+      card.style.transform = "scale(0.9)";
+      
+      setTimeout(() => {
+        card.style.display = "none";
+      }, 300);
+    }
+  });
+
+  // Show/hide no results message
+  setTimeout(() => {
+    if (visibleCount === 0 && noResults) {
+      noResults.style.display = "flex";
+      noResults.style.animation = "fadeInUp 0.5s ease";
+    } else if (noResults) {
+      noResults.style.display = "none";
+    }
+  }, 400);
+
+  // Update filter counts only if not filtering
+  if (!searchTerm) {
+    updateFilterCounts(filterType);
+  }
+}
+
+// Update filter counts
+function updateFilterCounts(activeFilter = null) {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const standardCards = document.querySelectorAll(".standard-card");
+  
+  filterBtns.forEach((btn) => {
+    const filterType = btn.getAttribute("data-filter");
+    let count = 0;
+
+    if (filterType === "todos") {
+      count = standardCards.length;
+    } else {
+      standardCards.forEach((card) => {
+        const category = card.getAttribute("data-category") || "otros";
+        if (category === filterType) {
+          count++;
+        }
+      });
+    }
+
+    const countElement = btn.querySelector(".filter-count");
+    if (countElement) {
+      countElement.textContent = count;
+    }
+  });
+}
+
+// Initialize standard cards with modal interactions
+function initStandardCards() {
+  const standardCards = document.querySelectorAll(".standard-card");
+  
   standardCards.forEach((card) => {
-    card.addEventListener("click", function () {
-      this.classList.toggle("expanded")
-    })
-  })
-})
+    // Mark as visible initially
+    card.setAttribute("data-visible", "true");
+    
+    card.addEventListener("click", function (e) {
+      // Don't open modal if clicking on a link or button inside
+      if (e.target.closest("a") || e.target.closest("button")) {
+        return;
+      }
+      
+      openStandardModal(this);
+    });
+
+    // Keep hover effects
+    card.addEventListener("mouseenter", function() {
+      this.style.transform = "translateY(-4px)";
+    });
+
+    card.addEventListener("mouseleave", function() {
+      this.style.transform = "";
+    });
+  });
+  
+  // Initialize modal functionality
+  initModal();
+}
+
+// Initialize modal functionality
+function initModal() {
+  const modalContainer = document.getElementById("modalContainer");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalClose = document.getElementById("modalClose");
+  
+  // Close modal when clicking overlay or close button
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", closeModal);
+  }
+  
+  if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
+  }
+  
+  // Close modal with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalContainer.classList.contains("active")) {
+      closeModal();
+    }
+  });
+}
+
+// Open modal with standard details
+function openStandardModal(card) {
+  const modalContainer = document.getElementById("modalContainer");
+  const modalContent = document.getElementById("modalContent");
+  
+  if (!modalContainer || !modalContent) {
+    console.error("Modal elements not found");
+    return;
+  }
+  
+  // Get card data
+  const standardNumber = card.getAttribute("data-standard");
+  const standardTitle = card.querySelector(".standard-title").textContent;
+  const risks = card.querySelector(".standard-detail:nth-child(1) p").textContent;
+  const indicators = card.querySelector(".standard-detail:nth-child(2) p").textContent;
+  const actions = card.querySelector(".standard-detail:nth-child(3) p").textContent;
+  
+  // Build modal content
+  modalContent.innerHTML = `
+    <div class="modal-header">
+      <div class="modal-number">${standardNumber}</div>
+      <div class="modal-title">${standardTitle}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-detail">
+        <h4>Riesgos</h4>
+        <p>${risks}</p>
+      </div>
+      <div class="modal-detail">
+        <h4>Indicadores</h4>
+        <p>${indicators}</p>
+      </div>
+      <div class="modal-detail">
+        <h4>Acciones para Veedores</h4>
+        <p>${actions}</p>
+      </div>
+    </div>
+  `;
+  
+  // Show modal
+  modalContainer.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevent scrolling
+}
+
+// Close modal
+function closeModal() {
+  const modalContainer = document.getElementById("modalContainer");
+  if (modalContainer) {
+    modalContainer.classList.remove("active");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
+}
+
+// Resource actions
+function initResourceActions() {
+  const resourceBtns = document.querySelectorAll(".resource-btn");
+  
+  resourceBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      
+      const card = this.closest(".resource-card");
+      const title = card.querySelector("h4")?.textContent || "Recurso";
+      
+      // Add ripple effect
+      const ripple = document.createElement("span");
+      ripple.style.position = "absolute";
+      ripple.style.width = "0";
+      ripple.style.height = "0";
+      ripple.style.borderRadius = "50%";
+      ripple.style.background = "rgba(255, 255, 255, 0.5)";
+      ripple.style.transform = "translate(-50%, -50%)";
+      ripple.style.left = "50%";
+      ripple.style.top = "50%";
+      ripple.style.animation = "ripple 0.6s ease-out";
+      this.style.position = "relative";
+      this.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+
+      // Show notification
+      showNotification(`Descargando: ${title}`);
+    });
+  });
+}
+
+// Show notification
+function showNotification(message) {
+  const notification = document.createElement("div");
+  notification.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--celeste));
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(47, 111, 224, 0.3);
+    z-index: 10000;
+    font-weight: 600;
+    font-size: 0.9rem;
+    animation: slideInRight 0.3s ease;
+    max-width: 300px;
+  `;
+  notification.textContent = message;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.animation = "slideOutRight 0.3s ease";
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, 3000);
+}
+
+// Add CSS animations dynamically
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes ripple {
+    to {
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
