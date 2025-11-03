@@ -1,202 +1,506 @@
-// Biblioteca Section Content
-const documents = [
-  {
-    id: 1,
-    title: "Guía de Estándares de Integridad",
-    type: "PDF",
-    description: "Documento completo con los 15 estándares de integridad y su aplicación",
-    date: "2024-01-15",
-  },
-  {
-    id: 2,
-    title: "Matriz de Cumplimiento",
-    type: "Datos",
-    description: "Herramienta Excel para evaluar cumplimiento de estándares",
-    date: "2024-01-10",
-  },
-  {
-    id: 3,
-    title: "Informe de Transparencia 2023",
-    type: "PDF",
-    description: "Reporte anual sobre transparencia en proyectos de inversión pública",
-    date: "2024-01-05",
-  },
-  {
-    id: 4,
-    title: "Video: Introducción a Integridad",
-    type: "Video",
-    description: "Capacitación introductoria sobre conceptos de integridad",
-    date: "2023-12-20",
-  },
-  {
-    id: 5,
-    title: "Casos de Éxito",
-    type: "Imagen",
-    description: "Galería de proyectos exitosos implementando estándares",
-    date: "2023-12-15",
-  },
-  {
-    id: 6,
-    title: "Manual de Veeduría",
-    type: "PDF",
-    description: "Guía práctica para veedores en la supervisión de proyectos",
-    date: "2023-12-10",
-  },
-  {
-    id: 7,
-    title: "Estadísticas de Cumplimiento",
-    type: "Datos",
-    description: "Datos sobre cumplimiento de estándares por sector",
-    date: "2023-12-05",
-  },
-  {
-    id: 8,
-    title: "Webinar: Gestión de Conflictos",
-    type: "Video",
-    description: "Sesión en línea sobre gestión de conflictos de interés",
-    date: "2023-11-30",
-  },
-  {
-    id: 9,
-    title: "Infografía: Estándares Clave",
-    type: "Imagen",
-    description: "Resumen visual de los estándares más importantes",
-    date: "2023-11-25",
-  },
-  {
-    id: 10,
-    title: "Política de Transparencia",
-    type: "PDF",
-    description: "Política institucional de transparencia y acceso a información",
-    date: "2023-11-20",
-  },
-]
+// Biblioteca Section - Enhanced JavaScript
+document.addEventListener("DOMContentLoaded", () => {
+  // Initialize all functionality
+  initSearch();
+  initFilters();
+  initDocumentActions();
+  initDashboardAnimations();
+  initPagination();
+  updateFilterCounts();
+});
 
-const dashboardData = [
-  { project: "Proyecto A", standards: 14, total: 15 },
-  { project: "Proyecto B", standards: 12, total: 15 },
-  { project: "Proyecto C", standards: 15, total: 15 },
-  { project: "Proyecto D", standards: 11, total: 15 },
-  { project: "Proyecto E", standards: 13, total: 15 },
-]
+// Search functionality
+function initSearch() {
+  const searchInput = document.getElementById("searchInput");
+  const clearSearch = document.getElementById("clearSearch");
+  const noResults = document.getElementById("noResults");
 
-function formatDate(dateString) {
-  const date = new Date(dateString)
-  return date.toLocaleDateString()
+  if (!searchInput) return;
+
+  searchInput.addEventListener("input", (e) => {
+    const searchTerm = e.target.value.toLowerCase().trim();
+    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
+    
+    if (searchTerm.length > 0) {
+      clearSearch.style.display = "flex";
+    } else {
+      clearSearch.style.display = "none";
+    }
+
+    filterAndSearchDocuments(searchTerm, filterActive);
+  });
+
+  clearSearch.addEventListener("click", () => {
+    searchInput.value = "";
+    clearSearch.style.display = "none";
+    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
+    filterAndSearchDocuments("", filterActive);
+    searchInput.focus();
+  });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  const bibliotecaSection = document.getElementById("biblioteca")
-
-  let bibliotecaHTML = `
-        <div class="section-header">
-            <h2>Biblioteca</h2>
-            <p>Repositorio de documentos, guías, reportes y multimedia de la Red de Integridad</p>
-        </div>
-
-        <div class="filters-container">
-            <span class="filter-label">Filtrar por:</span>
-            <div class="filter-buttons">
-                <button class="filter-btn active" data-filter="todos">Todos</button>
-                <button class="filter-btn" data-filter="PDF">PDF</button>
-                <button class="filter-btn" data-filter="Imagen">Imagen</button>
-                <button class="filter-btn" data-filter="Video">Video</button>
-                <button class="filter-btn" data-filter="Datos">Datos</button>
-            </div>
-        </div>
-
-        <div class="documents-grid" id="documentsGrid">
-    `
-
-  documents.forEach((doc) => {
-    const iconSVG = getDocumentIcon(doc.type)
-    bibliotecaHTML += `
-            <div class="document-card" data-type="${doc.type}">
-                <div class="document-icon">
-                    ${iconSVG}
-                </div>
-                <div class="document-info">
-                    <span class="document-type">${doc.type}</span>
-                    <h3 class="document-title">${doc.title}</h3>
-                    <p class="document-description">${doc.description}</p>
-                    <span class="document-date">${formatDate(doc.date)}</span>
-                </div>
-            </div>
-        `
-  })
-
-  bibliotecaHTML += `
-        </div>
-
-        <div class="dashboard-section">
-            <h3>Dashboard de Transparencia</h3>
-            <div class="dashboard-table">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Proyecto</th>
-                            <th>Estándares Cumplidos</th>
-                            <th>Porcentaje</th>
-                        </tr>
-                    </thead>
-                    <tbody id="dashboardBody">
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    `
-
-  bibliotecaSection.innerHTML = bibliotecaHTML
-
-  // Populate dashboard
-  const dashboardBody = document.getElementById("dashboardBody")
-  dashboardData.forEach((data) => {
-    const percentage = (data.standards / data.total) * 100
-    const row = document.createElement("tr")
-    row.innerHTML = `
-            <td>${data.project}</td>
-            <td>${data.standards}/${data.total}</td>
-            <td>
-                <div class="progress-bar">
-                    <div class="progress-fill" style="width: ${percentage}%"></div>
-                </div>
-                ${percentage.toFixed(0)}%
-            </td>
-        `
-    dashboardBody.appendChild(row)
-  })
-
-  // Filter functionality
-  const filterBtns = document.querySelectorAll(".filter-btn")
-  const documentCards = document.querySelectorAll(".document-card")
+// Filter functionality with enhanced animations
+function initFilters() {
+  const filterBtns = document.querySelectorAll(".filter-btn");
 
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
-      const filter = this.getAttribute("data-filter")
+      const filter = this.getAttribute("data-filter");
+      const searchInput = document.getElementById("searchInput");
+      const searchTerm = searchInput?.value.toLowerCase().trim() || "";
 
-      filterBtns.forEach((b) => b.classList.remove("active"))
-      this.classList.add("active")
+      // Remove active class from all buttons
+      filterBtns.forEach((b) => {
+        b.classList.remove("active");
+        b.style.transform = "scale(1)";
+      });
 
-      documentCards.forEach((card) => {
-        if (filter === "todos" || card.getAttribute("data-type") === filter) {
-          card.style.display = "flex"
-        } else {
-          card.style.display = "none"
-        }
-      })
-    })
-  })
-})
+      // Add active class and animation to clicked button
+      this.classList.add("active");
+      this.style.transform = "scale(0.95)";
+      
+      setTimeout(() => {
+        this.style.transform = "scale(1)";
+      }, 150);
 
-function getDocumentIcon(type) {
-  const icons = {
-    PDF: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>',
-    Imagen:
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>',
-    Video:
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"></polygon><rect x="1" y="5" width="15" height="14" rx="2" ry="2"></rect></svg>',
-    Datos:
-      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>',
-  }
-  return icons[type] || icons["PDF"]
+      // Filter documents
+      filterAndSearchDocuments(searchTerm, filter);
+    });
+  });
 }
+
+// Filter and search documents
+function filterAndSearchDocuments(searchTerm, filterType) {
+  const documentCards = document.querySelectorAll(".document-card");
+  const noResults = document.getElementById("noResults");
+  let visibleCount = 0;
+
+  documentCards.forEach((card, index) => {
+    const cardType = card.getAttribute("data-type");
+    const title = card.querySelector(".document-title")?.textContent.toLowerCase() || "";
+    const description = card.querySelector(".document-description")?.textContent.toLowerCase() || "";
+    
+    const matchesFilter = filterType === "todos" || cardType === filterType;
+    const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+    
+    if (matchesFilter && matchesSearch) {
+      // Mark as visible by filter (add data attribute)
+      card.setAttribute("data-visible", "true");
+      card.style.opacity = "0";
+      card.style.transform = "translateY(20px)";
+      
+      setTimeout(() => {
+        card.style.transition = "all 0.4s ease";
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 50 * visibleCount);
+      
+      visibleCount++;
+    } else {
+      // Mark as hidden by filter
+      card.setAttribute("data-visible", "false");
+      card.style.transition = "all 0.3s ease";
+      card.style.opacity = "0";
+      card.style.transform = "scale(0.9)";
+      
+      setTimeout(() => {
+        card.style.display = "none";
+      }, 300);
+    }
+  });
+
+  // Show/hide no results message
+  setTimeout(() => {
+    if (visibleCount === 0 && noResults) {
+      noResults.style.display = "flex";
+      noResults.style.animation = "fadeInUp 0.5s ease";
+    } else if (noResults) {
+      noResults.style.display = "none";
+    }
+  }, 400);
+
+  // Update pagination after filtering
+  setTimeout(() => {
+    currentPage = 1; // Reset to first page when filtering
+    updatePagination();
+  }, 500);
+
+  // Update filter counts only if not filtering
+  if (!searchTerm) {
+    updateFilterCounts(filterType);
+  }
+}
+
+// Update filter counts
+function updateFilterCounts(activeFilter = null) {
+  const filterBtns = document.querySelectorAll(".filter-btn");
+  const documentCards = document.querySelectorAll(".document-card");
+  
+  filterBtns.forEach((btn) => {
+    const filterType = btn.getAttribute("data-filter");
+    let count = 0;
+
+    if (filterType === "todos") {
+      count = documentCards.length;
+    } else {
+      documentCards.forEach((card) => {
+        const cardType = card.getAttribute("data-type");
+        if (cardType === filterType) {
+          count++;
+        }
+      });
+    }
+
+    const countElement = btn.querySelector(".filter-count");
+    if (countElement) {
+      countElement.textContent = count;
+    }
+  });
+}
+
+// Document actions (download, view, play)
+function initDocumentActions() {
+  const actionBtns = document.querySelectorAll(".document-action-btn");
+  
+  actionBtns.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      
+      const card = this.closest(".document-card");
+      const title = card.querySelector(".document-title")?.textContent || "Documento";
+      const type = card.getAttribute("data-type");
+      
+      // Add ripple effect
+      const ripple = document.createElement("span");
+      ripple.style.position = "absolute";
+      ripple.style.width = "0";
+      ripple.style.height = "0";
+      ripple.style.borderRadius = "50%";
+      ripple.style.background = "rgba(47, 111, 224, 0.3)";
+      ripple.style.transform = "translate(-50%, -50%)";
+      ripple.style.left = "50%";
+      ripple.style.top = "50%";
+      ripple.style.animation = "ripple 0.6s ease-out";
+      this.appendChild(ripple);
+      
+      setTimeout(() => {
+        ripple.remove();
+      }, 600);
+
+      // Simulate action
+      const action = this.getAttribute("title");
+      console.log(`${action}: ${title}`);
+      
+      // You can add actual download/view/play logic here
+      // For now, we'll just show a subtle notification
+      showNotification(`${action}: ${title}`);
+    });
+
+    // Card click handler
+    const card = btn.closest(".document-card");
+    if (card) {
+      card.addEventListener("click", function (e) {
+        if (e.target.closest(".document-action-btn")) return;
+        
+        // Add subtle pulse animation
+        this.style.transform = "scale(0.98)";
+        setTimeout(() => {
+          this.style.transform = "";
+        }, 150);
+      });
+    }
+  });
+}
+
+// Dashboard animations
+function initDashboardAnimations() {
+  // Animate stat cards on scroll
+  const statCards = document.querySelectorAll(".stat-card-large");
+  const typeCards = document.querySelectorAll(".type-card");
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, index) => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = "0";
+        entry.target.style.transform = "translateY(20px)";
+        
+        setTimeout(() => {
+          entry.target.style.transition = "all 0.5s ease";
+          entry.target.style.opacity = "1";
+          entry.target.style.transform = "translateY(0)";
+        }, 50 * index);
+        
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.3 });
+
+  statCards.forEach((card) => observer.observe(card));
+  typeCards.forEach((card) => observer.observe(card));
+
+  // Animate table rows
+  const tableRows = document.querySelectorAll(".dashboard-table tbody tr");
+  tableRows.forEach((row, index) => {
+    row.style.opacity = "0";
+    row.style.transform = "translateX(-10px)";
+    
+    setTimeout(() => {
+      row.style.transition = "all 0.4s ease";
+      row.style.opacity = "1";
+      row.style.transform = "translateX(0)";
+    }, 100 * index);
+  });
+}
+
+// Show notification
+function showNotification(message) {
+  const notification = document.createElement("div");
+  notification.style.cssText = `
+    position: fixed;
+    bottom: 24px;
+    right: 24px;
+    background: linear-gradient(135deg, var(--primary-blue), var(--celeste));
+    color: white;
+    padding: 16px 24px;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(47, 111, 224, 0.3);
+    z-index: 10000;
+    font-weight: 600;
+    font-size: 0.9rem;
+    animation: slideInRight 0.3s ease;
+    max-width: 300px;
+  `;
+  notification.textContent = message;
+  
+  document.body.appendChild(notification);
+  
+  setTimeout(() => {
+    notification.style.animation = "slideOutRight 0.3s ease";
+    setTimeout(() => {
+      notification.remove();
+    }, 300);
+  }, 3000);
+}
+
+// Pagination functionality
+let currentPage = 1;
+let itemsPerPage = 12;
+let totalItems = 0;
+
+function initPagination() {
+  // Mark all documents as visible initially
+  const documentCards = document.querySelectorAll(".document-card");
+  documentCards.forEach(card => {
+    card.setAttribute("data-visible", "true");
+  });
+  
+  // Initialize pagination after a short delay to ensure DOM is ready
+  setTimeout(() => {
+    updatePagination();
+    setupPaginationListeners();
+  }, 100);
+}
+
+function setupPaginationListeners() {
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const paginationNumbers = document.getElementById("paginationNumbers");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        updatePagination();
+        scrollToTop();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        updatePagination();
+        scrollToTop();
+      }
+    });
+  }
+
+  if (paginationNumbers) {
+    paginationNumbers.addEventListener("click", (e) => {
+      const pageBtn = e.target.closest(".pagination-number");
+      if (pageBtn) {
+        const page = parseInt(pageBtn.getAttribute("data-page"));
+        if (page && page !== currentPage) {
+          currentPage = page;
+          updatePagination();
+          scrollToTop();
+        }
+      }
+    });
+  }
+}
+
+function updatePagination() {
+  // Get all document cards that are visible (not hidden by filters/search)
+  const allCards = document.querySelectorAll(".document-card");
+  const documentCards = Array.from(allCards).filter(card => {
+    // Only include cards marked as visible by filters/search
+    const isVisible = card.getAttribute("data-visible") !== "false";
+    return isVisible;
+  });
+  
+  totalItems = documentCards.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  
+  // Hide pagination if no items
+  const paginationContainer = document.getElementById("paginationContainer");
+  if (totalItems === 0 && paginationContainer) {
+    paginationContainer.style.display = "none";
+    return;
+  }
+  
+  if (totalItems <= itemsPerPage && paginationContainer) {
+    // Show all cards if they fit in one page
+    documentCards.forEach(card => {
+      card.style.display = "flex";
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    });
+    if (paginationContainer) paginationContainer.style.display = "none";
+    return;
+  }
+  
+  if (paginationContainer) {
+    paginationContainer.style.display = "flex";
+  }
+  
+  // Calculate visible range
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
+  
+  // Show/hide cards based on pagination
+  documentCards.forEach((card, index) => {
+    if (index >= startIndex && index < endIndex) {
+      card.style.display = "flex";
+      card.style.opacity = "1";
+      card.style.transform = "translateY(0)";
+    } else {
+      card.style.display = "none";
+    }
+  });
+  
+  // Update pagination buttons
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  
+  if (prevBtn) {
+    prevBtn.disabled = currentPage === 1;
+  }
+  
+  if (nextBtn) {
+    nextBtn.disabled = currentPage >= totalPages;
+  }
+  
+  // Update pagination numbers
+  updatePaginationNumbers(totalPages);
+  
+  // Update info text
+  updatePaginationInfo(startIndex + 1, endIndex, totalItems);
+}
+
+function updatePaginationNumbers(totalPages) {
+  const paginationNumbers = document.getElementById("paginationNumbers");
+  if (!paginationNumbers) return;
+  
+  let html = "";
+  const maxVisible = 5; // Number of page buttons to show before ellipsis
+  
+  if (totalPages <= maxVisible + 2) {
+    // Show all pages if not too many
+    for (let i = 1; i <= totalPages; i++) {
+      html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+    }
+  } else {
+    // Show first page
+    html += `<button class="pagination-number ${currentPage === 1 ? 'active' : ''}" data-page="1">1</button>`;
+    
+    if (currentPage <= 3) {
+      // Show pages 2-5
+      for (let i = 2; i <= 5; i++) {
+        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+      }
+      html += `<span class="pagination-ellipsis">...</span>`;
+      html += `<button class="pagination-number" data-page="${totalPages}">${totalPages}</button>`;
+    } else if (currentPage >= totalPages - 2) {
+      // Show pages near the end
+      html += `<span class="pagination-ellipsis">...</span>`;
+      for (let i = totalPages - 4; i <= totalPages; i++) {
+        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+      }
+    } else {
+      // Show pages around current page
+      html += `<span class="pagination-ellipsis">...</span>`;
+      for (let i = currentPage - 1; i <= currentPage + 1; i++) {
+        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+      }
+      html += `<span class="pagination-ellipsis">...</span>`;
+      html += `<button class="pagination-number" data-page="${totalPages}">${totalPages}</button>`;
+    }
+  }
+  
+  paginationNumbers.innerHTML = html;
+}
+
+function updatePaginationInfo(from, to, total) {
+  const showingFrom = document.getElementById("showingFrom");
+  const showingTo = document.getElementById("showingTo");
+  const totalItems = document.getElementById("totalItems");
+  
+  if (showingFrom) showingFrom.textContent = from;
+  if (showingTo) showingTo.textContent = to;
+  if (totalItems) totalItems.textContent = total;
+}
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+// Add CSS animations dynamically
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes ripple {
+    to {
+      width: 200px;
+      height: 200px;
+      opacity: 0;
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideOutRight {
+    from {
+      transform: translateX(0);
+      opacity: 1;
+    }
+    to {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+  }
+`;
+document.head.appendChild(style);
