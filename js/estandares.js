@@ -157,7 +157,7 @@ function updateFilterCounts(activeFilter = null) {
   });
 }
 
-// Initialize standard cards with enhanced interactions
+// Initialize standard cards with modal interactions
 function initStandardCards() {
   const standardCards = document.querySelectorAll(".standard-card");
   
@@ -166,44 +166,102 @@ function initStandardCards() {
     card.setAttribute("data-visible", "true");
     
     card.addEventListener("click", function (e) {
-      // Don't expand if clicking on a link or button inside
+      // Don't open modal if clicking on a link or button inside
       if (e.target.closest("a") || e.target.closest("button")) {
         return;
       }
       
-      const isExpanded = this.classList.contains("expanded");
-      
-      // Close all other cards (optional - remove if you want multiple open)
-      // standardCards.forEach(c => {
-      //   if (c !== this && c.classList.contains("expanded")) {
-      //     c.classList.remove("expanded");
-      //   }
-      // });
-      
-      this.classList.toggle("expanded");
-      
-      // Add animation effect
-      if (!isExpanded) {
-        this.style.transform = "scale(0.98)";
-        setTimeout(() => {
-          this.style.transform = "";
-        }, 200);
-      }
+      openStandardModal(this);
     });
 
-    // Add hover effect
+    // Keep hover effects
     card.addEventListener("mouseenter", function() {
-      if (!this.classList.contains("expanded")) {
-        this.style.transform = "translateY(-4px)";
-      }
+      this.style.transform = "translateY(-4px)";
     });
 
     card.addEventListener("mouseleave", function() {
-      if (!this.classList.contains("expanded")) {
-        this.style.transform = "";
-      }
+      this.style.transform = "";
     });
   });
+  
+  // Initialize modal functionality
+  initModal();
+}
+
+// Initialize modal functionality
+function initModal() {
+  const modalContainer = document.getElementById("modalContainer");
+  const modalOverlay = document.getElementById("modalOverlay");
+  const modalClose = document.getElementById("modalClose");
+  
+  // Close modal when clicking overlay or close button
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", closeModal);
+  }
+  
+  if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
+  }
+  
+  // Close modal with Escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && modalContainer.classList.contains("active")) {
+      closeModal();
+    }
+  });
+}
+
+// Open modal with standard details
+function openStandardModal(card) {
+  const modalContainer = document.getElementById("modalContainer");
+  const modalContent = document.getElementById("modalContent");
+  
+  if (!modalContainer || !modalContent) {
+    console.error("Modal elements not found");
+    return;
+  }
+  
+  // Get card data
+  const standardNumber = card.getAttribute("data-standard");
+  const standardTitle = card.querySelector(".standard-title").textContent;
+  const risks = card.querySelector(".standard-detail:nth-child(1) p").textContent;
+  const indicators = card.querySelector(".standard-detail:nth-child(2) p").textContent;
+  const actions = card.querySelector(".standard-detail:nth-child(3) p").textContent;
+  
+  // Build modal content
+  modalContent.innerHTML = `
+    <div class="modal-header">
+      <div class="modal-number">${standardNumber}</div>
+      <div class="modal-title">${standardTitle}</div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-detail">
+        <h4>Riesgos</h4>
+        <p>${risks}</p>
+      </div>
+      <div class="modal-detail">
+        <h4>Indicadores</h4>
+        <p>${indicators}</p>
+      </div>
+      <div class="modal-detail">
+        <h4>Acciones para Veedores</h4>
+        <p>${actions}</p>
+      </div>
+    </div>
+  `;
+  
+  // Show modal
+  modalContainer.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevent scrolling
+}
+
+// Close modal
+function closeModal() {
+  const modalContainer = document.getElementById("modalContainer");
+  if (modalContainer) {
+    modalContainer.classList.remove("active");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
 }
 
 // Resource actions
