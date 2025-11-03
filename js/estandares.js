@@ -271,9 +271,26 @@ function initResourceActions() {
   resourceBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
+      e.preventDefault();
       
       const card = this.closest(".resource-card");
       const title = card.querySelector("h4")?.textContent || "Recurso";
+      const btnText = this.querySelector("span")?.textContent || "";
+      
+      // Detectar tipo de archivo desde el texto del botón
+      let fileType = null;
+      let fileName = title;
+      
+      if (btnText.toLowerCase().includes("pdf")) {
+        fileType = "PDF";
+        fileName = `${title}.pdf`;
+      } else if (btnText.toLowerCase().includes("excel")) {
+        fileType = "Excel";
+        fileName = `${title}.xlsx`;
+      } else if (btnText.toLowerCase().includes("checklist")) {
+        fileType = "PDF";
+        fileName = `${title}.pdf`;
+      }
       
       // Add ripple effect
       const ripple = document.createElement("span");
@@ -293,40 +310,14 @@ function initResourceActions() {
         ripple.remove();
       }, 600);
 
-      // Show notification
-      showNotification(`Descargando: ${title}`);
+      // Mostrar notificación usando la función global unificada
+      if (typeof showDownloadNotification === 'function') {
+        showDownloadNotification(fileName, fileType);
+      } else if (typeof showNotification === 'function') {
+        showNotification(`Descargando: ${title}`, "success");
+      }
     });
   });
-}
-
-// Show notification
-function showNotification(message) {
-  const notification = document.createElement("div");
-  notification.style.cssText = `
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--celeste));
-    color: white;
-    padding: 16px 24px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(47, 111, 224, 0.3);
-    z-index: 10000;
-    font-weight: 600;
-    font-size: 0.9rem;
-    animation: slideInRight 0.3s ease;
-    max-width: 300px;
-  `;
-  notification.textContent = message;
-  
-  document.body.appendChild(notification);
-  
-  setTimeout(() => {
-    notification.style.animation = "slideOutRight 0.3s ease";
-    setTimeout(() => {
-      notification.remove();
-    }, 300);
-  }, 3000);
 }
 
 // Add CSS animations dynamically

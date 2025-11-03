@@ -10,24 +10,33 @@ function initializeNavigation() {
 
   navLinks.forEach((link) => {
     link.addEventListener("click", function (e) {
-      e.preventDefault()
       const sectionId = this.getAttribute("data-section")
+      
+      // Solo interceptar si tiene data-section (navegación interna SPA)
+      // Si no tiene data-section, permitir navegación normal (enlaces externos)
+      if (sectionId) {
+        e.preventDefault()
+        
+        // Update active nav link
+        navLinks.forEach((l) => l.classList.remove("active"))
+        this.classList.add("active")
 
-      // Update active nav link
-      navLinks.forEach((l) => l.classList.remove("active"))
-      this.classList.add("active")
+        // Show active section
+        sections.forEach((s) => s.classList.remove("active"))
+        const targetSection = document.getElementById(sectionId)
+        if (targetSection) {
+          targetSection.classList.add("active")
+        }
 
-      // Show active section
-      sections.forEach((s) => s.classList.remove("active"))
-      document.getElementById(sectionId).classList.add("active")
-
-      // Close mobile menu
-      const navbarMenu = document.getElementById("navbarMenu")
-      const navbarToggle = document.getElementById("navbarToggle")
-      if (navbarMenu.classList.contains("active")) {
-        navbarMenu.classList.remove("active")
-        navbarToggle.classList.remove("active")
+        // Close mobile menu
+        const navbarMenu = document.getElementById("navbarMenu")
+        const navbarToggle = document.getElementById("navbarToggle")
+        if (navbarMenu && navbarMenu.classList.contains("active")) {
+          navbarMenu.classList.remove("active")
+          navbarToggle.classList.remove("active")
+        }
       }
+      // Si no tiene data-section, el enlace navegará normalmente
     })
   })
 }
@@ -42,26 +51,118 @@ function formatDate(date) {
   return new Date(date).toLocaleDateString("es-ES", options)
 }
 
-// Utility function to show notifications
-function showNotification(message, type = "success") {
-  const notification = document.createElement("div")
-  notification.className = `notification notification-${type}`
-  notification.textContent = message
-  notification.style.cssText = `
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        padding: 15px 20px;
-        background: ${type === "success" ? "#10b981" : "#ef4444"};
-        color: white;
-        border-radius: 8px;
-        z-index: 2000;
-        animation: slideIn 0.3s ease;
-    `
-  document.body.appendChild(notification)
+// Función global unificada para mostrar notificaciones de descarga
+// Detecta automáticamente el tipo de archivo (PDF, Excel, etc.)
+window.showDownloadNotification = function(fileName, fileType = null) {
+  // Remover notificaciones existentes
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(notification => {
+    notification.remove();
+  });
 
-  setTimeout(() => {
-    notification.style.animation = "slideOut 0.3s ease"
-    setTimeout(() => notification.remove(), 300)
-  }, 3000)
-}
+  // Detectar tipo de archivo si no se proporciona
+  if (!fileType && fileName) {
+    const extension = fileName.toLowerCase().split('.').pop();
+    const typeMap = {
+      'pdf': 'PDF',
+      'xlsx': 'Excel',
+      'xls': 'Excel',
+      'doc': 'Word',
+      'docx': 'Word',
+      'jpg': 'Imagen',
+      'jpeg': 'Imagen',
+      'png': 'Imagen',
+      'gif': 'Imagen',
+      'mp4': 'Video',
+      'avi': 'Video',
+      'mov': 'Video',
+      'zip': 'Archivo comprimido',
+      'rar': 'Archivo comprimido'
+    };
+    fileType = typeMap[extension] || 'Archivo';
+  }
+
+  // Crear mensaje según el tipo
+  let message = `Descargando ${fileType}`;
+  if (fileName) {
+    message = `Descargando ${fileType}: ${fileName}`;
+  }
+
+  // Crear notificación
+  const notification = document.createElement("div");
+  notification.className = 'notification success';
+  
+  const icon = '✓';
+  notification.innerHTML = `
+    <div class="notification-icon">${icon}</div>
+    <div style="flex: 1;">${message}</div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Auto-remover después de 4 segundos
+  const removeTimeout = setTimeout(() => {
+    if (notification.parentNode) {
+      notification.style.animation = "slideOutBottom 0.4s ease-in";
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 400);
+    }
+  }, 4000);
+  
+  // Cerrar al hacer clic
+  notification.addEventListener("click", () => {
+    clearTimeout(removeTimeout);
+    notification.style.animation = "slideOutBottom 0.4s ease-in";
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 400);
+  });
+};
+
+// Función para notificaciones generales (mantener compatibilidad)
+window.showNotification = function(message, type = "success") {
+  // Remover notificaciones existentes
+  const existingNotifications = document.querySelectorAll('.notification');
+  existingNotifications.forEach(notification => {
+    notification.remove();
+  });
+
+  const notification = document.createElement("div");
+  notification.className = `notification ${type}`;
+  
+  const icon = type === "success" ? "✓" : "✕";
+  notification.innerHTML = `
+    <div class="notification-icon">${icon}</div>
+    <div style="flex: 1;">${message}</div>
+  `;
+  
+  document.body.appendChild(notification);
+  
+  // Auto-remover después de 4 segundos
+  const removeTimeout = setTimeout(() => {
+    if (notification.parentNode) {
+      notification.style.animation = "slideOutBottom 0.4s ease-in";
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.parentNode.removeChild(notification);
+        }
+      }, 400);
+    }
+  }, 4000);
+  
+  // Cerrar al hacer clic
+  notification.addEventListener("click", () => {
+    clearTimeout(removeTimeout);
+    notification.style.animation = "slideOutBottom 0.4s ease-in";
+    setTimeout(() => {
+      if (notification.parentNode) {
+        notification.parentNode.removeChild(notification);
+      }
+    }, 400);
+  });
+};
