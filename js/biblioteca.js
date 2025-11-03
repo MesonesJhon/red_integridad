@@ -160,15 +160,36 @@ function updateFilterCounts(activeFilter = null) {
 
 // Document actions (download, view, play)
 function initDocumentActions() {
-  const actionBtns = document.querySelectorAll(".document-action-btn");
+  const actionBtns = document.querySelectorAll(".document-action");
   
   actionBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
+      e.preventDefault();
       
       const card = this.closest(".document-card");
       const title = card.querySelector(".document-title")?.textContent || "Documento";
-      const type = card.getAttribute("data-type");
+      const type = card.getAttribute("data-type") || "";
+      const action = this.getAttribute("title") || "Descargar";
+      
+      // Determinar nombre de archivo según el tipo
+      let fileName = title;
+      let fileType = type;
+      
+      // Agregar extensión según el tipo
+      if (type === "PDF") {
+        fileName = `${title}.pdf`;
+        fileType = "PDF";
+      } else if (type === "Informe") {
+        fileName = `${title}.pdf`;
+        fileType = "PDF";
+      } else if (type === "Video") {
+        fileName = `${title}.mp4`;
+        fileType = "Video";
+      } else if (type === "Imagen") {
+        fileName = `${title}.jpg`;
+        fileType = "Imagen";
+      }
       
       // Add ripple effect
       const ripple = document.createElement("span");
@@ -181,26 +202,33 @@ function initDocumentActions() {
       ripple.style.left = "50%";
       ripple.style.top = "50%";
       ripple.style.animation = "ripple 0.6s ease-out";
+      this.style.position = "relative";
       this.appendChild(ripple);
       
       setTimeout(() => {
         ripple.remove();
       }, 600);
 
-      // Simulate action
-      const action = this.getAttribute("title");
-      console.log(`${action}: ${title}`);
-      
-      // You can add actual download/view/play logic here
-      // For now, we'll just show a subtle notification
-      showNotification(`${action}: ${title}`);
+      // Mostrar notificación usando la función global unificada
+      if (typeof showDownloadNotification === 'function') {
+        if (action.toLowerCase().includes("descargar") || action.toLowerCase().includes("download")) {
+          showDownloadNotification(fileName, fileType);
+        } else {
+          // Para acciones como "Ver" o "Reproducir"
+          if (typeof showNotification === 'function') {
+            showNotification(`${action}: ${title}`, "success");
+          }
+        }
+      } else if (typeof showNotification === 'function') {
+        showNotification(`${action}: ${title}`, "success");
+      }
     });
 
     // Card click handler
     const card = btn.closest(".document-card");
     if (card) {
       card.addEventListener("click", function (e) {
-        if (e.target.closest(".document-action-btn")) return;
+        if (e.target.closest(".document-action")) return;
         
         // Add subtle pulse animation
         this.style.transform = "scale(0.98)";
@@ -252,34 +280,30 @@ function initDashboardAnimations() {
   });
 }
 
-// Show notification
-function showNotification(message) {
-  const notification = document.createElement("div");
-  notification.style.cssText = `
-    position: fixed;
-    bottom: 24px;
-    right: 24px;
-    background: linear-gradient(135deg, var(--primary-blue), var(--celeste));
-    color: white;
-    padding: 16px 24px;
-    border-radius: 12px;
-    box-shadow: 0 8px 24px rgba(47, 111, 224, 0.3);
-    z-index: 10000;
-    font-weight: 600;
-    font-size: 0.9rem;
-    animation: slideInRight 0.3s ease;
-    max-width: 300px;
-  `;
-  notification.textContent = message;
-  
-  document.body.appendChild(notification);
-  
-  setTimeout(() => {
-    notification.style.animation = "slideOutRight 0.3s ease";
+// La función showNotification ahora está en main.js (función global)
+// Si no está disponible, se usa esta como fallback
+if (typeof showNotification === 'undefined') {
+  function showNotification(message, type = "success") {
+    const notification = document.createElement("div");
+    notification.className = `notification ${type}`;
+    
+    const icon = type === "success" ? "✓" : "✕";
+    notification.innerHTML = `
+      <div class="notification-icon">${icon}</div>
+      <div style="flex: 1;">${message}</div>
+    `;
+    
+    document.body.appendChild(notification);
+    
     setTimeout(() => {
-      notification.remove();
-    }, 300);
-  }, 3000);
+      notification.style.animation = "slideOutBottom 0.4s ease-in";
+      setTimeout(() => {
+        if (notification.parentNode) {
+          notification.remove();
+        }
+      }, 400);
+    }, 4000);
+  }
 }
 
 // Pagination functionality

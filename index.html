@@ -721,7 +721,7 @@
                 <h4>Contacto</h4>
                 <ul>
                     <li>info@redintegridad.org</li>
-                    <li>+51 (74) 123-4567</li>
+                    <li>+51 987 456 321</li>
                     <li>Chiclayo, Lambayeque</li>
                 </ul>
             </div>
@@ -779,8 +779,26 @@
             }
         });
     </script>
+    <script src="js/main.js"></script>
     <script src="js/carruseles.js"></script>
     <script src="js/navbar.js"></script>
+    <script>
+        // Agregar evento de descarga al botón "Descargar Guía Completa"
+        document.addEventListener('DOMContentLoaded', function() {
+            const downloadBtn = document.querySelector('a[href*="guia.html"]');
+            if (downloadBtn) {
+                downloadBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Simular descarga y mostrar notificación
+                    if (typeof showDownloadNotification === 'function') {
+                        showDownloadNotification('Guía Completa de Estándares de Integridad.pdf', 'PDF');
+                    }
+                    // Si realmente quieres descargar, descomenta la siguiente línea:
+                    // window.location.href = this.href;
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -60,7 +60,14 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Show notification function
+// Usa la función global de main.js si está disponible, sino usa esta implementación local
 function showNotification(message, type = "success") {
+    // Si la función global existe, usarla
+    if (typeof window.showNotification === 'function' && window.showNotification !== showNotification) {
+        return window.showNotification(message, type);
+    }
+    
+    // Implementación local (fallback)
     // Remove existing notifications
     const existingNotifications = document.querySelectorAll('.notification');
     existingNotifications.forEach(notification => {
