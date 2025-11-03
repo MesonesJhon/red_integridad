@@ -38,28 +38,43 @@
     <!-- Main Content -->
     <main class="main-content">
         <div class="section-header">
-            <h2>Contacto</h2>
+            <h2>Enviarnos un mensaje</h2>
             <p>¿Listo para fortalecer la integridad de su organización?</p>
         </div>
 
         <div class="contact-container">
             <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" required>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">Nombre</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Apellido</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                    </div>
                 </div>
+                
                 <div class="form-group">
                     <label for="email">Correo Electrónico</label>
                     <input type="email" id="email" name="email" required>
                 </div>
+                
                 <div class="form-group">
-                    <label for="organization">Organización</label>
-                    <input type="text" id="organization" name="organization" required>
+                    <label for="subject">Asunto</label>
+                    <input type="text" id="subject" name="subject" required>
                 </div>
+                
                 <div class="form-group">
                     <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
+                    <textarea id="message" name="message" rows="5" placeholder="Tu mensaje aquí..." required></textarea>
                 </div>
+                
+                <div class="form-checkbox">
+                    <input type="checkbox" id="agreeTerms" name="agreeTerms" required>
+                    <label for="agreeTerms">Acepto la política de privacidad y los términos de servicio</label>
+                </div>
+                
                 <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
             </form>
 
@@ -77,7 +92,8 @@
                     <p>Chiclayo, Lambayeque, Perú</p>
                 </div>
                 <div class="info-item">
-                    <h4>Redes Sociales</h4>
+                    <h4>Conéctate con Nosotros</h4>
+                    <p>Síguenos en redes sociales para mantenerte actualizado con nuestras últimas noticias.</p>
                     <div class="social-links">
                         <a href="#" class="social-link">Facebook</a>
                         <a href="#" class="social-link">Twitter</a>
@@ -128,5 +144,6 @@
     </footer>
 
     <script src="../js/navbar.js"></script>
+    <script src="../js/contacto.js"></script>
 </body>
 </html>

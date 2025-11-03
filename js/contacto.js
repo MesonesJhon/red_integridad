@@ -1,82 +1,104 @@
 // Contacto Section Content
 document.addEventListener("DOMContentLoaded", () => {
-  const contactoSection = document.getElementById("contacto")
+    // Form submission
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", (e) => {
+            e.preventDefault();
 
-  contactoSection.innerHTML = `
-        <div class="section-header">
-            <h2>Contacto</h2>
-            <p>¿Listo para fortalecer la integridad de su organización?</p>
-        </div>
+            // Validar checkbox de términos
+            const agreeTerms = document.getElementById("agreeTerms");
+            if (!agreeTerms.checked) {
+                showNotification("Debes aceptar la política de privacidad y los términos de servicio.", "error");
+                return;
+            }
 
-        <div class="contact-container">
-            <form class="contact-form" id="contactForm">
-                <div class="form-group">
-                    <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo Electrónico</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="organization">Organización</label>
-                    <input type="text" id="organization" name="organization" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
-            </form>
+            const firstName = document.getElementById("firstName").value;
+            const lastName = document.getElementById("lastName").value;
+            const email = document.getElementById("email").value;
+            const subject = document.getElementById("subject").value;
+            const message = document.getElementById("message").value;
 
-            <div class="contact-info">
-                <div class="info-item">
-                    <h4>Correo Electrónico</h4>
-                    <p>info@redintegridad.org</p>
-                </div>
-                <div class="info-item">
-                    <h4>Teléfono</h4>
-                    <p>+51 (74) 123-4567</p>
-                </div>
-                <div class="info-item">
-                    <h4>Ubicación</h4>
-                    <p>Chiclayo, Lambayeque, Perú</p>
-                </div>
-                <div class="info-item">
-                    <h4>Redes Sociales</h4>
-                    <div class="social-links">
-                        <a href="#" class="social-link">Facebook</a>
-                        <a href="#" class="social-link">Twitter</a>
-                        <a href="#" class="social-link">LinkedIn</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    `
+            // Simulate form submission
+            console.log("Formulario enviado:", { 
+                firstName, 
+                lastName, 
+                email, 
+                subject, 
+                message 
+            });
 
-  // Form submission
-  const contactForm = document.getElementById("contactForm")
-  if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
-      e.preventDefault()
+            // Add ripple effect to button
+            const submitBtn = contactForm.querySelector('.btn-primary');
+            const ripple = document.createElement("span");
+            ripple.style.cssText = `
+                position: absolute;
+                width: 0;
+                height: 0;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                transform: translate(-50%, -50%);
+                left: 50%;
+                top: 50%;
+                animation: ripple 0.6s ease-out;
+            `;
+            submitBtn.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
 
-      const name = document.getElementById("name").value
-      const email = document.getElementById("email").value
-      const organization = document.getElementById("organization").value
-      const message = document.getElementById("message").value
+            // Show success notification
+            showNotification("¡Correo enviado exitosamente! Nos pondremos en contacto pronto.", "success");
 
-      // Simulate form submission
-      console.log("Formulario enviado:", { name, email, organization, message })
+            // Reset form after a short delay
+            setTimeout(() => {
+                contactForm.reset();
+            }, 500);
+        });
+    }
+});
 
-      // Declare showNotification function
-      function showNotification(message, type) {
-        alert(message)
-      }
+// Show notification function
+function showNotification(message, type = "success") {
+    // Remove existing notifications
+    const existingNotifications = document.querySelectorAll('.notification');
+    existingNotifications.forEach(notification => {
+        notification.remove();
+    });
 
-      showNotification("¡Mensaje enviado exitosamente! Nos pondremos en contacto pronto.", "success")
-
-      // Reset form
-      contactForm.reset()
-    })
-  }
-})
+    const notification = document.createElement("div");
+    notification.className = `notification ${type}`;
+    
+    const icon = type === "success" ? "✓" : "✕";
+    
+    notification.innerHTML = `
+        <div class="notification-icon">${icon}</div>
+        <div style="flex: 1;">${message}</div>
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Auto-remove after 4 seconds
+    const removeTimeout = setTimeout(() => {
+        if (notification.parentNode) {
+            notification.style.animation = "slideOutBottom 0.4s ease-in";
+            setTimeout(() => {
+                if (notification.parentNode) {
+                    notification.parentNode.removeChild(notification);
+                }
+            }, 400);
+        }
+    }, 4000);
+    
+    // Close on click
+    notification.addEventListener("click", () => {
+        clearTimeout(removeTimeout);
+        notification.style.animation = "slideOutBottom 0.4s ease-in";
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 400);
+    });
+}
