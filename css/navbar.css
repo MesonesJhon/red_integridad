@@ -39,11 +39,19 @@
   font-weight: 700;
   color: var(--text-dark);
 }
+.navbar-title2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: orange;
+  margin-right: -15rem;
+}
 
 .navbar-menu {
   display: flex;
   gap: 28px;
   align-items: center;
+  margin-right: -10rem;
 }
 
 .nav-link {
