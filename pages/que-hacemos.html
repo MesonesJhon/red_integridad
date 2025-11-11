@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/que-hacemos.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <!-- HEADER -->
@@ -34,9 +35,9 @@
 
                 <!-- ENLACES DEL MENÚ -->
                 <div class="header-menu" id="navbarMenu">
-                    <a href="../index.html" class="header-link active">Inicio</a>
-                    <a href="../pages/quienes-somos.html" class="header-link">¿Quiénes somos?</a>
-                    <a href="../pages/que-hacemos.html" class="header-link">¿Qué hacemos?</a>
+                    <a href="../index.html" class="header-link">Inicio</a>
+                    <a href="quienes-somos.html" class="header-link">¿Quiénes somos?</a>
+                    <a href="../pages/que-hacemos.html" class="header-link active">¿Qué hacemos?</a>
                     <a href="../pages/publicaciones.html" class="header-link">Publicaciones</a>
                     <a href="../pages/observatorio.html" class="header-link">Observatorio</a>
                     <a href="../pages/contacto.html" class="header-link">Contacto</a>
@@ -516,115 +517,127 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Red de Integridad</h4>
-                <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.</p>
+            <div class="footer-section footer-about">
+                <h3 class="footer-title">Acerca de Nosotros</h3>
+                <p>Somos una organización dedicada a promover la integridad y la transparencia en la gestión pública.</p>
             </div>
-            <div class="footer-section">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#">Sistemas de Integridad</a></li>
-                    <li><a href="#">Capacitación</a></li>
-                    <li><a href="#">Auditorías</a></li>
-                    <li><a href="#">Compliance</a></li>
+            <div class="footer-section footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Empresa</h4>
-                <ul>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Equipo</a></li>
-                    <li><a href="#">Casos de éxito</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <ul>
-                    <li>info@redintegridad.org</li>
-                    <li>+51 987 456 321</li>
+            <div class="footer-section footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                <ul class="footer-list">
+                    <li><a href="mailto:rintegridad2023@gmail.com"><i class="fas fa-envelope"></i> rintegridad2023@gmail.com</a></li>
+                    <li><a href="tel:+51987456321">+51 987 456 321</a></li>
                     <li>Chiclayo, Lambayeque</li>
                 </ul>
+                <div class="social-links-footer">
+                    <a href="https://www.facebook.com/RedDeIntegridadLambayeque" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Integridad19046" target="_blank" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ReddeIntegridadLambayeque" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
+            <p>&copy; 2023 RED Integridad. Todos los derechos reservados.</p>
         </div>
     </footer>
-
-
-
-
-    <!-- Modal Container -->
-<div id="modalContainer" class="modal-container">
-    <div class="modal-overlay" id="modalOverlay"></div>
-    <div class="modal" id="modal">
-      <button class="modal-close" id="modalClose">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </button>
-      <div class="modal-content-new" id="modalContentNew">
-            <div class="modal-header-new">
-              <span class="estandar-integridad-label">ESTÁNDAR DE INTEGRIDAD</span>
-              <div class="modal-number-new"></div>
-              <h2 class="modal-title-new">El proyecto de inversión pública<br>cierra brechas y es de interés público</h2>
+    <!-- MODAL -->
+    <div class="modal" id="modalContainer">
+      <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+    
+        <!-- ENCABEZADO -->
+        <div class="encabezado">
+          <div class="bloque-izq">
+            <div class="texto-superior">
+              ESTÁNDAR DE<br>INTEGRIDAD
             </div>
-            <div class="modal-body-new">
-              <div class="section-container-new">
-                <div class="section-new">
-                  <h3 class="section-title-new">Estándar</h3>
-                  <p>El proyecto de inversión pública cierra brechas de infraestructura y busca brindar servicios públicos oportunamente a la población beneficiaria.</p>
-                </div>
-                <div class="section-new">
-                  <h3 class="section-title-new">Riesgo</h3>
-                  <p>El proyecto de inversión pública no contribuye a cerrar brechas de infraestructura o servicios públicos, por lo que no atiende o resuelve la necesidad de los beneficiarios.</p>
-                </div>
-              </div>
-              <div class="indicador-section-new">
-                <h3 class="indicador-title-new">Indicador del estándar de integridad</h3>
-                <p><strong>1.1</strong> El proyecto de inversión contribuye a <u>reducir brechas</u> de un sector priorizado para la región.</p>
-                <p><strong>1.2</strong> El porcentaje que aporta la inversión pública al cierre de brechas en un sector priorizado <u>es mayor a 0%</u>.</p>
-                <div class="cumplimos-estandar-box-new">
-                  <p>Si se cumplen estos verificadores / indicadores,</p>
-                  <p><strong>¡ya cumplimos el ESTÁNDAR 1!</strong></p>
-                </div>
-              </div>
-              <div class="verificacion-section-new">
-                <h3 class="verificacion-title-new">Medio de verificación</h3>
-                <div class="verificacion-item-new">
-                  <span class="verificacion-number-new">1</span>
-                  <div class="verificacion-text-new">
-                    <p>Registro de proyecto de inversión (Formato N° 12-A)</p>
-                    <ul>
-                      <li>Indicador de brecha (Formato N° F4-A)</li>
-                      <li>Seguimiento de cierre de brechas (Formato N° F12-A)</li>
-                      <li>Ver: Directiva N° 001-2019-EF/63.01</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="verificacion-item-new">
-                  <span class="verificacion-number-new">2</span>
-                  <p class="verificacion-text-new">Solicitud de Acceso a Información Pública (SAIP)</p>
-                </div>
-                <div class="verificacion-item-new">
-                  <span class="verificacion-number-new">3</span>
-                  <p class="verificacion-text-new">Revisión del Sistema de Seguimiento de Inversión Pública (SSI-MEF)</p>
-                </div>
-              </div>
-            </div>
-            <div class="modal-image-new">
-              <img src="https://via.placeholder.com/150" alt="Placeholder image for character">
+            <div class="numero" id="modalNumber">1</div>
+          </div>
+          <div class="linea"></div>
+          <div class="titulo-encabezado" id="modalTitle">
+            El proyecto de inversión pública<br>
+            cierra brechas y es de interés público
+          </div>
+        </div>
+    
+        <!-- SECCIÓN ESTÁNDAR Y RIESGO -->
+        <div class="bloque-estandar">
+          <div class="fila">
+            <div class="titulo">Estándar</div>
+            <div class="contenido" id="modalStandardDescription">
+              El proyecto de inversión pública cierra brechas de infraestructura y busca brindar servicios públicos oportunamente a la población beneficiaria.
             </div>
           </div>
+          <div class="fila">
+            <div class="titulo">Riesgo</div>
+            <div class="contenido" id="modalRiskDescription">
+              El proyecto de inversión pública no contribuye a cerrar brechas de infraestructura o servicios públicos, por lo que no atiende o resuelve la necesidad de los beneficiarios.
+            </div>
+          </div>
+        </div>
+    
+        <!-- INDICADOR -->
+        <div class="indicador">
+          <div class="indicador-content-flex">
+            <div class="indicador-main-info">
+              <div class="indicador-left-side">
+                <div class="indicador-top-row">
+                  <div class="indicador-left-content">
+                    <div class="indicador-header">
+                      <img src="../img/hands.png" alt="Icono manos">
+                      <h3>Indicador del estándar de integridad</h3>
+                    </div>
+                    <div class="indicador-textos">
+                      <p id="modalIndicator1"><strong>1.1</strong> El proyecto de inversión <strong>contribuye a reducir brechas</strong> de un sector priorizado para la región.</p>
+                      <p id="modalIndicator2"><strong>1.2</strong> El porcentaje que aporta la inversión pública al cierre de brechas en un sector priorizado es <strong>mayor a 0.3%</strong>.</p>
+                    </div>
+                    <!-- MEDIOS -->
+                    <div class="medios">
+                      <h2>Medio de verificación</h2>
+                      <ol id="modalVerificacionList">
+                        <li><span>1</span> <p id="modalVerificacion1">Registro de proyecto de inversión (Formato N° 12-A). Indicador de brecha (Formato N° 4-A). Seguimiento de cierre de brechas (Formato N° 12-A). Ver Directiva N° 001-2019-EF/63.01.</p></li>
+                        <li><span>2</span> <p id="modalVerificacion2">Solicitud de Acceso a Información Pública (SAIP).</p></li>
+                        <li><span>3</span> <p id="modalVerificacion3">Revisión del Sistema de Seguimiento de Inversión Pública (SSI-MEF).</p></li>
+                      </ol>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="indicador-sidebar">
+                <!-- CENTRO: mensaje -->
+                <div class="cumple">
+                  Si se cumplen estos verificadores / indicadores,<br>
+                  ¡ya cumplimos el <strong id="modalCumpleStandardNumber">ESTÁNDAR 1</strong>!
+                </div>
+
+                <!-- REMOVED MEDIOS FROM HERE -->
+              </div>
+            </div>
+            <!-- DERECHA: imagen -->
+            <div class="personaje">
+              <img src="../img/xd.jpeg" alt="Personaje" id="modalImage">
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-
-
-
-
-
     <script src="../js/main.js"></script>
     <script src="../js/que-hacemos.js"></script>
 </body>

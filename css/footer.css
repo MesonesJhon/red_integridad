@@ -1,7 +1,7 @@
 /* ESTILOS DEL FOOTER */
 .footer {
-    background: linear-gradient(135deg, var(--plomo) 0%, #555555 100%);
-    color: var(--blanco);
+    background: var(--color-white);
+    color: var(--color-plomo);
     margin-top: auto;
     position: relative;
 }
@@ -55,7 +55,7 @@
 /* SECCIÓN ABOUT */
 .footer-about p {
     line-height: 1.6;
-    color: #e0e0e0;
+    color: var(--color-plomo);
     margin-bottom: 20px;
     font-size: 14px;
 }
@@ -72,7 +72,7 @@
 }
 
 .footer-list a {
-    color: #e0e0e0;
+    color: var(--color-plomo);
     text-decoration: none;
     font-size: 14px;
     transition: all 0.3s ease;
@@ -83,13 +83,13 @@
 
 .footer-list a::before {
     content: '›';
-    color: var(--marron);
+    color: var(--color-marron);
     margin-right: 8px;
     transition: transform 0.3s ease;
 }
 
 .footer-list a:hover {
-    color: var(--blanco);
+    color: var(--color-naranja);
     padding-left: 5px;
 }
 
@@ -114,7 +114,7 @@
 }
 
 .footer-contact .footer-list li:last-child {
-    color: #e0e0e0;
+    color: var(--color-plomo);
     font-size: 14px;
     margin-top: 10px;
     padding-left: 18px;
@@ -122,15 +122,15 @@
 
 /* FOOTER BOTTOM */
 .footer-bottom {
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     padding: 20px 0;
     text-align: center;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: var(--color-light-gray);
 }
 
 .footer-bottom p {
     margin: 0;
-    color: #b0b0b0;
+    color: var(--color-plomo);
     font-size: 14px;
 }
 
@@ -229,7 +229,7 @@
 
 /* ESTILOS PARA ENLACES DE CONTACTO ESPECÍFICOS */
 .footer-contact .footer-list a[href^="mailto"]::before {
-    content: '✉';
+    display: none;
 }
 
 .footer-contact .footer-list a[href^="tel"]::before {
@@ -266,7 +266,7 @@
     }
     
     .footer-list a {
-        color: var(--blanco);
+        color: var(--color-white);
     }
     
     .footer-list a:hover {
