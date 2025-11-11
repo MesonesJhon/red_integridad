@@ -37,7 +37,7 @@
   padding: 0 24px;
 }
 
-.biblioteca-title {
+.publicaciones-title {
   font-size: 3.5rem;
   font-weight: 800;
   color: var(--verde);
@@ -46,7 +46,7 @@
   display: inline-block;
 }
 
-.biblioteca-title::after {
+.publicaciones-title::after {
   content: '';
   position: absolute;
   bottom: -12px;
@@ -85,10 +85,10 @@
 }
 
 .search-box {
-  position: relative;
-  max-width: 600px;
-  margin: 0 auto;
-  width: 100%;
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto 30px;
+    width: 100%;
 }
 
 .search-input {
@@ -158,7 +158,8 @@
 /* ===== FILTROS POR TIPO - ESTILO OBSERVATORIO ===== */
 .filters-section {
     background: white;
-    padding: 25px;
+    padding: 25px 40px;
+     margin: 0 30px; /* 30px de margen a cada lado */
     border-radius: 15px;
     box-shadow: 0 8px 32px rgba(0,0,0,0.1);
     margin-bottom: 30px;
@@ -699,7 +700,7 @@ padding: 10px 20px;
     margin-bottom: 60px;
   }
 
-  .biblioteca-title {
+  .publicaciones-title {
     font-size: 2.5rem;
   }
 
@@ -799,7 +800,7 @@ padding: 10px 20px;
 }
 
 @media (max-width: 480px) {
-  .biblioteca-title {
+  .publicaciones-title {
     font-size: 2rem;
   }
 

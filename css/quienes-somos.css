@@ -1,7 +1,7 @@
 /* ===================================
     Hero Nosotros - Estilos Modernos y Responsivos
     =================================== */
-.hero-nosotros {
+.hero-quienes-somos {
   position: relative;
   min-height: 70vh;
   display: flex;
@@ -11,7 +11,7 @@
   background: linear-gradient(135deg, #1e293b 0%, #334155 100%);
 }
 
-.hero-nosotros-bg {
+.hero-quienes-somos-bg {
   position: absolute;
   top: 0;
   left: 0;
@@ -24,7 +24,7 @@
   z-index: 1;
 }
 
-.hero-nosotros::before {
+.hero-quienes-somos::before {
   content: '';
   position: absolute;
   top: 0;
@@ -38,7 +38,7 @@
   z-index: 2;
 }
 
-.hero-nosotros-inner {
+.hero-quienes-somos-inner {
   position: relative;
   z-index: 3;
   max-width: 800px;
@@ -47,7 +47,7 @@
   color: white;
 }
 
-.hero-nosotros-title {
+.hero-quienes-somos-title {
   font-size: 3.5rem;
   font-weight: 800;
   margin-bottom: 24px;
@@ -59,7 +59,7 @@
   background-clip: text;
 }
 
-.hero-nosotros-subtitle {
+.hero-quienes-somos-subtitle {
   font-size: 1.25rem;
   line-height: 1.6;
   margin-bottom: 40px;
@@ -70,7 +70,7 @@
   margin-right: auto;
 }
 
-.hero-nosotros-actions {
+.hero-quienes-somos-actions {
   display: flex;
   gap: 20px;
   justify-content: center;
@@ -132,45 +132,45 @@
   }
 }
 
-.hero-nosotros-title {
+.hero-quienes-somos-title {
   animation: fadeInUp 0.8s ease-out;
 }
 
-.hero-nosotros-subtitle {
+.hero-quienes-somos-subtitle {
   animation: fadeInUp 0.8s ease-out 0.2s both;
 }
 
-.hero-nosotros-actions {
+.hero-quienes-somos-actions {
   animation: fadeInUp 0.8s ease-out 0.4s both;
 }
 
 /* Responsive Design */
 @media (max-width: 1024px) {
-  .hero-nosotros-title {
+  .hero-quienes-somos-title {
     font-size: 3rem;
   }
 
-  .hero-nosotros-subtitle {
+  .hero-quienes-somos-subtitle {
     font-size: 1.125rem;
   }
 }
 
 @media (max-width: 768px) {
-  .hero-nosotros-inner {
+  .hero-quienes-somos-inner {
     padding: 0 20px;
   }
 
-  .hero-nosotros-title {
+  .hero-quienes-somos-title {
     font-size: 2.5rem;
     margin-bottom: 20px;
   }
 
-  .hero-nosotros-subtitle {
+  .hero-quienes-somos-subtitle {
     font-size: 1.1rem;
     margin-bottom: 32px;
   }
 
-  .hero-nosotros-actions {
+  .hero-quienes-somos-actions {
     gap: 16px;
   }
 
@@ -182,21 +182,21 @@
 }
 
 @media (max-width: 480px) {
-  .hero-nosotros-inner {
+  .hero-quienes-somos-inner {
     padding: 0 16px;
   }
 
-  .hero-nosotros-title {
+  .hero-quienes-somos-title {
     font-size: 2rem;
     margin-bottom: 16px;
   }
 
-  .hero-nosotros-subtitle {
+  .hero-quienes-somos-subtitle {
     font-size: 1rem;
     margin-bottom: 28px;
   }
 
-  .hero-nosotros-actions {
+  .hero-quienes-somos-actions {
     flex-direction: column;
     align-items: center;
     gap: 12px;
@@ -211,11 +211,11 @@
 
 /* Mejora de rendimiento para móviles */
 @media (max-width: 768px) {
-  .hero-nosotros-bg {
+  .hero-quienes-somos-bg {
     filter: brightness(0.6) contrast(1.2);
   }
 
-  .hero-nosotros::before {
+  .hero-quienes-somos::before {
     background: linear-gradient(135deg,
         rgba(30, 41, 59, 0.3) 0%,
         rgba(51, 65, 85, 0.3) 100%);
@@ -230,7 +230,7 @@
 }
 
 @supports not (background-clip: text) {
-  .hero-nosotros-title {
+  .hero-quienes-somos-title {
     background: none;
     -webkit-text-fill-color: initial;
     color: white;

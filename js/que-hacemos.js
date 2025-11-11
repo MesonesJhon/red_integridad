@@ -1,4 +1,4 @@
-// Estándares Section - Enhanced JavaScript
+// Qué hacemos Section - Enhanced JavaScript
 document.addEventListener("DOMContentLoaded", () => {
   // Initialize all functionality
   initSearch();
