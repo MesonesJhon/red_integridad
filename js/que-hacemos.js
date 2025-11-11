@@ -1,6 +1,50 @@
-// Qué hacemos Section - Enhanced JavaScript
+/* ================= QUE-HACEMOS.JS (reemplazo completo) ================= */
+
+/* Rutas candidatas del JSON */
+const JSON_URL_CANDIDATES = [
+  "../data/estandares_integridad.json",
+  "estandares_integridad.json",
+];
+
+const IMAGES_BY_ID = {
+  // Ejemplos si tienes archivos específicos:
+    1: "../img/Estandar_01.png",
+    2: "../img/Estandar_02.png",
+    3: "../img/Estandar_03.png",
+    4: "../img/Estandar_04.png",
+    5: "../img/Estandar_05.png",
+    6: "../img/Estandar_06.png",
+    7: "../img/Estandar_07.png",
+    8: "../img/Estandar_08.png",
+    9: "../img/Estandar_09.png",
+    10: "../img/Estandar_10.png",
+    11: "../img/Estandar_11.png",
+    12: "../img/Estandar_12.png",
+    13: "../img/Estandar_13.png",
+    14: "../img/Estandar_14.png",
+    15: "../img/Estandar_15.png",
+};
+
+let ESTANDARES_DATA = null;
+
+/* Carga única del JSON con fallbacks */
+async function ensureDataLoaded() {
+  if (ESTANDARES_DATA) return ESTANDARES_DATA;
+  let lastError;
+  for (const url of JSON_URL_CANDIDATES) {
+    try {
+      const res = await fetch(url, { cache: "no-store" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      ESTANDARES_DATA = await res.json();
+      return ESTANDARES_DATA;
+    } catch (e) { lastError = e; }
+  }
+  console.error("No se pudo cargar estandares_integridad.json", lastError);
+  throw lastError;
+}
+
+/* ===== Inicialización ===== */
 document.addEventListener("DOMContentLoaded", () => {
-  // Initialize all functionality
   initSearch();
   initFilters();
   initStandardCards();
@@ -8,388 +52,216 @@ document.addEventListener("DOMContentLoaded", () => {
   updateFilterCounts();
 });
 
-// Search functionality
+/* ===== Búsqueda ===== */
 function initSearch() {
   const searchInput = document.getElementById("searchInput");
   const clearSearch = document.getElementById("clearSearch");
-  const noResults = document.getElementById("noResults");
-
   if (!searchInput) return;
 
   searchInput.addEventListener("input", (e) => {
     const searchTerm = e.target.value.toLowerCase().trim();
     const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
-    
-    if (searchTerm.length > 0) {
-      clearSearch.style.display = "flex";
-    } else {
-      clearSearch.style.display = "none";
-    }
-
+    clearSearch.style.display = searchTerm.length > 0 ? "flex" : "none";
     filterAndSearchStandards(searchTerm, filterActive);
   });
 
-  clearSearch.addEventListener("click", () => {
-    searchInput.value = "";
-    clearSearch.style.display = "none";
+  clearSearch?.addEventListener("click", () => {
+    searchInput.value = ""; clearSearch.style.display = "none";
     const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
-    filterAndSearchStandards("", filterActive);
-    searchInput.focus();
+    filterAndSearchStandards("", filterActive); searchInput.focus();
   });
 }
 
-// Filter functionality with enhanced animations
+/* ===== Filtros ===== */
 function initFilters() {
   const filterBtns = document.querySelectorAll(".filter-btn");
-
   filterBtns.forEach((btn) => {
     btn.addEventListener("click", function () {
       const filter = this.getAttribute("data-filter");
       const searchInput = document.getElementById("searchInput");
       const searchTerm = searchInput?.value.toLowerCase().trim() || "";
 
-      // Remove active class from all buttons
-      filterBtns.forEach((b) => {
-        b.classList.remove("active");
-        b.style.transform = "scale(1)";
-      });
+      filterBtns.forEach((b) => { b.classList.remove("active"); b.style.transform = "scale(1)"; });
+      this.classList.add("active"); this.style.transform = "scale(0.95)";
+      setTimeout(() => (this.style.transform = "scale(1)"), 150);
 
-      // Add active class and animation to clicked button
-      this.classList.add("active");
-      this.style.transform = "scale(0.95)";
-      
-      setTimeout(() => {
-        this.style.transform = "scale(1)";
-      }, 150);
-
-      // Filter standards
       filterAndSearchStandards(searchTerm, filter);
     });
   });
 }
 
-// Filter and search standards
+/* ===== Filtrar + Buscar ===== */
 function filterAndSearchStandards(searchTerm, filterType) {
   const standardCards = document.querySelectorAll(".standard-card");
   const noResults = document.getElementById("noResults");
   let visibleCount = 0;
 
-  standardCards.forEach((card, index) => {
-    const standardNumber = card.getAttribute("data-standard");
+  standardCards.forEach((card) => {
     const category = card.getAttribute("data-category") || "otros";
     const title = card.querySelector(".standard-title")?.textContent.toLowerCase() || "";
     const risks = card.querySelector(".standard-detail:nth-child(1) p")?.textContent.toLowerCase() || "";
     const indicators = card.querySelector(".standard-detail:nth-child(2) p")?.textContent.toLowerCase() || "";
     const actions = card.querySelector(".standard-detail:nth-child(3) p")?.textContent.toLowerCase() || "";
-    
+
     const matchesFilter = filterType === "todos" || category === filterType;
-    const matchesSearch = !searchTerm || 
-                         title.includes(searchTerm) || 
-                         risks.includes(searchTerm) || 
-                         indicators.includes(searchTerm) || 
-                         actions.includes(searchTerm);
-    
+    const matchesSearch = !searchTerm || title.includes(searchTerm) || risks.includes(searchTerm) || indicators.includes(searchTerm) || actions.includes(searchTerm);
+
     if (matchesFilter && matchesSearch) {
       card.setAttribute("data-visible", "true");
-      card.style.display = "block";
-      card.style.opacity = "0";
-      card.style.transform = "translateY(20px)";
-      
-      setTimeout(() => {
-        card.style.transition = "all 0.4s ease";
-        card.style.opacity = "1";
-        card.style.transform = "translateY(0)";
-      }, 50 * visibleCount);
-      
+      card.style.display = "block"; card.style.opacity = "0"; card.style.transform = "translateY(20px)";
+      setTimeout(() => { card.style.transition = "all 0.4s ease"; card.style.opacity = "1"; card.style.transform = "translateY(0)"; }, 50 * visibleCount);
       visibleCount++;
     } else {
       card.setAttribute("data-visible", "false");
-      card.style.transition = "all 0.3s ease";
-      card.style.opacity = "0";
-      card.style.transform = "scale(0.9)";
-      
-      setTimeout(() => {
-        card.style.display = "none";
-      }, 300);
+      card.style.transition = "all 0.3s ease"; card.style.opacity = "0"; card.style.transform = "scale(0.9)";
+      setTimeout(() => (card.style.display = "none"), 300);
     }
   });
 
-  // Show/hide no results message
   setTimeout(() => {
-    if (visibleCount === 0 && noResults) {
-      noResults.style.display = "flex";
-      noResults.style.animation = "fadeInUp 0.5s ease";
-    } else if (noResults) {
-      noResults.style.display = "none";
-    }
+    if (visibleCount === 0 && noResults) { noResults.style.display = "flex"; noResults.style.animation = "fadeInUp 0.5s ease"; }
+    else if (noResults) { noResults.style.display = "none"; }
   }, 400);
 
-  // Update filter counts only if not filtering
-  if (!searchTerm) {
-    updateFilterCounts(filterType);
-  }
+  if (!searchTerm) updateFilterCounts();
 }
 
-// Update filter counts
-function updateFilterCounts(activeFilter = null) {
+/* ===== Contadores ===== */
+function updateFilterCounts() {
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const standardCards = document.querySelectorAll(".standard-card");
-  
+  const cards = document.querySelectorAll(".standard-card");
   filterBtns.forEach((btn) => {
-    const filterType = btn.getAttribute("data-filter");
+    const type = btn.getAttribute("data-filter");
     let count = 0;
-
-    if (filterType === "todos") {
-      count = standardCards.length;
-    } else {
-      standardCards.forEach((card) => {
-        const category = card.getAttribute("data-category") || "otros";
-        if (category === filterType) {
-          count++;
-        }
-      });
-    }
-
-    const countElement = btn.querySelector(".filter-count");
-    if (countElement) {
-      countElement.textContent = count;
-    }
+    if (type === "todos") count = cards.length;
+    else cards.forEach((c) => { const cat = c.getAttribute("data-category") || "otros"; if (cat === type) count++; });
+    const el = btn.querySelector(".filter-count"); if (el) el.textContent = count;
   });
 }
 
-// Initialize standard cards with modal interactions
+/* ===== Cards + Modal ===== */
 function initStandardCards() {
   const standardCards = document.querySelectorAll(".standard-card");
-  
   standardCards.forEach((card) => {
-    // Mark as visible initially
     card.setAttribute("data-visible", "true");
-    
     card.addEventListener("click", function (e) {
-      // Don't open modal if clicking on a link or button inside
-      if (e.target.closest("a") || e.target.closest("button")) {
-        return;
-      }
-      
+      if (e.target.closest("a") || e.target.closest("button")) return;
       openStandardModal(this);
     });
-
-    // Keep hover effects
-    card.addEventListener("mouseenter", function() {
-      this.style.transform = "translateY(-4px)";
-    });
-
-    card.addEventListener("mouseleave", function() {
-      this.style.transform = "";
-    });
+    card.addEventListener("mouseenter", function () { this.style.transform = "translateY(-4px)"; });
+    card.addEventListener("mouseleave", function () { this.style.transform = ""; });
   });
-  
-  // Initialize modal functionality
   initModal();
 }
 
-// Initialize modal functionality
 function initModal() {
   const modalContainer = document.getElementById("modalContainer");
   const modalOverlay = document.getElementById("modalOverlay");
   const modalClose = document.getElementById("modalClose");
-  
-  // Close modal when clicking overlay or close button
-  if (modalOverlay) {
-    modalOverlay.addEventListener("click", closeModal);
-  }
-  
-  if (modalClose) {
-    modalClose.addEventListener("click", closeModal);
-  }
-  
-  // Close modal with Escape key
+  modalOverlay?.addEventListener("click", closeModal);
+  modalClose?.addEventListener("click", closeModal);
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalContainer.classList.contains("active")) {
-      closeModal();
-    }
+    if (e.key === "Escape" && modalContainer?.classList.contains("active")) closeModal();
   });
 }
-
-// Function to get modal image (returns placeholder or image if available)
-function getModalImage(standardNumber) {
-  // Lista de imágenes disponibles - agrega aquí las rutas de tus imágenes cuando las tengas
-  const availableImages = {
-    // Ejemplo: "1": "../img/estandar-1.png",
-    // "2": "../img/estandar-2.png",
-    // Agrega más según tengas imágenes
-  };
-  
-  if (availableImages[standardNumber]) {
-    return `<img src="${availableImages[standardNumber]}" alt="Ilustración Estándar ${standardNumber}" class="modal-illustration">`;
-  }
-  
-  // Placeholder si no hay imagen
-  return `
-    <div class="modal-image-placeholder">
-      <p>Espacio para ilustración</p>
-      <small>Puedes agregar una imagen en: ../img/estandar-${standardNumber}.png</small>
-    </div>
-  `;
-}
-
-// Open modal with standard details
-function openStandardModal(card) {
-  const modalContainer = document.getElementById("modalContainer");
-  const modalContentNew = document.getElementById("modalContentNew"); // Reference the new content container
-  
-  if (!modalContainer || !modalContentNew) {
-    console.error("Modal elements not found");
-    return;
-  }
-  
-  // Get card data
-  const standardNumber = card.getAttribute("data-standard");
-  const standardTitle = card.querySelector(".standard-title").textContent;
-  const phase = card.getAttribute("data-phase") || "ejecucion";
-
-  // Dynamic content from the clicked card
-  const standardDescription = standardTitle; // The card title is the "Estándar" description in the modal
-  const riskDescription = card.querySelector(".standard-detail:nth-child(1) p").textContent;
-  const indicatorDescription = card.querySelector(".standard-detail:nth-child(2) p").textContent;
-  const actionsDescription = card.querySelector(".standard-detail:nth-child(3) p").textContent;
-
-  // Update static elements (from the image)
+/* ===== Render del modal compacto ===== */
+function renderModalFromData(modalContentNew, item) {
+  // Header
   modalContentNew.querySelector(".estandar-integridad-label").textContent = "ESTÁNDAR DE INTEGRIDAD";
-  modalContentNew.querySelector(".modal-number-new").textContent = standardNumber;
-  modalContentNew.querySelector(".modal-title-new").innerHTML = `El proyecto de inversión pública<br>cierra brechas y es de interés público`;
+  modalContentNew.querySelector(".modal-number-new").textContent = item.id;
+  modalContentNew.querySelector(".modal-title-new").innerHTML = item.titulo_corto;
 
-  // Update dynamic elements
-  modalContentNew.querySelector(".section-new:nth-child(1) p").textContent = standardDescription; // "Estándar" description
-  modalContentNew.querySelector(".section-new:nth-child(2) p").textContent = riskDescription; // "Riesgo" description
+  // Estándar y Riesgo (lado a lado)
+  const std = modalContentNew.querySelector('.section-new[data-kind="estandar"] .section-text');
+  const risk = modalContentNew.querySelector('.section-new[data-kind="riesgo"] .section-text');
+  if (std) std.textContent = item.estandar;
+  if (risk) risk.textContent = item.riesgo;
 
-  // "Indicador del estándar de integridad" descriptions (partially static, partially dynamic based on requirements)
-  // For now, I'll keep them as static based on the provided image, as the card's indicators are generic.
-  modalContentNew.querySelector(".indicador-section-new p:nth-of-type(1)").innerHTML = `<strong>1.1</strong> El proyecto de inversión contribuye a <u>reducir brechas</u> de un sector priorizado para la región.`;
-  modalContentNew.querySelector(".indicador-section-new p:nth-of-type(2)").innerHTML = `<strong>1.2</strong> El porcentaje que aporta la inversión pública al cierre de brechas en un sector priorizado <u>es mayor a 0%</u>.`;
-
-  // Medio de verificación (partially static, partially dynamic)
-  // The first item (Registro de proyecto...) is static in structure but its content comes from card's actions
-  modalContentNew.querySelector(".verificacion-item-new:nth-child(1) .verificacion-text-new p").textContent = "Registro de proyecto de inversión (Formato N° 12-A)";
-  modalContentNew.querySelector(".verificacion-item-new:nth-child(1) .verificacion-text-new ul").innerHTML = `
-    <li>Indicador de brecha (Formato N° F4-A)</li>
-    <li>Seguimiento de cierre de brechas (Formato N° F12-A)</li>
-    <li>Ver: Directiva N° 001-2019-EF/63.01</li>
-  `;
-  modalContentNew.querySelector(".verificacion-item-new:nth-child(2) .verificacion-text-new").textContent = "Solicitud de Acceso a Información Pública (SAIP)"; // This appears static in the image
-  modalContentNew.querySelector(".verificacion-item-new:nth-child(3) .verificacion-text-new").textContent = "Revisión del Sistema de Seguimiento de Inversión Pública (SSI-MEF)"; // This appears static in the image
-
-  // Update placeholder image
-  modalContentNew.querySelector(".modal-image-new img").src = `../img/placeholder.png`; // Local placeholder image
-  modalContentNew.querySelector(".modal-image-new img").alt = `Placeholder image for character - Estándar ${standardNumber}`;
-
-  // Update modal close button color based on phase
-  const modalClose = document.getElementById("modalClose");
-  if (modalClose) {
-    modalClose.setAttribute("data-phase", phase);
+  // Indicadores
+  const indicadoresList = modalContentNew.querySelector(".indicadores-list");
+  if (indicadoresList) {
+    indicadoresList.innerHTML = item.indicadores.map(txt => `<p>${txt}</p>`).join("");
   }
-  
-  // Show modal
-  modalContainer.classList.add("active");
-  document.body.style.overflow = "hidden"; // Prevent scrolling
+
+  // Globo/condición (frase del personaje)
+  const bubble = document.getElementById("bubbleBox");
+  if (bubble) {
+    bubble.innerHTML = item.condicion;
+    bubble.className = "speech-bubble";
+  }
+
+  // Medios de verificación en grid - SIEMPRE visible
+  const verGrid = modalContentNew.querySelector(".verificacion-grid");
+  if (verGrid) {
+    verGrid.innerHTML = item.medios_verificacion.map((txt, i) => `
+      <div class="verificacion-item-new">
+        <span class="verificacion-number-new">${i + 1}</span>
+        <p class="verificacion-text-new">${txt}</p>
+      </div>
+    `).join('');
+  }
 }
 
-// Close modal
+/* ===== Abre el modal y aplica tema por grupo ===== */
+async function openStandardModal(card) {
+  const modalContainer = document.getElementById("modalContainer");
+  const modalContentNew = document.getElementById("modalContentNew");
+  if (!modalContainer || !modalContentNew) return;
+
+  const id = Number(card.getAttribute("data-standard"));
+  try {
+    const data = await ensureDataLoaded();
+    const item = data.find((x) => Number(x.id) === id);
+    if (!item) return;
+
+    renderModalFromData(modalContentNew, item);
+
+    // Tema por grupos
+    modalContainer.classList.remove("modal-theme--blue","modal-theme--red","modal-theme--green");
+    let theme = "green";
+    if (id >= 1 && id <= 5) { theme = "blue";  modalContainer.classList.add("modal-theme--blue"); }
+    else if (id >= 6 && id <= 9) { theme = "red"; modalContainer.classList.add("modal-theme--red"); }
+    else { theme = "green"; modalContainer.classList.add("modal-theme--green"); }
+
+    // Ilustración
+    const img = document.getElementById("modalIllustration");
+    if (img) {
+      const byId = IMAGES_BY_ID[id];
+      //const byTheme = IMAGES_BY_THEME[theme] || "../img/placeholder.png";
+      img.src = byId;
+      img.alt = `Ilustración Estándar ${id}`;
+    }
+
+    modalContainer.classList.add("active");
+    document.body.style.overflow = "hidden";
+  } catch (err) {
+    console.error("Error al abrir modal:", err);
+  }
+}
+
 function closeModal() {
   const modalContainer = document.getElementById("modalContainer");
-  if (modalContainer) {
-    modalContainer.classList.remove("active");
-    document.body.style.overflow = ""; // Restore scrolling
-  }
+  if (modalContainer) { modalContainer.classList.remove("active"); document.body.style.overflow = ""; }
 }
 
-// Resource actions
+/* ===== Recursos (ripple y aviso) ===== */
 function initResourceActions() {
   const resourceBtns = document.querySelectorAll(".resource-btn");
-  
   resourceBtns.forEach((btn) => {
     btn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      e.preventDefault();
-      
-      const card = this.closest(".resource-card");
-      const title = card.querySelector("h4")?.textContent || "Recurso";
-      const btnText = this.querySelector("span")?.textContent || "";
-      
-      // Detectar tipo de archivo desde el texto del botón
-      let fileType = null;
-      let fileName = title;
-      
-      if (btnText.toLowerCase().includes("pdf")) {
-        fileType = "PDF";
-        fileName = `${title}.pdf`;
-      } else if (btnText.toLowerCase().includes("excel")) {
-        fileType = "Excel";
-        fileName = `${title}.xlsx`;
-      } else if (btnText.toLowerCase().includes("checklist")) {
-        fileType = "PDF";
-        fileName = `${title}.pdf`;
-      }
-      
-      // Add ripple effect
+      e.stopPropagation(); e.preventDefault();
+      const title = this.closest(".resource-card")?.querySelector("h4")?.textContent || "Recurso";
       const ripple = document.createElement("span");
-      ripple.style.position = "absolute";
-      ripple.style.width = "0";
-      ripple.style.height = "0";
-      ripple.style.borderRadius = "50%";
-      ripple.style.background = "rgba(255, 255, 255, 0.5)";
-      ripple.style.transform = "translate(-50%, -50%)";
-      ripple.style.left = "50%";
-      ripple.style.top = "50%";
-      ripple.style.animation = "ripple 0.6s ease-out";
-      this.style.position = "relative";
-      this.appendChild(ripple);
-      
-      setTimeout(() => {
-        ripple.remove();
-      }, 600);
-
-      // Mostrar notificación usando la función global unificada
-      if (typeof showDownloadNotification === 'function') {
-        showDownloadNotification(fileName, fileType);
-      } else if (typeof showNotification === 'function') {
-        showNotification(`Descargando: ${title}`, "success");
-      }
+      ripple.style.position="absolute"; ripple.style.width="0"; ripple.style.height="0";
+      ripple.style.borderRadius="50%"; ripple.style.background="rgba(255,255,255,0.5)";
+      ripple.style.transform="translate(-50%,-50%)"; ripple.style.left="50%"; ripple.style.top="50%";
+      ripple.style.animation="ripple 0.6s ease-out"; this.style.position="relative"; this.appendChild(ripple);
+      setTimeout(() => ripple.remove(), 600);
+      if (typeof showDownloadNotification === "function") showDownloadNotification(`${title}`, "");
+      else if (typeof showNotification === "function") showNotification(`Descargando: ${title}`, "success");
     });
   });
+  const style = document.createElement("style");
+  style.textContent = `@keyframes ripple{to{width:200px;height:200px;opacity:0}}`;
+  document.head.appendChild(style);
 }
-
-// Add CSS animations dynamically
-const style = document.createElement("style");
-style.textContent = `
-  @keyframes ripple {
-    to {
-      width: 200px;
-      height: 200px;
-      opacity: 0;
-    }
-  }
-  
-  @keyframes slideInRight {
-    from {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
-  }
-  
-  @keyframes slideOutRight {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(100%);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(style);
