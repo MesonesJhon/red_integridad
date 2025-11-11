@@ -245,6 +245,20 @@
   --shadow-blue-hover: 0 12px 35px rgba(146, 180, 89, 0.6);
   --border-radius: 12px;
   --border-radius-lg: 20px;
+  
+  /* Colores por fase */
+  --azul-preparatorios: #3b82f6;
+  --azul-preparatorios-dark: #2563eb;
+  --rojo-seleccion: #ef4444;
+  --rojo-seleccion-dark: #dc2626;
+  --verde-ejecucion: #10b981;
+  --verde-ejecucion-dark: #059669;
+  --gradient-preparatorios: linear-gradient(135deg, var(--azul-preparatorios) 0%, var(--azul-preparatorios-dark) 100%);
+  --gradient-seleccion: linear-gradient(135deg, var(--rojo-seleccion) 0%, var(--rojo-seleccion-dark) 100%);
+  --gradient-ejecucion: linear-gradient(135deg, var(--verde-ejecucion) 0%, var(--verde-ejecucion-dark) 100%);
+  --shadow-preparatorios: 0 8px 24px rgba(59, 130, 246, 0.4);
+  --shadow-seleccion: 0 8px 24px rgba(239, 68, 68, 0.4);
+  --shadow-ejecucion: 0 8px 24px rgba(16, 185, 129, 0.4);
 }
 
 /* ===== ESTILOS GENERALES MEJORADOS ===== */
@@ -479,8 +493,54 @@
   transform: scaleX(1);
 }
 
+/* Colores por fase - Actos Preparatorios (Azul) */
+.standard-card[data-phase="preparatorios"]::before {
+  background: var(--gradient-preparatorios);
+}
+
+.standard-card[data-phase="preparatorios"] .standard-header {
+  background: var(--gradient-preparatorios);
+}
+
+.standard-card[data-phase="preparatorios"]:hover {
+  border-color: rgba(59, 130, 246, 0.3);
+  box-shadow: var(--shadow-preparatorios);
+}
+
+/* Colores por fase - Proceso de Selección (Rojo) */
+.standard-card[data-phase="seleccion"]::before {
+  background: var(--gradient-seleccion);
+}
+
+.standard-card[data-phase="seleccion"] .standard-header {
+  background: var(--gradient-seleccion);
+}
+
+.standard-card[data-phase="seleccion"]:hover {
+  border-color: rgba(239, 68, 68, 0.3);
+  box-shadow: var(--shadow-seleccion);
+}
+
+/* Colores por fase - Ejecución Contractual (Verde) */
+.standard-card[data-phase="ejecucion"]::before {
+  background: var(--gradient-ejecucion);
+}
+
+.standard-card[data-phase="ejecucion"] .standard-header {
+  background: var(--gradient-ejecucion);
+}
+
+.standard-card[data-phase="ejecucion"]:hover {
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: var(--shadow-ejecucion);
+}
+
 .standard-card:hover {
   transform: translateY(-8px);
+}
+
+/* Hover específico solo para cards sin fase definida (fallback) */
+.standard-card:not([data-phase]):hover {
   box-shadow: var(--shadow-lg);
   border-color: rgba(146, 180, 89, 0.3);
 }
@@ -579,9 +639,9 @@
   background: var(--surface);
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-lg);
-  max-width: 800px;
+  max-width: 1000px;
   width: 95%;
-  max-height: 85vh;
+  max-height: 90vh;
   overflow-y: auto;
   z-index: 1001;
   transform: scale(0.9) translateY(20px);
@@ -616,6 +676,19 @@
   transform: rotate(90deg) scale(1.1);
 }
 
+/* Colores del botón de cerrar según la fase del modal */
+.modal-close[data-phase="preparatorios"]:hover {
+  background: var(--gradient-preparatorios);
+}
+
+.modal-close[data-phase="seleccion"]:hover {
+  background: var(--gradient-seleccion);
+}
+
+.modal-close[data-phase="ejecucion"]:hover {
+  background: var(--gradient-ejecucion);
+}
+
 .modal-close svg {
   width: 20px;
   height: 20px;
@@ -642,6 +715,19 @@
   margin: -40px -40px 40px -40px;
   position: relative;
   overflow: hidden;
+}
+
+/* Colores del modal según la fase */
+.modal-header[data-phase="preparatorios"] {
+  background: var(--gradient-preparatorios);
+}
+
+.modal-header[data-phase="seleccion"] {
+  background: var(--gradient-seleccion);
+}
+
+.modal-header[data-phase="ejecucion"] {
+  background: var(--gradient-ejecucion);
 }
 
 .modal-header::after {
@@ -685,20 +771,77 @@
 }
 
 .modal-body {
+  padding: 0;
+}
+
+.modal-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 32px;
+  padding: 40px;
+}
+
+.modal-details-section {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 20px;
+}
+
+.modal-image-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: var(--gradient-surface);
+  border-radius: var(--border-radius);
+  min-height: 300px;
+}
+
+.modal-image-placeholder {
+  text-align: center;
+  color: var(--text-light);
+  padding: 40px 20px;
+}
+
+.modal-image-placeholder p {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.modal-image-placeholder small {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.modal-illustration {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--border-radius);
 }
 
 .modal-detail {
   padding: 24px;
-  background: var(--gradient-surface);
+  background: var(--surface);
   border-radius: var(--border-radius);
   border-left: 4px solid var(--verde);
   box-shadow: var(--shadow-sm);
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
+}
+
+/* Colores de las líneas verticales según la fase */
+.modal-detail[data-phase="preparatorios"] {
+  border-left-color: var(--azul-preparatorios);
+}
+
+.modal-detail[data-phase="seleccion"] {
+  border-left-color: var(--rojo-seleccion);
+}
+
+.modal-detail[data-phase="ejecucion"] {
+  border-left-color: var(--verde-ejecucion);
 }
 
 .modal-detail::before {
@@ -712,17 +855,41 @@
   transition: left 0.6s ease;
 }
 
+.modal-detail[data-phase="preparatorios"]::before {
+  background: linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.05), transparent);
+}
+
+.modal-detail[data-phase="seleccion"]::before {
+  background: linear-gradient(90deg, transparent, rgba(239, 68, 68, 0.05), transparent);
+}
+
+.modal-detail[data-phase="ejecucion"]::before {
+  background: linear-gradient(90deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+}
+
 .modal-detail:hover::before {
   left: 100%;
 }
 
 .modal-detail:hover {
   transform: translateX(4px);
-  box-shadow: var(--shadow-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.modal-detail[data-phase="preparatorios"]:hover {
+  box-shadow: var(--shadow-preparatorios);
+}
+
+.modal-detail[data-phase="seleccion"]:hover {
+  box-shadow: var(--shadow-seleccion);
+}
+
+.modal-detail[data-phase="ejecucion"]:hover {
+  box-shadow: var(--shadow-ejecucion);
 }
 
 .modal-detail h4 {
-  color: var(--verde);
+  color: var(--text-dark);
   margin-bottom: 12px;
   font-size: 1rem;
   text-transform: uppercase;
@@ -733,12 +900,37 @@
   gap: 10px;
 }
 
+/* Colores de los títulos según la fase */
+.modal-detail[data-phase="preparatorios"] h4 {
+  color: var(--azul-preparatorios);
+}
+
+.modal-detail[data-phase="seleccion"] h4 {
+  color: var(--rojo-seleccion);
+}
+
+.modal-detail[data-phase="ejecucion"] h4 {
+  color: var(--verde-ejecucion);
+}
+
 .modal-detail h4::before {
   content: '';
   width: 4px;
-  height: 16px;
-  background: var(--gradient-primary);
+  height: 20px;
+  background: var(--verde);
   border-radius: 2px;
+}
+
+.modal-detail[data-phase="preparatorios"] h4::before {
+  background: var(--azul-preparatorios);
+}
+
+.modal-detail[data-phase="seleccion"] h4::before {
+  background: var(--rojo-seleccion);
+}
+
+.modal-detail[data-phase="ejecucion"] h4::before {
+  background: var(--verde-ejecucion);
 }
 
 .modal-detail p {
@@ -1061,6 +1253,17 @@
     padding: 32px 24px;
   }
 
+  .modal-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .modal-image-section {
+    order: -1;
+    min-height: 200px;
+  }
+
   .modal-header {
     padding: 32px 24px;
     margin: -32px -24px 32px -24px;
@@ -1122,6 +1325,15 @@
     min-width: 40px;
     height: 40px;
     font-size: 1.6rem;
+  }
+
+  .modal-content-wrapper {
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .modal-image-section {
+    min-height: 150px;
   }
 
   .modal-header {

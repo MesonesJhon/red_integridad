@@ -211,6 +211,28 @@ function initModal() {
   });
 }
 
+// Function to get modal image (returns placeholder or image if available)
+function getModalImage(standardNumber) {
+  // Lista de imágenes disponibles - agrega aquí las rutas de tus imágenes cuando las tengas
+  const availableImages = {
+    // Ejemplo: "1": "../img/estandar-1.png",
+    // "2": "../img/estandar-2.png",
+    // Agrega más según tengas imágenes
+  };
+  
+  if (availableImages[standardNumber]) {
+    return `<img src="${availableImages[standardNumber]}" alt="Ilustración Estándar ${standardNumber}" class="modal-illustration">`;
+  }
+  
+  // Placeholder si no hay imagen
+  return `
+    <div class="modal-image-placeholder">
+      <p>Espacio para ilustración</p>
+      <small>Puedes agregar una imagen en: ../img/estandar-${standardNumber}.png</small>
+    </div>
+  `;
+}
+
 // Open modal with standard details
 function openStandardModal(card) {
   const modalContainer = document.getElementById("modalContainer");
@@ -224,31 +246,47 @@ function openStandardModal(card) {
   // Get card data
   const standardNumber = card.getAttribute("data-standard");
   const standardTitle = card.querySelector(".standard-title").textContent;
+  const phase = card.getAttribute("data-phase") || "ejecucion";
   const risks = card.querySelector(".standard-detail:nth-child(1) p").textContent;
   const indicators = card.querySelector(".standard-detail:nth-child(2) p").textContent;
   const actions = card.querySelector(".standard-detail:nth-child(3) p").textContent;
   
-  // Build modal content
+  // Build modal content with structure similar to the image
   modalContent.innerHTML = `
-    <div class="modal-header">
+    <div class="modal-header" data-phase="${phase}">
       <div class="modal-number">${standardNumber}</div>
       <div class="modal-title">${standardTitle}</div>
     </div>
-    <div class="modal-body">
-      <div class="modal-detail">
-        <h4>Riesgos</h4>
-        <p>${risks}</p>
-      </div>
-      <div class="modal-detail">
-        <h4>Indicadores</h4>
-        <p>${indicators}</p>
-      </div>
-      <div class="modal-detail">
-        <h4>Acciones para Veedores</h4>
-        <p>${actions}</p>
+    <div class="modal-body" data-phase="${phase}">
+      <div class="modal-content-wrapper">
+        <div class="modal-details-section">
+          <div class="modal-detail" data-phase="${phase}">
+            <h4>RIESGOS</h4>
+            <p>${risks}</p>
+          </div>
+          <div class="modal-detail" data-phase="${phase}">
+            <h4>INDICADORES</h4>
+            <p>${indicators}</p>
+          </div>
+          <div class="modal-detail" data-phase="${phase}">
+            <h4>ACCIONES PARA VEEDORES</h4>
+            <p>${actions}</p>
+          </div>
+        </div>
+        <div class="modal-image-section">
+          <!-- Espacio para imagen opcional - descomenta la línea siguiente cuando tengas la imagen -->
+          <!-- Las imágenes deberían estar en: ../img/estandar-${standardNumber}.png o ../img/estandar-${standardNumber}.jpg -->
+          ${getModalImage(standardNumber)}
+        </div>
       </div>
     </div>
   `;
+  
+  // Update modal close button color based on phase
+  const modalClose = document.getElementById("modalClose");
+  if (modalClose) {
+    modalClose.setAttribute("data-phase", phase);
+  }
   
   // Show modal
   modalContainer.classList.add("active");
