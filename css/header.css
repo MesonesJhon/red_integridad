@@ -14,6 +14,7 @@
   --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
   --border-radius: 12px;
   --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-primary: 'Inter', 'Segoe UI', sans-serif;
 }
 
 /* Header */
@@ -84,7 +85,6 @@
   font-weight: 800;
   color: var(--color-naranja);
   letter-spacing: 1.2px;
-  position: relative;
   padding: 0.2rem 0;
 }
 
@@ -106,10 +106,9 @@
   color: var(--color-plomo);
   font-size: 15px;
   font-weight: 500;
-  position: relative;
   transition: var(--transition);
   padding: 0.75rem 0;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .header-link::before {
@@ -135,7 +134,6 @@
 }
 
 .header-link.active {
-  color: var(--color-naranja);
   font-weight: 600;
 }
 
@@ -228,7 +226,7 @@
   margin-bottom: 1.5rem;
   position: relative;
   padding-bottom: 0.75rem;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .contacto-title::after {
@@ -247,7 +245,7 @@
   color: var(--color-plomo);
   margin-bottom: 0.2rem;
   line-height: 1.6;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .modal-contacto a {
@@ -316,7 +314,7 @@
   color: var(--color-plomo);
   margin-top: 2rem;
   margin-bottom: 1rem;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .social-links {
@@ -340,7 +338,7 @@
   padding: 0.75rem 1rem;
   border-radius: 8px;
   border: 1px solid transparent;
-  font-family: 'Inter', 'Segoe UI', sans-serif;
+  font-family: var(--font-primary);
 }
 
 .social-link:hover {
@@ -447,7 +445,6 @@
     background: rgba(238, 119, 67, 0.12);
     border-left: 4px solid var(--color-naranja);
     padding-left: calc(2rem - 4px);
-    color: var(--color-naranja);
   }
 
   /* Modal de contacto en móvil */

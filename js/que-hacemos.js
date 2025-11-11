@@ -236,9 +236,9 @@ function getModalImage(standardNumber) {
 // Open modal with standard details
 function openStandardModal(card) {
   const modalContainer = document.getElementById("modalContainer");
-  const modalContent = document.getElementById("modalContent");
+  const modalContentNew = document.getElementById("modalContentNew"); // Reference the new content container
   
-  if (!modalContainer || !modalContent) {
+  if (!modalContainer || !modalContentNew) {
     console.error("Modal elements not found");
     return;
   }
@@ -247,41 +247,42 @@ function openStandardModal(card) {
   const standardNumber = card.getAttribute("data-standard");
   const standardTitle = card.querySelector(".standard-title").textContent;
   const phase = card.getAttribute("data-phase") || "ejecucion";
-  const risks = card.querySelector(".standard-detail:nth-child(1) p").textContent;
-  const indicators = card.querySelector(".standard-detail:nth-child(2) p").textContent;
-  const actions = card.querySelector(".standard-detail:nth-child(3) p").textContent;
-  
-  // Build modal content with structure similar to the image
-  modalContent.innerHTML = `
-    <div class="modal-header" data-phase="${phase}">
-      <div class="modal-number">${standardNumber}</div>
-      <div class="modal-title">${standardTitle}</div>
-    </div>
-    <div class="modal-body" data-phase="${phase}">
-      <div class="modal-content-wrapper">
-        <div class="modal-details-section">
-          <div class="modal-detail" data-phase="${phase}">
-            <h4>RIESGOS</h4>
-            <p>${risks}</p>
-          </div>
-          <div class="modal-detail" data-phase="${phase}">
-            <h4>INDICADORES</h4>
-            <p>${indicators}</p>
-          </div>
-          <div class="modal-detail" data-phase="${phase}">
-            <h4>ACCIONES PARA VEEDORES</h4>
-            <p>${actions}</p>
-          </div>
-        </div>
-        <div class="modal-image-section">
-          <!-- Espacio para imagen opcional - descomenta la línea siguiente cuando tengas la imagen -->
-          <!-- Las imágenes deberían estar en: ../img/estandar-${standardNumber}.png o ../img/estandar-${standardNumber}.jpg -->
-          ${getModalImage(standardNumber)}
-        </div>
-      </div>
-    </div>
+
+  // Dynamic content from the clicked card
+  const standardDescription = standardTitle; // The card title is the "Estándar" description in the modal
+  const riskDescription = card.querySelector(".standard-detail:nth-child(1) p").textContent;
+  const indicatorDescription = card.querySelector(".standard-detail:nth-child(2) p").textContent;
+  const actionsDescription = card.querySelector(".standard-detail:nth-child(3) p").textContent;
+
+  // Update static elements (from the image)
+  modalContentNew.querySelector(".estandar-integridad-label").textContent = "ESTÁNDAR DE INTEGRIDAD";
+  modalContentNew.querySelector(".modal-number-new").textContent = standardNumber;
+  modalContentNew.querySelector(".modal-title-new").innerHTML = `El proyecto de inversión pública<br>cierra brechas y es de interés público`;
+
+  // Update dynamic elements
+  modalContentNew.querySelector(".section-new:nth-child(1) p").textContent = standardDescription; // "Estándar" description
+  modalContentNew.querySelector(".section-new:nth-child(2) p").textContent = riskDescription; // "Riesgo" description
+
+  // "Indicador del estándar de integridad" descriptions (partially static, partially dynamic based on requirements)
+  // For now, I'll keep them as static based on the provided image, as the card's indicators are generic.
+  modalContentNew.querySelector(".indicador-section-new p:nth-of-type(1)").innerHTML = `<strong>1.1</strong> El proyecto de inversión contribuye a <u>reducir brechas</u> de un sector priorizado para la región.`;
+  modalContentNew.querySelector(".indicador-section-new p:nth-of-type(2)").innerHTML = `<strong>1.2</strong> El porcentaje que aporta la inversión pública al cierre de brechas en un sector priorizado <u>es mayor a 0%</u>.`;
+
+  // Medio de verificación (partially static, partially dynamic)
+  // The first item (Registro de proyecto...) is static in structure but its content comes from card's actions
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(1) .verificacion-text-new p").textContent = "Registro de proyecto de inversión (Formato N° 12-A)";
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(1) .verificacion-text-new ul").innerHTML = `
+    <li>Indicador de brecha (Formato N° F4-A)</li>
+    <li>Seguimiento de cierre de brechas (Formato N° F12-A)</li>
+    <li>Ver: Directiva N° 001-2019-EF/63.01</li>
   `;
-  
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(2) .verificacion-text-new").textContent = "Solicitud de Acceso a Información Pública (SAIP)"; // This appears static in the image
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(3) .verificacion-text-new").textContent = "Revisión del Sistema de Seguimiento de Inversión Pública (SSI-MEF)"; // This appears static in the image
+
+  // Update placeholder image
+  modalContentNew.querySelector(".modal-image-new img").src = `../img/placeholder.png`; // Local placeholder image
+  modalContentNew.querySelector(".modal-image-new img").alt = `Placeholder image for character - Estándar ${standardNumber}`;
+
   // Update modal close button color based on phase
   const modalClose = document.getElementById("modalClose");
   if (modalClose) {
