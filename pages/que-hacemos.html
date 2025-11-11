@@ -4,35 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>¿QUÉ HACEMOS? - Red de Integridad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/que-hacemos.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <img src="../img/RED-INTERQUORUM-LAMBAYEQUE.png" alt="logo" class="navbar-icon">
-                <span class="navbar-title">Red de Integridad</span>
-            </div>
-            
-            <div class="navbar-menu" id="navbarMenu">
-                <a href="../index.html" class="nav-link">Inicio</a>
-                <a href="quienes-somos.html" class="nav-link">¿Quiénes somos?</a>
-                <a href="que-hacemos.html" class="nav-link">¿Qué hacemos?</a>
-                <a href="publicaciones.html" class="nav-link">Publicaciones</a>
-                <a href="observatorio.html" class="nav-link active">Observatorio</a>
-                <a href="contacto.html" class="nav-link">Contacto</a>
-            </div>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <!-- LOGO + NOMBRE -->
+            <a href="index.html" class="header-brand">
+                <img src="../img/LOGO-PRINCIPAL-INTEGRIDAD.png" alt="Logo Red de Integridad" class="header-logo">
+                <span class="header-title">
+                    <span class="header-title-line">Red de</span>
+                    <span class="header-title-line">Integridad</span>
+                    <span class="header-title-highlight">LAMBAYEQUE</span>
+                </span>
+            </a>
 
-            <button class="navbar-toggle" id="navbarToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <!-- MENÚ DE NAVEGACIÓN -->
+            <nav class="header-nav" aria-label="Menú principal">
+                <!-- BOTÓN TOGGLE (menú responsive) -->
+                <button class="header-toggle" id="navbarToggle" aria-label="Abrir menú">
+                    <span class="header-toggle-line"></span>
+                    <span class="header-toggle-line"></span>
+                    <span class="header-toggle-line"></span>
+                </button>
+
+                <!-- ENLACES DEL MENÚ -->
+                <div class="header-menu" id="navbarMenu">
+                    <a href="../index.html" class="header-link active">Inicio</a>
+                    <a href="../pages/quienes-somos.html" class="header-link">¿Quiénes somos?</a>
+                    <a href="../pages/que-hacemos.html" class="header-link">¿Qué hacemos?</a>
+                    <a href="../pages/publicaciones.html" class="header-link">Publicaciones</a>
+                    <a href="../pages/observatorio.html" class="header-link">Observatorio</a>
+                    <a href="../pages/contacto.html" class="header-link">Contacto</a>
+
+                    <!-- MODAL DE CONTACTO -->
+                    <div class="modal-contacto" id="contactModal" aria-hidden="true">
+                        <h2 class="contacto-title">Cuentas de contacto</h2>
+
+                        <p>
+                            <strong>Gmail:</strong>
+                            <p>rintegridad2023@gmail.com</p>
+                        </p>
+
+                        <h3 class="contacto-subtitle">Redes sociales</h3>
+
+                        <ul class="social-links">
+                            <li>
+                                <a href="https://www.facebook.com/RedDelntegridadLambayeque" target="_blank" class="social-link">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/Integridad19046" target="_blank" class="social-link">
+                                    <i class="fab fa-x-twitter"></i> Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/@ReddelntegridadLambayeque" target="_blank" class="social-link">
+                                    <i class="fab fa-youtube"></i> YouTube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
+    </header>
 
     <!-- Main Content -->
     <main class="main-content">
