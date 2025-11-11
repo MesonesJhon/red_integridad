@@ -135,11 +135,18 @@
 
 .header-link.active {
   font-weight: 600;
+  color: var(--color-naranja);
 }
 
 .header-link.active::before {
   width: 100%;
   background: var(--color-naranja);
+}
+
+/* Style for the active navigation link */
+.header-link.active-nav {
+  color: #FFA500; /* Orange color for the active link */
+  font-weight: bold;
 }
 
 /* Hamburger menu button */

@@ -52,6 +52,240 @@ document.addEventListener("DOMContentLoaded", () => {
   updateFilterCounts();
 });
 
+const standardsData = {
+  "1": {
+    title: "El proyecto de inversión pública cierra brechas y es de interés público",
+    standardDescription: "El proyecto de inversión pública cierra brechas de infraestructura y busca brindar servicios públicos oportunamente a la población beneficiaria.",
+    riskDescription: "El proyecto de inversión pública no contribuye a cerrar brechas de infraestructura o servicios públicos, por lo que no atiende o resuelve la necesidad de los beneficiarios.",
+    indicators: [
+      "1.1 El proyecto de inversión contribuye a reducir brechas de un sector priorizado para la región.",
+      "1.2 El porcentaje que aporta la inversión pública al cierre de brechas en un sector priorizado es mayor a 0 %."
+    ],
+    verifications: [
+      "1 Registro de proyecto de inversión (Formato N° 12-A)<br>Indicador de brecha (Formato N° F4-A)<br>Seguimiento de cierre de brechas (Formato N° F12-A)<br>Ver: Directiva N° 001-2019-EF/63.01",
+      "2 Solicitud de Acceso a Información Pública (SAIP)",
+      "3 Revisión del Sistema de Seguimiento de Inversión Pública (SSI-MEF)",
+    ],
+    cumplimiento: "Si se cumplen estos verificadores / indicadores,\n¡ya cumplimos el ESTÁNDAR 1!",
+  },
+  "2": {
+    title: "Gestión integral de riesgos durante la ejecución de la inversión pública",
+    standardDescription: "La entidad cuenta con una matriz o plan de acción de mitigación de riesgos a fin de prevenir suspensiones, paralizaciones o retrasos durante la ejecución de la inversión.",
+    riskDescription: "Las áreas vinculadas a la ejecución de la inversión no identifican riesgos ni los mitigan, lo que afecta la continuidad y culminación oportuna.",
+    indicators: [
+      "2.1 La entidad cuenta con una matriz de riesgos aplicable al proyecto de inversión pública en ejecución.",
+      "2.2 El porcentaje de avance de la implementación del plan de acción de mitigación de los riesgos identificado en el proyecto de inversión en ejecución es mayor o igual a 50 %.* (*): Este indicador, en algunas inversiones, será verificado en la ejecución contractual."
+    ],
+    verifications: [
+      "Matriz o plan de acción de mitigación de riesgos identificados o equivalente (Ver: Directiva de Gestión de Riesgos del OSCE).",
+      "Solicitud de Acceso a Información Pública (SAIP) a la Unidad Ejecutora de Inversiones."
+    ],
+    cumplimiento: "Si se cumplen ambos verificadores / indicadores,\n¡ya cumplimos el ESTÁNDAR 2!\nSi solo se cumple con el verificador 2.1, se cumple parcialmente.",
+  },
+  "3": {
+    title: "Presentación oportuna de la Declaración Jurada de Intereses (DJI)",
+    standardDescription: "La entidad verifica que los funcionarios y servidores vinculados a la gestión de la contratación pública presenten su DJI y no incurran en conflictos de interés.",
+    riskDescription: "El interés personal de los funcionarios y servidores interfiere con el interés público, lo que influye en el cumplimiento de sus funciones y responsabilidades.",
+    indicators: [
+      "3.1 El porcentaje de funcionarios y servidores vinculados al proceso de contratación de la obra que presentan su DJI es mayor o igual al 50 %.",
+      "3.2 Funcionarios que presentaron su DJI no incurren en conflicto de intereses con el ganador de la buena pro y/o el contratista. La entidad y sociedad civil verifican este indicador mediante el cruce de las declaraciones juradas presentadas por los funcionarios indicados en la lista con el ganador de la buena pro y/o contratista."
+    ],
+    verifications: [
+      "Lista de funcionarios vinculados a las contrataciones públicas. Se adjunta la lista al final de la guía.",
+      "Plataforma de la Contraloría General de la República: Sistema de Declaraciones Juradas para la Gestión de Conflicto de Intereses."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores / indicadores,\n¡ya cumplimos el ESTÁNDAR 3!\nSi solo se cumple con el indicador 3.1, se cumple parcialmente. (Ver lista en la última página)",
+  },
+  "4": {
+    title: "Calidad del Expediente Técnico de Obra (ETO)",
+    standardDescription: "El ETO se elabora bajo criterios de calidad, eficiencia, oportunidad y costo razonable.",
+    riskDescription: "Existen deficiencias en la elaboración y aprobación del ETO al no contener los estudios técnicos y componentes completos, lo que limita la pluralidad de proveedores y conlleva a que la obra no culmine oportunamente.",
+    indicators: [
+      "4.1 La entidad identifica las interferencias en el ETO y establece medidas de mitigación.",
+      "4.2 La entidad cuenta con la libre disponibilidad del terreno donde se va a construir la obra.",
+      "4.3 La inversión pública cuenta con información actualizada en el Sistema de Seguimiento de Inversiones (SSI) sobre el avance de la ejecución.",
+      "4.4 La entidad informa a la población beneficiaria acerca del alcance del proyecto de inversión pública.",
+      "4.5 El área usuaria adjunta en su requerimiento una lista de contenido mínimo del ETO."
+    ],
+    verifications: [
+      "Resolución de aprobación del ETO.",
+      "Expediente Técnico de Obra.",
+      "SSI del MEF.",
+      "Checklist de contenido mínimo de ETO adoptada por las áreas usuarias en sus requerimientos."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores\n¡ya cumplimos el ESTÁNDAR 4!\nSi solo se cumple con los verificadores 4.1, 4.2 y 4.3, se cumple parcialmente.",
+  },
+  "5": {
+    title: "Acuerdos de colaboración público-privada",
+    standardDescription: "La entidad suscribe acuerdos de colaboración público-privada para mejorar la elaboración del ETO, la integridad y la transparencia en la ejecución de la inversión pública.",
+    riskDescription: "Los limitados espacios de diálogo y colaboración público-privada no permiten mejorar la calidad del expediente técnico y promover pluralidad, lo que genera mayores costos y retrasos en la ejecución contractual.",
+    indicators: [
+      "5.1 La entidad conforma una mesa técnica público-privada y aprueba un plan de trabajo para la elaboración del ETO.",
+      "5.2 La entidad suscribe un compromiso de colaboración público-privada para ejecutar la inversión pública bajo un enfoque de integridad, transparencia y eficiencia.",
+      "5.3 La entidad socializa el Formato de Inversión Pública y comparte el alcance del proyecto con potenciales proveedores a través de la página web, en reuniones abiertas o eventos institucionales participativos (formato disponible para descarga en el código QR al final de la guía)."
+    ],
+    verifications: [
+      "Acuerdo de conformación de una mesa técnica público-privada.",
+      "Plan de trabajo para la elaboración del ETO.",
+      "Acuerdo de colaboración público-privada para ejecutar la inversión pública.",
+      "Publicación de Formato de Inversión Pública en las plataformas estatales, reuniones o eventos institucionales."
+    ],
+    cumplimiento: "Si se cumple al menos uno de estos verificadores,\n¡ya cumplimos el ESTÁNDAR 5!",
+  },
+  "6": {
+    title: "La convocatoria contiene reglas de juego transparentes",
+    standardDescription: "La convocatoria del procedimiento de selección se realiza oportunamente en el SEACE, o una plataforma equivalente de acuerdo con las condiciones normativas, y promueve la competencia.",
+    riskDescription: "La convocatoria del procedimiento de selección contiene información parcial, incompleta o incoherente que limita la participación de proveedores y transgrede los principios de competencia, igualdad e integridad.",
+    indicators: [
+      "6.1 El tiempo transcurrido desde la fecha de la aprobación del ETO hasta la fecha de la convocatoria es menor o igual a 9 meses.",
+      "6.2 La entidad publica el ETO completo y la resolución que lo aprueba en el SEACE.",
+      "6.3 El procedimiento de selección no es declarado nulo debido a una inobservancia de la normativa aplicable.",
+      "6.4 La entidad implementa todas las observaciones formuladas por el OSCE sobre los documentos del procedimiento de selección como resultado de sus acciones de supervisión."
+    ],
+    verifications: [
+      "Resolución de aprobación del ETO.",
+      "Registro de publicación del ETO en el SEACE, en la sección del procedimiento de selección.",
+      "Bases administrativas del procedimiento de selección publicadas en el SEACE."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores/indicadores,\n¡ya cumplimos el ESTÁNDAR 6!\nSi solo se cumple con el indicador 6.1 y los verificadores 6.2 y 6.3, se cumple parcialmente.",
+  },
+  "7": {
+    title: "Absolución motivada de consultas y observaciones",
+    standardDescription: "La entidad absuelve las consultas y observaciones de los documentos del procedimiento de selección de manera motivada a fin de promover la competencia y pluralidad.",
+    riskDescription: "La absolución de consultas y observaciones no es motivada o transgrede la normativa de contrataciones públicas, lo que limita la pluralidad de postores y la elección de la mejor propuesta.",
+    indicators: [
+      "7.1 El comité de selección y el área usuaria absuelven de manera motivada las consultas y observaciones formuladas por los participantes."
+    ],
+    verifications: [
+      "Pliego de absolución de consultas y observaciones elaborado por el comité de selección, publicado en el SEACE."
+    ],
+    cumplimiento: "Si se cumple el verificador,\n¡ya cumplimos el ESTÁNDAR 7!",
+  },
+  "8": {
+    title: "Pluralidad de propuestas y trato igualitario",
+    standardDescription: "Existe pluralidad de propuestas en el procedimiento de selección a fin de generar competencia efectiva y transparente.",
+    riskDescription: "En muchos procesos de selección se presenta solamente una propuesta, lo que podría deberse a posibles deficiencias en las bases, indicios de direccionamiento o valores referenciales que no se ajustan al mercado. Si bien la norma permite adjudicar ante una sola propuesta presentada, con el estándar se busca generar competencia y pluralidad.",
+    indicators: [
+      "8.1 El número de propuestas presentadas en el procedimiento de selección es mayor o igual a 2."
+    ],
+    verifications: [
+      "Acta de presentación y evaluación de propuestas suscrita por los miembros del comité de selección, publicada en la ficha del procedimiento de selección del SEACE."
+    ],
+    cumplimiento: "Si se cumple el indicador,\n¡ya cumplimos el ESTÁNDAR 8!",
+  },
+  "9": {
+    title: "Fiscalización posterior oportuna de la propuesta ganadora",
+    standardDescription: "La entidad fiscaliza la propuesta del postor ganador a fin de verificar que no existan documentos falsos o inexactos.",
+    riskDescription: "Algunos postores presentan documentos falsos o inexactos para ganar la buena pro de manera indebida, situación que podría generar la nulidad del contrato y, por ende, la demora en la atención de una necesidad de interés público.",
+    indicators: [
+      "9.1 La entidad realiza la fiscalización posterior a los documentos presentados por el postor ganador, una vez consentida la buena pro.",
+      "9.2 El número de documentos falsos o inexactos que se identificó en la propuesta técnica del postor ganador es igual a 0.",
+      "9.3 La entidad emite el informe de resultados de fiscalización posterior hasta antes de la entrega del adelanto al contratista."
+    ],
+    verifications: [
+      "Oficio o carta de fiscalización posterior remitida a instituciones públicas o privadas por parte del Órgano Encargado de las Contrataciones (OEC).",
+      "Informe de resultado de fiscalización posterior de documentos."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores/indicadores,\n¡ya cumplimos el ESTÁNDAR 9!\nSi solo se cumple con el indicador 9.2, se cumple parcialmente.",
+  },
+  "10": {
+    title: "Suscripción de contrato de acuerdo a requisitos legales",
+    standardDescription: "La entidad suscribe el contrato de acuerdo con los requisitos establecidos y publica el contrato en el SEACE.",
+    riskDescription: "La entidad dilata injustificadamente la firma del contrato o no verifica adecuadamente los requisitos exigibles en las bases administrativas, lo que afecta el cumplimiento de plazos y el inicio de la obra.",
+    indicators: [
+      "10.1 La entidad suscribe el contrato de acuerdo con los requisitos previstos en las bases y lo publica en el SEACE como máximo a los 10 días hábiles de suscrito.",
+      "10.2 La entidad verifica la veracidad de la garantía de fiel cumplimiento presentada por el postor ganador y que haya sido emitida por una entidad supervisada y autorizada por la SBS.",
+      "10.3 El contrato incluye la cláusula sobre la Junta de Resolución de Disputas como mecanismo de solución de controversias."
+    ],
+    verifications: [
+      "Contrato suscrito y publicado en el SEACE dentro del plazo.",
+      "Nombre de la entidad financiera que emite la garantía (cartas fianza).",
+      "Verificación en el portal web de la SBS de que la entidad financiera tiene autorización para emitir cartas fianza."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores,\n¡ya cumplimos el ESTÁNDAR 10!\nSi solo se cumple con los verificadores 10.1 y 10.2, se cumple parcialmente.",
+  },
+  "11": {
+    title: "Supervisión de obra permanente y preventiva",
+    standardDescription: "La supervisión de la obra es permanente, está orientada a asegurar su calidad y a prevenir situaciones que afecten su continuidad.",
+    riskDescription: "En algunas obras, la supervisión no es permanente ni ayuda a verificar la calidad y cumplimiento del ETO. No existe una adecuada articulación entre el contratista y supervisión a fin de prevenir, alertar y tomar decisiones oportunas que permitan continuar con la ejecución de la obra.",
+    indicators: [
+      "11.1 La obra cuenta con un supervisor contratado por la entidad que monitorea la ejecución de la obra desde el inicio del plazo del contrato hasta su culminación.",
+      "11.2 La obra cuenta con cuaderno de obra físico o digital actualizado que registra ocurrencias, órdenes, consultas y respuestas.",
+      "11.3 No existen quejas o reclamos del contratista o entidad sobre la ausencia del supervisor en la ejecución de la obra según el cuaderno de obra.",
+      "11.4 La supervisión desarrolla su consultoría sin incurrir en causales de penalidad o incumplimientos pasibles de resolución de contrato."
+    ],
+    verifications: [
+      "Contrato de supervisión de la obra.",
+      "Anotaciones del estado de la ejecución de la obra a través del SSI del MEF.",
+      "Anotaciones y ocurrencias en el cuaderno digital o físico de la obra sobre la labor de la supervisión."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores,\n¡ya cumplimos el ESTÁNDAR 11!\nSi solo se cumple con los verificadores 11.1, 11.2 y 11.3, se cumple parcialmente.",
+  },
+  "12": {
+    title: "Adicionales y ampliaciones de plazo motivados",
+    standardDescription: "La entidad justifica la aprobación de adicionales o autorización de ampliaciones de plazo de manera oportuna.",
+    riskDescription: "La aprobación de adicionales de prestación de obra o ampliaciones de plazo no son comunicados en los plazos legales o no aseguran el cumplimiento de la finalidad pública de la contratación.",
+    indicators: [
+      "12.1 La entidad comunica la aprobación de un adicional de obra al ejecutor de obra máximo a los 12 días hábiles, contados desde la conformidad del supervisor.",
+      "12.2 La entidad comunica la aprobación de la solicitud de ampliación de plazo al ejecutor de obra máximo a los 15 días hábiles, contados desde el día siguiente de la recepción del informe del supervisor.",
+      "12.3 La entidad absuelve la totalidad de situaciones adversas identificadas por la Contraloría General de la República (CGR) relacionadas a la aprobación de adicionales o ampliaciones de plazo."
+    ],
+    verifications: [
+      "Resolución que aprueba adicional y comunicación al contratista dentro del plazo.",
+      "Informe de la entidad mediante el cual comunica a la CGR la absolución de las situaciones adversas relacionadas a la aprobación de adicionales o ampliaciones de plazo."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores / indicadores,\n¡ya cumplimos el ESTÁNDAR 12!\nSi solo se cumple con el indicador 12.1 o el 12.2, se cumple parcialmente.",
+  },
+  "13": {
+    title: "Valorización de obra y pago oportuno y transparente",
+    standardDescription: "La valorización y el pago se emiten dentro de los plazos previstos y de acuerdo con los requisitos establecidos en la normativa de contrataciones públicas.",
+    riskDescription: "La valorización y el pago no son tramitados en los plazos previstos en la normativa, aspecto que puede generar suspensión por falta de pago o espacios antiéticos entre los funcionarios y contratistas a fin de agilizar dichos trámites.",
+    indicators: [
+      "13.1 La entidad devenga más del 70 % de la Programación Financiera Actualizada según el Sistema de Seguimiento de Inversiones (SSI) dentro del mes programado.",
+      "13.2 El contratista no suspende la ejecución de la obra debido a falta de pago atribuible a la entidad.",
+      "13.3 La entidad cuenta con un lineamiento para realizar el procedimiento de valorizaciones y pagos aplicable a obras públicas."
+    ],
+    verifications: [
+      "Formato 12 B (SSI del MEF). Consultar ejecución financiera en la parte final de dicho formato, en donde aparece el devengado por mes respecto de la programación financiera actualizada.",
+      "Consulta Amigable del MEF, que permite ver en tiempo real el presupuesto de la inversión pública y su nivel de ejecución.",
+      "Acta de suspensión de obra por falta de pago por parte de la entidad.",
+      "Lineamiento sobre procedimiento de valorización y pago aprobado por la entidad."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores / indicadores,\n¡ya cumplimos el ESTÁNDAR 13!\nSi solo se cumple con el indicador 13.1 y el verificador 13.2, se cumple parcialmente.",
+  },
+  "14": {
+    title: "Entidad absuelve las situaciones adversas de la CGR oportunamente",
+    standardDescription: "Las situaciones adversas identificadas en los informes de la Contraloría General de la República (CGR) son corregidas y la entidad adopta acciones preventivas o correctivas.",
+    riskDescription: "Las entidades no adoptan acciones para superar las situaciones adversas identificadas por la CGR o no las comunican, lo que puede generar responsabilidad administrativa, civil o penal en los funcionarios vinculados.",
+    indicators: [
+      "14.1 La entidad notifica a la CGR la implementación de las situaciones adversas como máximo a los 90 días calendario de recibido el informe de control.",
+      "14.2 El porcentaje de situaciones adversas corregidas de acuerdo a la evaluación de la CGR es mayor o igual al 50 %.",
+      "14.3 No existen funcionarios o servidores con responsabilidad administrativa, civil o penal identificados en informes de control por la CGR."
+    ],
+    verifications: [
+      "Oficio de respuesta al informe de control de la CGR por parte de la entidad.",
+      "Informe de control que indica qué situaciones adversas han sido corregidas por parte de la entidad.",
+      "Informes de control específico a hechos con presunta irregularidad (identifica presuntos responsables de la entidad)."
+    ],
+    cumplimiento: "Si se cumplen estos indicadores,\n¡ya cumplimos el ESTÁNDAR 14!\nSi solo se cumple con el verificador 14.1 y el indicador 14.2, se cumple parcialmente.",
+  },
+  "15": {
+    title: "Recepción de obra de acuerdo con el ETO",
+    standardDescription: "La obra es recibida por la entidad, cumple con lo establecido en el ETO y con las modificaciones aprobadas por la entidad a fin de que esté al servicio de los usuarios.",
+    riskDescription: "La conformación del comité de recepción e instalación demora más de lo previsto, no se comparte la documentación completa al comité o las observaciones formuladas no son levantadas por el contratista oportunamente, lo que afecta la puesta en funcionamiento de la obra.",
+    indicators: [
+      "15.1 El comité de recepción de obra se instala y revisa la documentación necesaria para la adecuada verificación de la obra dentro de 20 días hábiles.",
+      "15.2 El comité de recepción suscribe el acta de recepción dentro de los plazos establecidos en el reglamento.",
+      "15.3 El Colegio de Ingenieros, el Colegio de Arquitectos o un representante del órgano de control institucional de la entidad participan en calidad de veedores en el proceso de recepción."
+    ],
+    verifications: [
+      "Resolución de la entidad que conforma el comité de recepción de obra.",
+      "Acta de recepción de la obra."
+    ],
+    cumplimiento: "Si se cumplen estos verificadores / indicadores,\n¡ya cumplimos el ESTÁNDAR 15!\nSi solo se cumple con el verificador 15.2, se cumple parcialmente.",
+  }
+};
+
 /* ===== Búsqueda ===== */
 function initSearch() {
   const searchInput = document.getElementById("searchInput");
@@ -158,10 +392,21 @@ function initModal() {
   const modalContainer = document.getElementById("modalContainer");
   const modalOverlay = document.getElementById("modalOverlay");
   const modalClose = document.getElementById("modalClose");
-  modalOverlay?.addEventListener("click", closeModal);
-  modalClose?.addEventListener("click", closeModal);
+  
+  // Close modal when clicking overlay or close button
+  if (modalOverlay) {
+    modalOverlay.addEventListener("click", closeModal);
+  }
+  
+  if (modalClose) {
+    modalClose.addEventListener("click", closeModal);
+  }
+  
+  // Close modal with Escape key
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && modalContainer?.classList.contains("active")) closeModal();
+    if (e.key === "Escape" && modalContainer.classList.contains("active")) {
+      closeModal();
+    }
   });
 }
 /* ===== Render del modal compacto ===== */
@@ -205,43 +450,71 @@ function renderModalFromData(modalContentNew, item) {
 /* ===== Abre el modal y aplica tema por grupo ===== */
 async function openStandardModal(card) {
   const modalContainer = document.getElementById("modalContainer");
-  const modalContentNew = document.getElementById("modalContentNew");
-  if (!modalContainer || !modalContentNew) return;
-
-  const id = Number(card.getAttribute("data-standard"));
-  try {
-    const data = await ensureDataLoaded();
-    const item = data.find((x) => Number(x.id) === id);
-    if (!item) return;
-
-    renderModalFromData(modalContentNew, item);
-
-    // Tema por grupos
-    modalContainer.classList.remove("modal-theme--blue","modal-theme--red","modal-theme--green");
-    let theme = "green";
-    if (id >= 1 && id <= 5) { theme = "blue";  modalContainer.classList.add("modal-theme--blue"); }
-    else if (id >= 6 && id <= 9) { theme = "red"; modalContainer.classList.add("modal-theme--red"); }
-    else { theme = "green"; modalContainer.classList.add("modal-theme--green"); }
-
-    // Ilustración
-    const img = document.getElementById("modalIllustration");
-    if (img) {
-      const byId = IMAGES_BY_ID[id];
-      //const byTheme = IMAGES_BY_THEME[theme] || "../img/placeholder.png";
-      img.src = byId;
-      img.alt = `Ilustración Estándar ${id}`;
-    }
-
-    modalContainer.classList.add("active");
-    document.body.style.overflow = "hidden";
-  } catch (err) {
-    console.error("Error al abrir modal:", err);
+  const modalContentNew = document.getElementById("modalContentNew"); // Reference the new content container
+  
+  if (!modalContainer || !modalContentNew) {
+    console.error("Modal elements not found");
+    return;
   }
+  
+  // Get card data
+  const standardNumber = card.getAttribute("data-standard");
+  const standardTitle = card.querySelector(".standard-title").textContent;
+  const phase = card.getAttribute("data-phase") || "ejecucion";
+
+  // Dynamic content from the clicked card
+  const standardDescription = standardTitle; // The card title is the "Estándar" description in the modal
+  const riskDescription = card.querySelector(".standard-detail:nth-child(1) p").textContent;
+  const indicatorDescription = card.querySelector(".standard-detail:nth-child(2) p").textContent;
+  const actionsDescription = card.querySelector(".standard-detail:nth-child(3) p").textContent;
+
+  // Update static elements (from the image)
+  modalContentNew.querySelector(".estandar-integridad-label").textContent = "ESTÁNDAR DE INTEGRIDAD";
+  modalContentNew.querySelector(".modal-number-new").textContent = standardNumber;
+  modalContentNew.querySelector(".modal-title-new").innerHTML = `El proyecto de inversión pública<br>cierra brechas y es de interés público`;
+
+  // Update dynamic elements
+  modalContentNew.querySelector(".section-new:nth-child(1) p").textContent = standardDescription; // "Estándar" description
+  modalContentNew.querySelector(".section-new:nth-child(2) p").textContent = riskDescription; // "Riesgo" description
+
+  // "Indicador del estándar de integridad" descriptions (partially static, partially dynamic based on requirements)
+  // For now, I'll keep them as static based on the provided image, as the card's indicators are generic.
+  modalContentNew.querySelector(".indicador-section-new p:nth-of-type(1)").innerHTML = `<strong>1.1</strong> El proyecto de inversión contribuye a <u>reducir brechas</u> de un sector priorizado para la región.`;
+  modalContentNew.querySelector(".indicador-section-new p:nth-of-type(2)").innerHTML = `<strong>1.2</strong> El porcentaje que aporta la inversión pública al cierre de brechas en un sector priorizado <u>es mayor a 0%</u>.`;
+
+  // Medio de verificación (partially static, partially dynamic)
+  // The first item (Registro de proyecto...) is static in structure but its content comes from card's actions
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(1) .verificacion-text-new p").textContent = "Registro de proyecto de inversión (Formato N° 12-A)";
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(1) .verificacion-text-new ul").innerHTML = `
+    <li>Indicador de brecha (Formato N° F4-A)</li>
+    <li>Seguimiento de cierre de brechas (Formato N° F12-A)</li>
+    <li>Ver: Directiva N° 001-2019-EF/63.01</li>
+  `;
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(2) .verificacion-text-new").textContent = "Solicitud de Acceso a Información Pública (SAIP)"; // This appears static in the image
+  modalContentNew.querySelector(".verificacion-item-new:nth-child(3) .verificacion-text-new").textContent = "Revisión del Sistema de Seguimiento de Inversión Pública (SSI-MEF)"; // This appears static in the image
+
+  // Update placeholder image
+  modalContentNew.querySelector(".modal-image-new img").src = `../img/placeholder.png`; // Local placeholder image
+  modalContentNew.querySelector(".modal-image-new img").alt = `Placeholder image for character - Estándar ${standardNumber}`;
+
+  // Update modal close button color based on phase
+  const modalClose = document.getElementById("modalClose");
+  if (modalClose) {
+    modalClose.setAttribute("data-phase", phase);
+  }
+  
+  // Show modal
+  modalContainer.classList.add("active");
+  document.body.style.overflow = "hidden"; // Prevent scrolling
 }
 
+// Close modal
 function closeModal() {
   const modalContainer = document.getElementById("modalContainer");
-  if (modalContainer) { modalContainer.classList.remove("active"); document.body.style.overflow = ""; }
+  if (modalContainer) {
+    modalContainer.classList.remove("active");
+    document.body.style.overflow = ""; // Restore scrolling
+  }
 }
 
 /* ===== Recursos (ripple y aviso) ===== */
