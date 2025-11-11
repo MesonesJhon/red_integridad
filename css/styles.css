@@ -184,7 +184,7 @@ h4 {
 }
 
 .notification.success {
-  background: linear-gradient(135deg, #2f6fe0 0%, #4a90e2 100%);
+  background: linear-gradient(135deg, #7cdb2e 0%, #b7e24a 100%);
 }
 
 .notification.error {
