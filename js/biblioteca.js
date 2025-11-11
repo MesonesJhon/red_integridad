@@ -1,5 +1,14 @@
-// Biblioteca Section - Enhanced JavaScript
+// Biblioteca Section - Enhanced JavaScript CORREGIDO
 document.addEventListener("DOMContentLoaded", () => {
+  // Mark all cards as visible initially
+  const documentCards = document.querySelectorAll(".document-card");
+  documentCards.forEach(card => {
+    card.setAttribute("data-visible", "true");
+    card.style.display = "flex";
+    card.style.opacity = "1";
+    card.style.transform = "translateY(0)";
+  });
+  
   // Initialize all functionality
   initSearch();
   initFilters();
@@ -7,6 +16,12 @@ document.addEventListener("DOMContentLoaded", () => {
   initDashboardAnimations();
   initPagination();
   updateFilterCounts();
+  
+  // Initialize results counter
+  const resultsCount = document.getElementById("resultsCount");
+  if (resultsCount) {
+    resultsCount.textContent = documentCards.length;
+  }
 });
 
 // Search functionality
@@ -19,7 +34,7 @@ function initSearch() {
 
   searchInput.addEventListener("input", (e) => {
     const searchTerm = e.target.value.toLowerCase().trim();
-    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
+    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
     
     if (searchTerm.length > 0) {
       clearSearch.style.display = "flex";
@@ -33,7 +48,7 @@ function initSearch() {
   clearSearch.addEventListener("click", () => {
     searchInput.value = "";
     clearSearch.style.display = "none";
-    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "todos";
+    const filterActive = document.querySelector(".filter-btn.active")?.getAttribute("data-filter") || "all";
     filterAndSearchDocuments("", filterActive);
     searchInput.focus();
   });
@@ -69,22 +84,26 @@ function initFilters() {
   });
 }
 
-// Filter and search documents
+// Filter and search documents - CORREGIDO
 function filterAndSearchDocuments(searchTerm, filterType) {
   const documentCards = document.querySelectorAll(".document-card");
   const noResults = document.getElementById("noResults");
+  const resultsCount = document.getElementById("resultsCount");
   let visibleCount = 0;
 
   documentCards.forEach((card, index) => {
-    const cardType = card.getAttribute("data-type");
+    const cardType = card.getAttribute("data-type") || "";
     const title = card.querySelector(".document-title")?.textContent.toLowerCase() || "";
     const description = card.querySelector(".document-description")?.textContent.toLowerCase() || "";
     
-    const matchesFilter = filterType === "todos" || cardType === filterType;
-    const matchesSearch = !searchTerm || title.includes(searchTerm) || description.includes(searchTerm);
+    // CORRECCIÓN: Cambiar "todos" por "all"
+    const matchesFilter = filterType === "all" || cardType === filterType;
+    const matchesSearch = !searchTerm || 
+                         title.includes(searchTerm) || 
+                         description.includes(searchTerm);
     
     if (matchesFilter && matchesSearch) {
-      // Mark as visible by filter (add data attribute)
+      // Mark as visible
       card.setAttribute("data-visible", "true");
       card.style.opacity = "0";
       card.style.transform = "translateY(20px)";
@@ -93,11 +112,12 @@ function filterAndSearchDocuments(searchTerm, filterType) {
         card.style.transition = "all 0.4s ease";
         card.style.opacity = "1";
         card.style.transform = "translateY(0)";
+        card.style.display = "flex";
       }, 50 * visibleCount);
       
       visibleCount++;
     } else {
-      // Mark as hidden by filter
+      // Mark as hidden
       card.setAttribute("data-visible", "false");
       card.style.transition = "all 0.3s ease";
       card.style.opacity = "0";
@@ -119,6 +139,11 @@ function filterAndSearchDocuments(searchTerm, filterType) {
     }
   }, 400);
 
+  // Update results counter
+  if (resultsCount) {
+    resultsCount.textContent = visibleCount;
+  }
+
   // Update pagination after filtering
   setTimeout(() => {
     currentPage = 1; // Reset to first page when filtering
@@ -131,7 +156,7 @@ function filterAndSearchDocuments(searchTerm, filterType) {
   }
 }
 
-// Update filter counts
+// Update filter counts - CORREGIDO
 function updateFilterCounts(activeFilter = null) {
   const filterBtns = document.querySelectorAll(".filter-btn");
   const documentCards = document.querySelectorAll(".document-card");
@@ -140,11 +165,12 @@ function updateFilterCounts(activeFilter = null) {
     const filterType = btn.getAttribute("data-filter");
     let count = 0;
 
-    if (filterType === "todos") {
+    // CORRECCIÓN: Cambiar "todos" por "all"
+    if (filterType === "all") {
       count = documentCards.length;
     } else {
       documentCards.forEach((card) => {
-        const cardType = card.getAttribute("data-type");
+        const cardType = card.getAttribute("data-type") || "";
         if (cardType === filterType) {
           count++;
         }
@@ -197,7 +223,7 @@ function initDocumentActions() {
       ripple.style.width = "0";
       ripple.style.height = "0";
       ripple.style.borderRadius = "50%";
-      ripple.style.background = "rgba(47, 111, 224, 0.3)";
+      ripple.style.background = "rgba(146, 180, 89, 0.3)"; // Color verde
       ripple.style.transform = "translate(-50%, -50%)";
       ripple.style.left = "50%";
       ripple.style.top = "50%";
@@ -221,6 +247,9 @@ function initDocumentActions() {
         }
       } else if (typeof showNotification === 'function') {
         showNotification(`${action}: ${title}`, "success");
+      } else {
+        // Fallback simple
+        console.log(`${action}: ${title}`);
       }
     });
 
@@ -280,44 +309,12 @@ function initDashboardAnimations() {
   });
 }
 
-// La función showNotification ahora está en main.js (función global)
-// Si no está disponible, se usa esta como fallback
-if (typeof showNotification === 'undefined') {
-  function showNotification(message, type = "success") {
-    const notification = document.createElement("div");
-    notification.className = `notification ${type}`;
-    
-    const icon = type === "success" ? "✓" : "✕";
-    notification.innerHTML = `
-      <div class="notification-icon">${icon}</div>
-      <div style="flex: 1;">${message}</div>
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.style.animation = "slideOutBottom 0.4s ease-in";
-      setTimeout(() => {
-        if (notification.parentNode) {
-          notification.remove();
-        }
-      }, 400);
-    }, 4000);
-  }
-}
-
 // Pagination functionality
 let currentPage = 1;
 let itemsPerPage = 12;
 let totalItems = 0;
 
 function initPagination() {
-  // Mark all documents as visible initially
-  const documentCards = document.querySelectorAll(".document-card");
-  documentCards.forEach(card => {
-    card.setAttribute("data-visible", "true");
-  });
-  
   // Initialize pagination after a short delay to ensure DOM is ready
   setTimeout(() => {
     updatePagination();
@@ -505,25 +502,14 @@ style.textContent = `
     }
   }
   
-  @keyframes slideInRight {
+  @keyframes fadeInUp {
     from {
-      transform: translateX(100%);
       opacity: 0;
+      transform: translateY(30px);
     }
     to {
-      transform: translateX(0);
       opacity: 1;
-    }
-  }
-  
-  @keyframes slideOutRight {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(100%);
-      opacity: 0;
+      transform: translateY(0);
     }
   }
 `;

@@ -6,38 +6,298 @@
     <title>Observatorio - Red de Integridad</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/observatorio.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
-<nav class="navbar">
-    <div class="navbar-container">
-        <div class="navbar-brand">
-            <img src="../img/RED-INTERQUORUM-LAMBAYEQUE.png" alt="logo" class="navbar-icon">
-            <span class="navbar-title">Red de Integridad</span>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <div class="navbar-brand">
+                <img src="../img/RED-INTERQUORUM-LAMBAYEQUE.png" alt="logo" class="navbar-icon">
+                <span class="navbar-title">Red de Integridad</span>
+            </div>
+
+            <div class="navbar-menu" id="navbarMenu">
+                <a href="../index.html" class="nav-link">Inicio</a>
+                <a href="quienes-somos.html" class="nav-link">¿Quiénes somos?</a>
+                <a href="que-hacemos.html" class="nav-link">¿Que hacemos?</a>
+                <a href="publicaciones.html" class="nav-link">Publicaciones</a>
+                <a href="observatorio.html" class="nav-link active">Observatorio</a>
+                <a href="contacto.html" class="nav-link">Contacto</a>
+            </div>
+
+            <button class="navbar-toggle" id="navbarToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
-        <div class="navbar-menu" id="navbarMenu">
-            <a href="../index.html" class="nav-link">Inicio</a>
-            <a href="quienes-somos.html" class="nav-link">¿Quiénes somos?</a>
-            <a href="que-hacemos.html" class="nav-link">¿Qué hacemos?</a>
-            <a href="publicaciones.html" class="nav-link">Publicaciones</a>
-            <a href="observatorio.html" class="nav-link active">Observatorio</a>
-            <a href="contacto.html" class="nav-link">Contacto</a>
+    </nav>
+
+    <div class="observatorio-container">
+        <!-- Header -->
+        <header class="observatorio-header">
+            <h1><i class="fas fa-chart-line"></i> OBSERVATORIO</h1>
+            <p class="subtitle">Información y estadísticas para el seguimiento a la agenda de buen gobierno, integridad, transparencia y lucha contra la corrupción</p>
+        </header>
+
+        <!-- Filtros -->
+        <div class="filters-section">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="Buscar enlaces, instituciones...">
+                <button class="search-clear" id="clearSearch" style="display: none;">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="category-filters">
+                <button class="filter-btn active" data-filter="all">
+                    Todos
+                    <span class="filter-count" id="count-all">9</span>
+                </button>
+                <button class="filter-btn" data-filter="estadisticas">
+                    <i class="fas fa-chart-bar"></i> Estadísticas
+                    <span class="filter-count" id="count-estadisticas">1</span>
+                </button>
+                <button class="filter-btn" data-filter="fiscalizacion">
+                    <i class="fas fa-search"></i> Fiscalización
+                    <span class="filter-count" id="count-fiscalizacion">2</span>
+                </button>
+                <button class="filter-btn" data-filter="legal">
+                    <i class="fas fa-gavel"></i> Marco Legal
+                    <span class="filter-count" id="count-legal">2</span>
+                </button>
+                <button class="filter-btn" data-filter="instituciones">
+                    <i class="fas fa-landmark"></i> Instituciones
+                    <span class="filter-count" id="count-instituciones">2</span>
+                </button>
+                <button class="filter-btn" data-filter="denuncias">
+                    <i class="fas fa-exclamation-circle"></i> Denuncias
+                    <span class="filter-count" id="count-denuncias">1</span>
+                </button>
+                <button class="filter-btn" data-filter="sociedad-civil">
+                    <i class="fas fa-users"></i> Sociedad Civil
+                    <span class="filter-count" id="count-sociedad-civil">1</span>
+                </button>
+                <button class="filter-btn" data-filter="regional">
+                    <i class="fas fa-map-marker-alt"></i> Regional
+                    <span class="filter-count" id="count-regional">1</span>
+                </button>
+            </div>
         </div>
-        <button class="navbar-toggle" id="navbarToggle">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
+
+        <!-- Grid de Tarjetas -->
+        <div class="cards-grid" id="cardsGrid">
+            <!-- Estadísticas y Datos Nacionales -->
+            <div class="card" data-category="estadisticas">
+                <div class="card-icon">
+                    <i class="fas fa-chart-bar"></i>
+                </div>
+                <h3>INEI - Cifras de Pobreza</h3>
+                <p>Estadísticas oficiales de pobreza monetaria en el Perú</p>
+                <div class="card-link">
+                    <a href="https://www.gob.pe/institucion/inei/colecciones/20882-cifras-de-pobreza" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Acceder
+                    </a>
+                </div>
+                <span class="card-tag">Estadísticas</span>
+            </div>
+
+            <!-- Fiscalización -->
+            <div class="card" data-category="fiscalizacion">
+                <div class="card-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>Contraloría - Buscador de Informes</h3>
+                <p>Acceso a informes de control y fiscalización gubernamental</p>
+                <div class="card-link">
+                    <a href="https://appbp.contraloria.gob.pe/BuscadorCGR/Informes/Avanzado.html" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Acceder
+                    </a>
+                </div>
+                <span class="card-tag">Fiscalización</span>
+            </div>
+
+            <div class="card" data-category="fiscalizacion">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h3>Sistema INVIERTE.PE</h3>
+                <p>Seguimiento y consulta de inversiones públicas</p>
+                <div class="card-link">
+                    <a href="https://ofi5.mef.gob.pe/ssi/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Acceder
+                    </a>
+                </div>
+                <span class="card-tag">Fiscalización</span>
+            </div>
+
+            <!-- Marco Legal -->
+            <div class="card" data-category="legal">
+                <div class="card-icon">
+                    <i class="fas fa-file-pdf"></i>
+                </div>
+                <h3>Política Nacional de Integridad</h3>
+                <p>Política Nacional de Integridad y Lucha contra la Corrupción</p>
+                <div class="card-link">
+                    <a href="https://cdn.www.gob.pe/uploads/document/file/388273/Politica-Nacional-de-Integridad-y-Lucha-contra-la-Corrupcion.pdf" target="_blank">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </a>
+                </div>
+                <span class="card-tag">Marco Legal</span>
+            </div>
+
+            <div class="card" data-category="legal">
+                <div class="card-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <h3>Guía Gestión de Riesgos</h3>
+                <p>Guía para la gestión de riesgos que afectan la integridad pública</p>
+                <div class="card-link">
+                    <a href="https://cdn.www.gob.pe/uploads/document/file/4029197/Guía para la gestión de riesgos que afectan la integgridad pública.pdf" target="_blank">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </a>
+                </div>
+                <span class="card-tag">Marco Legal</span>
+            </div>
+
+            <!-- Instituciones -->
+            <div class="card" data-category="instituciones">
+                <div class="card-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h3>Jurado Nacional de Elecciones</h3>
+                <p>Portal oficial del JNE para procesos electorales</p>
+                <div class="card-link">
+                    <a href="https://portal.jne.gob.pe/portal" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visitar
+                    </a>
+                </div>
+                <span class="card-tag">Instituciones</span>
+            </div>
+
+            <div class="card" data-category="instituciones">
+                <div class="card-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h3>Contraloría General</h3>
+                <p>Contraloría General de la República del Perú</p>
+                <div class="card-link">
+                    <a href="https://www.gob.pe/contraloria" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visitar
+                    </a>
+                </div>
+                <span class="card-tag">Instituciones</span>
+            </div>
+
+            <!-- Denuncias -->
+            <div class="card" data-category="denuncias">
+                <div class="card-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h3>Plataforma de Denuncias</h3>
+                <p>Plataforma Digital Única de Denuncias del Ciudadano</p>
+                <div class="card-link">
+                    <a href="https://denuncias.servicios.gob.pe/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Denunciar
+                    </a>
+                </div>
+                <span class="card-tag">Denuncias</span>
+            </div>
+
+            <!-- Sociedad Civil -->
+            <div class="card" data-category="sociedad-civil">
+                <div class="card-icon">
+                    <i class="fas fa-eye"></i>
+                </div>
+                <h3>A.C. Transparencia</h3>
+                <p>Asociación Civil Transparencia - Vigilancia ciudadana</p>
+                <div class="card-link">
+                    <a href="https://www.transparencia.org.pe/" target="_blank">
+                        <i class="fas fa-external-link-alt"></i> Visitar
+                    </a>
+                </div>
+                <span class="card-tag">Sociedad Civil</span>
+            </div>
+
+            <!-- Regional -->
+            <div class="card" data-category="regional">
+                <div class="card-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <h3>MCLCP Lambayeque</h3>
+                <p>Reporte de seguimiento a la Agenda de Buen Gobierno en Lambayeque</p>
+                <div class="card-link">
+                    <a href="https://intranet.mesadeconcertacion.org.pe/storage/documentos/2025-08-20/reporte-de-seguimiento-concertado-agenda-buen-gobierno-2023-2026-publicacion.pdf" target="_blank">
+                        <i class="fas fa-download"></i> Descargar PDF
+                    </a>
+                </div>
+                <span class="card-tag">Regional</span>
+            </div>
+
+            <!-- Agrega más tarjetas según necesites -->
+        </div>
+
+        <!-- Contador de resultados -->
+        <div class="results-counter">
+            <span id="resultsCount">0</span> recursos encontrados
+        </div>
+
+        <!-- Mensaje de no resultados -->
+        <div class="no-results" id="noResults" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <h3>No se encontraron recursos</h3>
+            <p>Intenta con otros términos de búsqueda o selecciona otra categoría</p>
+        </div>
     </div>
-</nav>
-<main class="main-content">
-    <section class="section" style="min-height:40vh;display:flex;align-items:center;justify-content:center;">
-        <div style="background:#f9fafb;border:2px dashed #b3b5b9;color:#64748b;padding:38px 36px;max-width:550px;text-align:center;border-radius:14px;">
-            <h2>Observatorio</h2>
-            <p>Muy pronto aquí estarán disponibles noticias de actualidad, investigaciones y reportajes sobre integridad y lucha contra la corrupción en la región.</p>
-            <strong>Estamos a la espera de información. Próximamente más contenido.</strong>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Red de Integridad</h4>
+                <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.</p>
+            </div>
+            <div class="footer-section">
+                <h4>Servicios</h4>
+                <ul>
+                    <li><a href="#">Sistemas de Integridad</a></li>
+                    <li><a href="#">Capacitación</a></li>
+                    <li><a href="#">Auditorías</a></li>
+                    <li><a href="#">Compliance</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Empresa</h4>
+                <ul>
+                    <li><a href="#">Sobre nosotros</a></li>
+                    <li><a href="#">Equipo</a></li>
+                    <li><a href="#">Casos de éxito</a></li>
+                    <li><a href="#">Blog</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Contacto</h4>
+                <ul>
+                    <li>info@redintegridad.org</li>
+                    <li>+51 987 456 321</li>
+                    <li>Chiclayo, Lambayeque</li>
+                </ul>
+            </div>
         </div>
-    </section>
-</main>
-<script src="../js/navbar.js"></script>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="../js/navbar.js"></script>
+    <script src="../js/observatorio.js"></script>
 </body>
 </html>

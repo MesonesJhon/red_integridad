@@ -93,15 +93,15 @@
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #2f6fe0 0%, #4a90e2 100%);
+  background: linear-gradient(135deg, #92b459 0%, #7a9a4a 100%);
   color: white;
-  box-shadow: 0 8px 25px rgba(47, 111, 224, 0.4);
+  box-shadow: 0 8px 25px rgba(146, 180, 89, 0.4);
 }
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 12px 35px rgba(47, 111, 224, 0.6);
-  background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  box-shadow: 0 12px 35px rgba(146, 180, 89, 0.6);
+  background: linear-gradient(135deg, #7a9a4a 0%, #6a8a3a 100%);
 }
 
 .btn-secondary {
@@ -272,7 +272,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -302,7 +302,7 @@
   transform: translateX(-50%);
   width: 180px;
   height: 4px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   border-radius: 2px;
 }
 
@@ -340,7 +340,7 @@
   left: 0;
   width: 4px;
   height: 100%;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
 }
 
 #introParrafo::after {
@@ -392,9 +392,9 @@
 
 /* Efecto de resaltado en texto importante */
 #introParrafo strong {
-  color: #314973;
+  color: #92b459;
   font-weight: 600;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -410,7 +410,7 @@
   left: 0;
   width: 100%;
   height: 2px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   opacity: 0.3;
   transition: opacity 0.3s ease;
 }
@@ -540,11 +540,11 @@
   }
 
   .quienes-somos-title h2 {
-    color: #314973;
+    color: #92b459;
   }
 
   #introParrafo strong {
-    color: #314973;
+    color: #92b459;
     font-weight: 600;
   }
 }
@@ -583,7 +583,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -600,7 +600,7 @@
   transform: translateX(-50%);
   width: 180px;
   height: 4px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   border-radius: 2px;
 }
 
@@ -637,7 +637,7 @@
   left: 0;
   width: 6px;
   height: 100%;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
 }
 
 .mv-card::after {
@@ -662,7 +662,7 @@
   font-weight: 700;
   margin-bottom: 25px;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -677,7 +677,7 @@
   left: 0;
   width: 50px;
   height: 3px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   border-radius: 2px;
   transition: width 0.3s ease;
 }
@@ -859,11 +859,11 @@
   }
 
   .section-mv-title h2 {
-    color: #314973;
+    color: #92b459;
   }
 
   .mv-card h2 {
-    color: #314973;
+    color: #92b459;
   }
 }
 
@@ -912,7 +912,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -952,7 +952,7 @@
   left: 0;
   width: 6px;
   height: 100%;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
 }
 
 .org-secretaria h3 {
@@ -960,7 +960,7 @@
   font-weight: 700;
   margin-bottom: 20px;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -993,7 +993,7 @@
   font-weight: 700;
   margin-bottom: 16px;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1042,7 +1042,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   transform: scaleX(0);
   transition: transform 0.3s ease;
 }
@@ -1223,7 +1223,7 @@
   .section-org-header h2,
   .org-secretaria h3,
   .org-miembros-header h3 {
-    color: #314973;
+    color: #92b459;
   }
 }
 
@@ -1273,7 +1273,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1315,7 +1315,7 @@
   left: 0;
   right: 0;
   height: 4px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   transform: scaleX(0);
   transition: transform 0.4s ease;
 }
@@ -1337,7 +1337,7 @@
   width: 80px;
   height: 80px;
   margin: 0 auto 30px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -1350,7 +1350,7 @@
   content: '';
   position: absolute;
   inset: -2px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   border-radius: 50%;
   z-index: -1;
   opacity: 0.3;
@@ -1368,7 +1368,7 @@
   font-weight: 700;
   margin-bottom: 20px;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1568,13 +1568,13 @@
 
   .section-valores-header h2,
   .valor-card h3 {
-    color: #314973;
+    color: #92b459;
   }
 }
 
 /* Estados de focus para accesibilidad */
 .valor-card:focus-within {
-  outline: 2px solid #314973;
+  outline: 2px solid #92b459;
   outline-offset: 2px;
 }
 
@@ -1613,7 +1613,7 @@
   font-size: 3rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1755,7 +1755,7 @@
   left: 0;
   width: 100%;
   height: 1px;
-  background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   opacity: 0.3;
   transition: opacity 0.3s ease;
 }
@@ -1771,7 +1771,7 @@
   .section-header h2 {
     background: none;
     -webkit-text-fill-color: initial;
-    color: #314973;
+    color: #92b459;
   }
 }
 

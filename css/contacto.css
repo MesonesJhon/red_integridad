@@ -12,7 +12,7 @@
         font-size: 3rem;
         font-weight: 800;
         color: #1e293b;
-        background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+        background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -61,7 +61,7 @@
         left: 0;
         width: 6px;
         height: 100%;
-        background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+        background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
     }
     
     .form-row {
@@ -100,9 +100,9 @@
     .form-group input:focus,
     .form-group textarea:focus {
         outline: none;
-        border-color: #7a81a7;
+        border-color: #92b459;
         background: rgba(255, 255, 255, 0.95);
-        box-shadow: 0 0 0 3px rgba(122, 129, 167, 0.1);
+        box-shadow: 0 0 0 3px rgba(146, 180, 89, 0.1);
     }
     
     .form-group textarea {
@@ -122,7 +122,7 @@
         margin-top: 4px;
         width: 18px;
         height: 18px;
-        accent-color: #314973;
+        accent-color: #92b459;
         flex-shrink: 0;
     }
     
@@ -139,7 +139,7 @@
     .btn-primary {
         width: 100%;
         padding: 16px 24px;
-        background: linear-gradient(135deg, #2f6fe0 0%, #4a90e2 100%);
+        background: linear-gradient(135deg, #92b459 0%, #7a9a4a 100%);
         color: white;
         border: none;
         border-radius: 12px;
@@ -147,15 +147,15 @@
         font-weight: 600;
         cursor: pointer;
         transition: all 0.3s ease;
-        box-shadow: 0 8px 25px rgba(47, 111, 224, 0.4);
+        box-shadow: 0 8px 25px rgba(146, 180, 89, 0.4);
         position: relative;
         overflow: hidden;
     }
     
     .btn-primary:hover {
         transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(47, 111, 224, 0.6);
-        background: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+        box-shadow: 0 12px 35px rgba(146, 180, 89, 0.6);
+        background: linear-gradient(135deg, #7a9a4a 0%, #6a8a3a 100%);
     }
     
     .btn-primary:active {
@@ -184,7 +184,7 @@
         left: 0;
         width: 6px;
         height: 100%;
-        background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+        background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
     }
     
     .info-item {
@@ -200,7 +200,7 @@
         font-size: 1.3rem;
         font-weight: 700;
         color: #1e293b;
-        background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+        background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         background-clip: text;
@@ -224,7 +224,7 @@
     .social-link {
         display: inline-block;
         padding: 10px 20px;
-        background: linear-gradient(135deg, #314973 0%, #7a81a7 50%, #314973 100%);
+        background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
         color: white;
         text-decoration: none;
         border-radius: 8px;
@@ -236,7 +236,7 @@
     
     .social-link:hover {
         transform: translateY(-2px);
-        box-shadow: 0 8px 20px rgba(49, 73, 115, 0.3);
+        box-shadow: 0 8px 20px rgba(146, 180, 89, 0.3);
     }
     
     /* Efectos de animación */
@@ -325,14 +325,14 @@
         -webkit-backdrop-filter: blur(10px);
         animation: slideInBottom 0.4s ease-out;
         box-shadow: 
-            0 15px 40px rgba(47, 111, 224, 0.3),
-            0 3px 10px rgba(47, 111, 224, 0.2);
+            0 15px 40px rgba(146, 180, 89, 0.3),
+            0 3px 10px rgba(146, 180, 89, 0.2);
         cursor: pointer;
         border: 1px solid rgba(255, 255, 255, 0.2);
     }
     
     .notification.success {
-        background: linear-gradient(135deg, #2f6fe0 0%, #4a90e2 100%);
+        background: linear-gradient(135deg, #92b459 0%, #7a9a4a 100%);
     }
     
     .notification.error {
@@ -478,7 +478,7 @@
         }
         
         .notification {
-            background: #2f6fe0;
+            background: #92b459;
         }
         
         .notification.error {
@@ -495,7 +495,7 @@
     
         .section-header h2,
         .info-item h4 {
-            color: #314973;
+            color: #92b459;
         }
     }
     
@@ -510,11 +510,11 @@
     }
     
     .social-link:focus {
-        outline: 2px solid #314973;
+        outline: 2px solid #92b459;
         outline-offset: 2px;
     }
     
     .btn-primary:focus {
-        outline: 2px solid #2f6fe0;
+        outline: 2px solid #92b459;
         outline-offset: 2px;
     }
