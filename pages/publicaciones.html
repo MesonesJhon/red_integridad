@@ -8,13 +8,14 @@
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/header.css">
     <link rel="stylesheet" href="../css/publicaciones.css">
+    <link rel="stylesheet" href="../css/footer.css">
 </head>
 <body>
     <!-- HEADER -->
     <header class="header">
         <div class="header-container">
             <!-- LOGO + NOMBRE -->
-            <a href="index.html" class="header-brand">
+            <a href="../index.html" class="header-brand">
                 <img src="../img/LOGO-PRINCIPAL-INTEGRIDAD.png" alt="Logo Red de Integridad" class="header-logo">
                 <span class="header-title">
                     <span class="header-title-line">Red de</span>
@@ -34,10 +35,10 @@
 
                 <!-- ENLACES DEL MENÚ -->
                 <div class="header-menu" id="navbarMenu">
-                    <a href="../index.html" class="header-link active">Inicio</a>
-                    <a href="../pages/quienes-somos.html" class="header-link">¿Quiénes somos?</a>
+                    <a href="../index.html" class="header-link">Inicio</a>
+                    <a href="quienes-somos.html" class="header-link">¿Quiénes somos?</a>
                     <a href="../pages/que-hacemos.html" class="header-link">¿Qué hacemos?</a>
-                    <a href="../pages/publicaciones.html" class="header-link">Publicaciones</a>
+                    <a href="../pages/publicaciones.html" class="header-link active">Publicaciones</a>
                     <a href="../pages/observatorio.html" class="header-link">Observatorio</a>
                     <a href="../pages/contacto.html" class="header-link">Contacto</a>
 
@@ -498,44 +499,48 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="footer-content">
-            <div class="footer-section">
-                <h4>Red de Integridad</h4>
-                <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.</p>
+            <div class="footer-section footer-about">
+                <h3 class="footer-title">Acerca de Nosotros</h3>
+                <p>Somos una organización dedicada a promover la integridad y la transparencia en la gestión pública.</p>
             </div>
-            <div class="footer-section">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#">Sistemas de Integridad</a></li>
-                    <li><a href="#">Capacitación</a></li>
-                    <li><a href="#">Auditorías</a></li>
-                    <li><a href="#">Compliance</a></li>
+            <div class="footer-section footer-links">
+                <h3 class="footer-title">Enlaces Rápidos</h3>
+                <ul class="footer-list">
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#">Quienes Somos</a></li>
+                    <li><a href="#">Servicios</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </div>
-            <div class="footer-section">
-                <h4>Empresa</h4>
-                <ul>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Equipo</a></li>
-                    <li><a href="#">Casos de éxito</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <ul>
-                    <li>info@redintegridad.org</li>
-                    <li>+51 987 456 321</li>
+            <div class="footer-section footer-contact">
+                <h3 class="footer-title">Contacto</h3>
+                <ul class="footer-list">
+                    <li><a href="mailto:rintegridad2023@gmail.com"><i class="fas fa-envelope"></i> rintegridad2023@gmail.com</a></li>
+                    <li><a href="tel:+51987456321">+51 987 456 321</a></li>
                     <li>Chiclayo, Lambayeque</li>
                 </ul>
+                <div class="social-links-footer">
+                    <a href="https://www.facebook.com/RedDeIntegridadLambayeque" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://x.com/Integridad19046" target="_blank" aria-label="X (Twitter)">
+                        <i class="fab fa-x-twitter"></i>
+                    </a>
+                    <a href="https://www.youtube.com/@ReddeIntegridadLambayeque" target="_blank" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
+            <p>&copy; 2023 RED Integridad. Todos los derechos reservados.</p>
         </div>
     </footer>
 
     <script src="../js/main.js"></script>
-    <script src="../js/navbar.js"></script>
     <script src="../js/publicaciones.js"></script>
 </body>
 </html>
