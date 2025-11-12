@@ -554,6 +554,7 @@
   gap: 20px;
   position: relative;
   overflow: hidden;
+  margin: 0;
 }
 
 .standard-header::after {
@@ -1622,6 +1623,53 @@
   height: auto;
   border-radius: var(--border-radius);
 }
+
+
+
+/* ===== FILTROS POR FASE ===== */
+.filter-btn[data-filter="preparatorios"] {
+    border-color: #3b82f6;
+    color: #3b82f6;
+}
+
+.filter-btn[data-filter="preparatorios"]:hover,
+.filter-btn[data-filter="preparatorios"].active {
+    background: var(--gradient-preparatorios);
+    color: white;
+    border-color: transparent;
+}
+
+.filter-btn[data-filter="seleccion"] {
+    border-color: #ef4444;
+    color: #ef4444;
+}
+
+.filter-btn[data-filter="seleccion"]:hover,
+.filter-btn[data-filter="seleccion"].active {
+    background: var(--gradient-seleccion);
+    color: white;
+    border-color: transparent;
+}
+
+.filter-btn[data-filter="ejecucion"] {
+    border-color: #10b981;
+    color: #10b981;
+}
+
+.filter-btn[data-filter="ejecucion"]:hover,
+.filter-btn[data-filter="ejecucion"].active {
+    background: var(--gradient-ejecucion);
+    color: white;
+    border-color: transparent;
+}
+
+
+
+
+
+
+
+
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {

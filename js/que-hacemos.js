@@ -1,4 +1,4 @@
-/* ================= QUE-HACEMOS.JS (reemplazo completo) ================= */
+/* ================= QUE-HACEMOS.JS - ACTUALIZADO ================= */
 
 /* Rutas candidatas del JSON */
 const JSON_URL_CANDIDATES = [
@@ -7,7 +7,6 @@ const JSON_URL_CANDIDATES = [
 ];
 
 const IMAGES_BY_ID = {
-  // Ejemplos si tienes archivos específicos:
     1: "../img/Estandar_01.png",
     2: "../img/Estandar_02.png",
     3: "../img/Estandar_03.png",
@@ -23,6 +22,25 @@ const IMAGES_BY_ID = {
     13: "../img/Estandar_13.png",
     14: "../img/Estandar_14.png",
     15: "../img/Estandar_15.png",
+};
+
+// Mapeo de nombres de estándares según la imagen
+const NOMBRES_ESTANDARES = {
+    1: "El proyecto de inversión pública cierra brechas y es de interés público",
+    2: "Gestión integral de riesgos durante la ejecución de la inversión pública",
+    3: "Presentación oportuna de la Declaración Jurada de Intereses (DJI)",
+    4: "Calidad del Expediente Técnico de Obra (ETO)",
+    5: "Acuerdos de colaboración público-privada",
+    6: "La convocatoria contiene reglas de juego transparentes",
+    7: "Absolución motivada de consultas y observaciones",
+    8: "Pluralidad de propuestas y trato igualitario",
+    9: "Fiscalización posterior oportuna de la propuesta ganadora",
+    10: "Suscripción de contrato de acuerdo a requisitos legales",
+    11: "Supervisión de obra permanente y preventiva",
+    12: "Adicionales y ampliaciones de plazo motivados",
+    13: "Valorización de obra y pago oportuno y transparente",
+    14: "Entidad absuelve las situaciones adversas de la CGR oportunamente",
+    15: "Recepción de obra de acuerdo con el ETO"
 };
 
 let ESTANDARES_DATA = null;
@@ -50,7 +68,21 @@ document.addEventListener("DOMContentLoaded", () => {
   initStandardCards();
   initResourceActions();
   updateFilterCounts();
+  updateStandardTitles(); // Nueva función para actualizar títulos
 });
+
+/* ===== Actualizar títulos según la imagen ===== */
+function updateStandardTitles() {
+  const standardCards = document.querySelectorAll(".standard-card");
+  standardCards.forEach(card => {
+    const standardId = Number(card.getAttribute("data-standard"));
+    const newTitle = NOMBRES_ESTANDARES[standardId];
+    const titleElement = card.querySelector(".standard-title");
+    if (newTitle && titleElement) {
+      titleElement.textContent = newTitle;
+    }
+  });
+}
 
 /* ===== Búsqueda ===== */
 function initSearch() {
@@ -97,7 +129,7 @@ function filterAndSearchStandards(searchTerm, filterType) {
   let visibleCount = 0;
 
   standardCards.forEach((card) => {
-    const category = card.getAttribute("data-category") || "otros";
+    const category = card.getAttribute("data-phase") || "otros";
     const title = card.querySelector(".standard-title")?.textContent.toLowerCase() || "";
     const risks = card.querySelector(".standard-detail:nth-child(1) p")?.textContent.toLowerCase() || "";
     const indicators = card.querySelector(".standard-detail:nth-child(2) p")?.textContent.toLowerCase() || "";
@@ -122,20 +154,30 @@ function filterAndSearchStandards(searchTerm, filterType) {
     if (visibleCount === 0 && noResults) { noResults.style.display = "flex"; noResults.style.animation = "fadeInUp 0.5s ease"; }
     else if (noResults) { noResults.style.display = "none"; }
   }, 400);
-
-  if (!searchTerm) updateFilterCounts();
+updateFilterCounts(); // SIEMPRE actualizar contadores
 }
 
 /* ===== Contadores ===== */
+/* ===== Contadores ===== */
 function updateFilterCounts() {
   const filterBtns = document.querySelectorAll(".filter-btn");
-  const cards = document.querySelectorAll(".standard-card");
+  const cards = document.querySelectorAll('.standard-card[data-visible="true"]'); // SOLO LAS VISIBLES
+  
   filterBtns.forEach((btn) => {
     const type = btn.getAttribute("data-filter");
     let count = 0;
-    if (type === "todos") count = cards.length;
-    else cards.forEach((c) => { const cat = c.getAttribute("data-category") || "otros"; if (cat === type) count++; });
-    const el = btn.querySelector(".filter-count"); if (el) el.textContent = count;
+    
+    if (type === "todos") {
+      count = cards.length;
+    } else {
+      cards.forEach((c) => { 
+        const cat = c.getAttribute("data-phase") || "otros"; 
+        if (cat === type) count++; 
+      });
+    }
+    
+    const el = btn.querySelector(".filter-count"); 
+    if (el) el.textContent = count;
   });
 }
 
@@ -164,12 +206,16 @@ function initModal() {
     if (e.key === "Escape" && modalContainer?.classList.contains("active")) closeModal();
   });
 }
+
 /* ===== Render del modal compacto ===== */
 function renderModalFromData(modalContentNew, item) {
   // Header
   modalContentNew.querySelector(".estandar-integridad-label").textContent = "ESTÁNDAR DE INTEGRIDAD";
   modalContentNew.querySelector(".modal-number-new").textContent = item.id;
-  modalContentNew.querySelector(".modal-title-new").innerHTML = item.titulo_corto;
+  
+  // Usar el nombre de la imagen como título
+  const imageTitle = NOMBRES_ESTANDARES[item.id];
+  modalContentNew.querySelector(".modal-title-new").innerHTML = imageTitle || item.titulo_corto;
 
   // Estándar y Riesgo (lado a lado)
   const std = modalContentNew.querySelector('.section-new[data-kind="estandar"] .section-text');
@@ -227,7 +273,6 @@ async function openStandardModal(card) {
     const img = document.getElementById("modalIllustration");
     if (img) {
       const byId = IMAGES_BY_ID[id];
-      //const byTheme = IMAGES_BY_THEME[theme] || "../img/placeholder.png";
       img.src = byId;
       img.alt = `Ilustración Estándar ${id}`;
     }
