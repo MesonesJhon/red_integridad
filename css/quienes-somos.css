@@ -272,7 +272,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+  background: linear-gradient(135deg, #9dbc78 0%, #ec9f45 50%, #bca178 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -583,7 +583,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+  background: linear-gradient(135deg, #9dbc78 0%, #ec9f45 50%, #bca178 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -662,7 +662,7 @@
   font-weight: 700;
   margin-bottom: 25px;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+  background: linear-gradient(135deg, #9dbc78 0%, #7a9a4a 50%, #9dbc78 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1273,7 +1273,8 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+
+ background: linear-gradient(135deg, #9dbc78 30%, #ec9f45 50%, #9dbc78 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1368,7 +1369,7 @@
   font-weight: 700;
   margin-bottom: 20px;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+  background: linear-gradient(135deg, #9dbc78 0%, #7a9a4a 50%, #9dbc78 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

@@ -311,7 +311,7 @@ function initDashboardAnimations() {
 
 // Pagination functionality
 let currentPage = 1;
-let itemsPerPage = 12;
+let itemsPerPage = 9;
 let totalItems = 0;
 
 function initPagination() {

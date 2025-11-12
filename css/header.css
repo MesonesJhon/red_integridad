@@ -31,7 +31,7 @@
 .header-container {
   max-width: 1750px;
   margin: 0 auto;
-  padding: 0 2rem;
+  padding: 0 7rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -69,11 +69,11 @@
   display: flex;
   flex-direction: column;
   gap: 0.1rem;
-  line-height: 1.2;
+  line-height: 1.1;
 }
 
 .header-title-line {
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 600;
   color: var(--color-plomo);
   letter-spacing: 0.5px;
@@ -81,11 +81,10 @@
 }
 
 .header-title-highlight {
-  font-size: 16px;
+  font-size: 24px;
   font-weight: 800;
   color: var(--color-naranja);
   letter-spacing: 1.2px;
-  padding: 0.2rem 0;
 }
 
 /* Navigation styling */
@@ -384,11 +383,11 @@
   }
 
   .header-title-line {
-    font-size: 13px;
+    font-size: 15px;
   }
 
   .header-title-highlight {
-    font-size: 15px;
+    font-size: 21px;
   }
 
   .header-toggle {
@@ -512,11 +511,11 @@
   }
 
   .header-title-line {
-    font-size: 12px;
+    font-size: 13px;
   }
 
   .header-title-highlight {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   .header-menu {

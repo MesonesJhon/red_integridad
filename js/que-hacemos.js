@@ -210,7 +210,6 @@ function initModal() {
 /* ===== Render del modal compacto ===== */
 function renderModalFromData(modalContentNew, item) {
   // Header
-  modalContentNew.querySelector(".estandar-integridad-label").textContent = "ESTÁNDAR DE INTEGRIDAD";
   modalContentNew.querySelector(".modal-number-new").textContent = item.id;
   
   // Usar el nombre de la imagen como título
