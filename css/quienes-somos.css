@@ -583,7 +583,7 @@
   font-size: 2.2rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #9dbc78 0%, #ec9f45 50%, #bca178 100%);
+  background: linear-gradient(135deg, #9dbc78 10%, #ec9f45 50%, #bca178 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -993,7 +993,7 @@
   font-weight: 700;
   margin-bottom: 16px;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+ background: linear-gradient(135deg, #9dbc78 30%, #ec9f45 50%, #bca178 75%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -1285,7 +1285,7 @@
 .valores-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
+  gap: 30px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 24px;
@@ -1297,16 +1297,15 @@
   background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
   backdrop-filter: blur(15px);
   -webkit-backdrop-filter: blur(15px);
-  border-radius: 24px;
-  padding: 50px 40px;
+  border-radius: 20px;
   border: 1px solid rgba(255, 255, 255, 0.8);
-  box-shadow:
-    0 15px 40px rgba(49, 73, 115, 0.1),
-    0 3px 10px rgba(49, 73, 115, 0.06);
-  text-align: center;
-  position: relative;
+  box-shadow: 0 15px 40px rgba(49, 73, 115, 0.1);
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  height: 450px;
+  position: relative;
 }
 
 .valor-card::before {
@@ -1319,6 +1318,7 @@
   background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
   transform: scaleX(0);
   transition: transform 0.4s ease;
+  z-index: 2;
 }
 
 .valor-card::after {
@@ -1334,40 +1334,31 @@
   transition: opacity 0.4s ease;
 }
 
-.valor-icono {
-  width: 80px;
-  height: 80px;
-  margin: 0 auto 30px;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
-  border-radius: 50%;
+.valor-imagen {
+  height: 35%;
+  overflow: hidden;
+}
+
+.valor-imagen img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.valor-contenido {
+  height: 65%;
+  padding: 30px;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  position: relative;
-  transition: all 0.3s ease;
-}
-
-.valor-icono::before {
-  content: '';
-  position: absolute;
-  inset: -2px;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
-  border-radius: 50%;
-  z-index: -1;
-  opacity: 0.3;
-  transition: opacity 0.3s ease;
-}
-
-.valor-icono i {
-  font-size: 2.5rem;
-  color: white;
-  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  text-align: center;
 }
 
 .valor-card h3 {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  margin-bottom: 15px;
   color: #1e293b;
   background: linear-gradient(135deg, #9dbc78 0%, #7a9a4a 50%, #9dbc78 100%);
   -webkit-background-clip: text;
@@ -1376,7 +1367,7 @@
 }
 
 .valor-card p {
-  font-size: 1.1rem;
+  font-size: 1rem;
   line-height: 1.5;
   color: #4b5563;
   margin: 0;
@@ -1386,10 +1377,8 @@
 /* Efectos hover */
 @media (hover: hover) {
   .valor-card:hover {
-    transform: translateY(-10px) scale(1.02);
-    box-shadow:
-      0 25px 60px rgba(49, 73, 115, 0.15),
-      0 8px 20px rgba(49, 73, 115, 0.1);
+    transform: translateY(-8px);
+    box-shadow: 0 25px 60px rgba(49, 73, 115, 0.15);
   }
 
   .valor-card:hover::before {
@@ -1400,12 +1389,8 @@
     opacity: 1;
   }
 
-  .valor-card:hover .valor-icono {
-    transform: scale(1.1) rotate(5deg);
-  }
-
-  .valor-card:hover .valor-icono::before {
-    opacity: 0.5;
+  .valor-card:hover .valor-imagen img {
+    transform: scale(1.05);
   }
 }
 
@@ -1415,7 +1400,6 @@
     opacity: 0;
     transform: translateY(40px);
   }
-
   to {
     opacity: 1;
     transform: translateY(0);
@@ -1438,22 +1422,6 @@
   animation: fadeInUp 0.8s ease-out 0.6s both;
 }
 
-/* Iconos personalizados (fallback si no carga FontAwesome) */
-.valor-icono i.fa-scale-balanced::before {
-  content: '⚖️';
-  font-style: normal;
-}
-
-.valor-icono i.fa-person-rays::before {
-  content: '👤';
-  font-style: normal;
-}
-
-.valor-icono i.fa-handshake-angle::before {
-  content: '🤝';
-  font-style: normal;
-}
-
 /* Responsive Design */
 @media (max-width: 1024px) {
   .section-valores {
@@ -1467,17 +1435,11 @@
   }
 
   .valor-card {
-    padding: 45px 35px;
+    height: 420px;
   }
 
-  .valor-icono {
-    width: 75px;
-    height: 75px;
-    margin-bottom: 25px;
-  }
-
-  .valor-icono i {
-    font-size: 2.2rem;
+  .valor-contenido {
+    padding: 25px;
   }
 }
 
@@ -1490,56 +1452,51 @@
     font-size: 2rem;
   }
 
-  .valor-card h3 {
-    font-size: 1.1rem;
-  }
-
   .valores-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+    gap: 25px;
     max-width: 500px;
     padding: 0 16px;
   }
 
   .valor-card {
-    padding: 40px 30px;
-    border-radius: 20px;
+    height: 380px;
+    border-radius: 16px;
   }
 
-  .valor-icono {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 20px;
+  .valor-contenido {
+    padding: 20px;
   }
 
-  .valor-icono i {
-    font-size: 2rem;
+  .valor-card h3 {
+    font-size: 1.4rem;
   }
 
   .valor-card p {
-    font-size: 0.75rem;
-    text-align: left;
+    font-size: 0.9rem;
+    text-align: justify;
   }
 }
 
 @media (max-width: 480px) {
   .valores-grid {
-    gap: 25px;
+    gap: 20px;
   }
 
   .valor-card {
-    padding: 35px 25px;
-    border-radius: 16px;
+    height: 350px;
   }
 
-  .valor-icono {
-    width: 65px;
-    height: 65px;
-    margin-bottom: 18px;
+  .valor-contenido {
+    padding: 18px;
   }
 
-  .valor-icono i {
-    font-size: 1.8rem;
+  .valor-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .valor-card p {
+    font-size: 0.85rem;
   }
 }
 
@@ -1560,7 +1517,6 @@
 }
 
 @supports not (background-clip: text) {
-
   .section-valores-header h2,
   .valor-card h3 {
     background: none;
@@ -1614,7 +1570,7 @@
   font-size: 3rem;
   font-weight: 800;
   color: #1e293b;
-  background: linear-gradient(135deg, #92b459 0%, #bc9865 50%, #92b459 100%);
+  background: linear-gradient(135deg, #9dbc78 35%, #ec9f45 50%, #bca178 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;

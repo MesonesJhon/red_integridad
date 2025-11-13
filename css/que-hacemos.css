@@ -43,7 +43,7 @@
   z-index: 3;
   max-width: 800px;
   padding: 0 24px;
-  text-align: center;
+  text-align: center; 
   color: white;
 }
 
@@ -452,16 +452,17 @@
   text-align: center;
 }
 
-/* ===== STANDARDS GRID MEJORADO ===== */
+/* ===== STANDARDS GRID MEJORADO - 3 COLUMNAS ===== */
 .standards-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+  grid-template-columns: repeat(3, 472px); /* 3 columnas fijas de 472px */
   gap: 40px;
   margin-bottom: 100px;
-  max-width: 1400px;
+  max-width: 1496px; /* (472px * 3) + (40px * 2) = 1496px */
   margin-left: auto;
   margin-right: auto;
   padding: 0 24px;
+  justify-content: center; /* Centrar el grid */
 }
 
 .standard-card {
@@ -474,6 +475,12 @@
   box-shadow: var(--shadow-md);
   position: relative;
   backdrop-filter: blur(10px);
+  
+  /* MEDIDAS ESPECÍFICAS AGREGADAS */
+  width: 472px;
+  height: 123.83px;
+  min-width: 472px;
+  min-height: 123.83px;
 }
 
 .standard-card::before {
@@ -537,6 +544,9 @@
 
 .standard-card:hover {
   transform: translateY(-8px);
+  /* Mantener dimensiones durante hover */
+  width: 472px;
+  height: 123.83px;
 }
 
 /* Hover específico solo para cards sin fase definida (fallback) */
@@ -548,13 +558,15 @@
 .standard-header {
   background: var(--gradient-primary);
   color: var(--white);
-  padding: 32px;
+  padding: 20px 32px; /* Ajustado para la nueva altura */
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 10px;
   position: relative;
   overflow: hidden;
   margin: 0;
+  height: 100%; /* Ocupa toda la altura del card */
+  box-sizing: border-box;
 }
 
 .standard-header::after {
@@ -574,11 +586,11 @@
 }
 
 .standard-number {
-  font-size: 2rem;
+  font-size: 1.8rem; /* Ajustado para la nueva proporción */
   font-weight: 800;
   font-family: "Montserrat", sans-serif;
-  min-width: 50px;
-  height: 50px;
+  min-width: 45px; /* Ajustado */
+  height: 45px; /* Ajustado */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -595,9 +607,9 @@
 }
 
 .standard-title {
-  font-size: 1.3rem;
+  font-size: 1.2rem; /* Ajustado para la nueva proporción */
   font-weight: 700;
-  line-height: 1.4;
+  line-height: 1.3; /* Ajustado */
   flex: 1;
 }
 
@@ -1176,11 +1188,93 @@
 .standard-card:nth-child(14) { animation-delay: 0.7s; }
 .standard-card:nth-child(15) { animation-delay: 0.75s; }
 
-/* ===== RESPONSIVE MEJORADO ===== */
-@media (max-width: 1200px) {
+/* ===== RESPONSIVE MEJORADO - 3 COLUMNAS ===== */
+@media (max-width: 1536px) {
   .standards-grid {
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-    gap: 32px;
+    grid-template-columns: repeat(3, 400px); /* 3 columnas de 400px */
+    max-width: 1280px; /* (400px * 3) + (40px * 2) = 1280px */
+    gap: 30px;
+  }
+  
+  .standard-card {
+    width: 400px;
+    height: 110px;
+    min-width: 400px;
+    min-height: 110px;
+  }
+  
+  .standard-card:hover {
+    width: 400px;
+    height: 110px;
+  }
+  
+  .standard-header {
+    padding: 18px 28px;
+  }
+  
+  .standard-number {
+    font-size: 1.6rem;
+    min-width: 40px;
+    height: 40px;
+  }
+  
+  .standard-title {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 1280px) {
+  .standards-grid {
+    grid-template-columns: repeat(3, 350px); /* 3 columnas de 350px */
+    max-width: 1130px; /* (350px * 3) + (30px * 2) = 1130px */
+    gap: 25px;
+  }
+  
+  .standard-card {
+    width: 350px;
+    height: 100px;
+    min-width: 350px;
+    min-height: 100px;
+  }
+  
+  .standard-card:hover {
+    width: 350px;
+    height: 100px;
+  }
+  
+  .standard-header {
+    padding: 16px 24px;
+  }
+  
+  .standard-number {
+    font-size: 1.5rem;
+    min-width: 38px;
+    height: 38px;
+  }
+  
+  .standard-title {
+    font-size: 1rem;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 1024px) {
+  .standards-grid {
+    grid-template-columns: repeat(2, 350px); /* 2 columnas en tablet */
+    max-width: 730px; /* (350px * 2) + (30px * 1) = 730px */
+    gap: 30px;
+  }
+  
+  .standard-card {
+    width: 350px;
+    height: 100px;
+    min-width: 350px;
+    min-height: 100px;
+  }
+  
+  .standard-card:hover {
+    width: 350px;
+    height: 100px;
   }
 }
 
@@ -1226,13 +1320,31 @@
   }
 
   .standards-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr; /* 1 columna en mobile */
     gap: 24px;
     margin-bottom: 80px;
+    max-width: 100%;
+  }
+
+  .standard-card {
+    width: 100%;
+    height: auto; /* Altura automática en mobile */
+    min-width: unset;
+    min-height: unset;
+    max-width: 100%;
+  }
+  
+  .standard-card:hover {
+    width: 100%;
+    height: auto;
   }
 
   .standard-header {
     padding: 24px;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    height: auto;
   }
 
   .standard-number {
@@ -1243,6 +1355,7 @@
 
   .standard-title {
     font-size: 1.1rem;
+    line-height: 1.4;
   }
 
   .modal {
@@ -1317,15 +1430,18 @@
   }
 
   .standard-header {
-    flex-direction: column;
-    text-align: center;
-    gap: 16px;
+    padding: 20px;
+    gap: 12px;
   }
 
   .standard-number {
     min-width: 40px;
     height: 40px;
     font-size: 1.6rem;
+  }
+
+  .standard-title {
+    font-size: 1rem;
   }
 
   .modal-content-wrapper {
@@ -1411,12 +1527,13 @@
   z-index: 1;
 }
 
-.modal-title-new{
+.modal-title-new {
+  font-size: 2.2rem;
+  font-weight: 800;
+  line-height: 1.2;
   margin: 0;
-  font-size: 18px;
-  line-height:2.5;
-  font-weight: 700;
-  margin-top: 4px; /* Alinea con el resto */
+  position: relative;
+  z-index: 1;
 }
 
 .modal-body-new {
@@ -1623,8 +1740,6 @@
   border-radius: var(--border-radius);
 }
 
-
-
 /* ===== FILTROS POR FASE ===== */
 .filter-btn[data-filter="preparatorios"] {
     border-color: #3b82f6;
@@ -1661,14 +1776,6 @@
     color: white;
     border-color: transparent;
 }
-
-
-
-
-
-
-
-
 
 /* Responsive adjustments */
 @media (max-width: 1024px) {
