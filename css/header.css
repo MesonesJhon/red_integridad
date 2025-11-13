@@ -1,0 +1,530 @@
+/* Color palette as CSS variables */
+:root {
+  --color-naranja: #ee7743;
+  --color-marron: #bc9865;
+  --color-verde: #92b459;
+  --color-plomo: #666666;
+  --color-white: #ffffff;
+  --color-black: #000000;
+  --color-light-gray: #f8f9fa;
+  --color-border: #e9ecef;
+  --color-gradient: linear-gradient(135deg, var(--color-naranja) 0%, var(--color-marron) 100%);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-primary: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* Header */
+.header {
+  background-color: var(--color-white);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadow-sm);
+  border-bottom: none;
+}
+
+.header-container {
+  max-width: 1750px;
+  margin: 0 auto;
+  padding: 0 7rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+}
+
+/* Brand/Logo section */
+.header-brand {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  flex-shrink: 0;
+  padding: 0.5rem 0;
+  transition: var(--transition);
+}
+
+.header-brand:hover {
+  transform: translateY(-2px);
+}
+
+.header-logo {
+  height: 65px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+  transition: var(--transition);
+}
+
+.header-brand:hover .header-logo {
+  transform: scale(1.05);
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  line-height: 1.1;
+}
+
+.header-title-line {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--color-plomo);
+  letter-spacing: 0.5px;
+  transition: var(--transition);
+}
+
+.header-title-highlight {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--color-naranja);
+  letter-spacing: 1.2px;
+}
+
+/* Navigation styling */
+.header-nav {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.header-menu {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.header-link {
+  text-decoration: none;
+  color: var(--color-plomo);
+  font-size: 15px;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.75rem 0;
+  font-family: var(--font-primary);
+}
+
+.header-link::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: var(--color-gradient);
+  border-radius: 2px;
+  transition: var(--transition);
+  transform: translateX(-50%);
+}
+
+.header-link:hover {
+  color: var(--color-naranja);
+  transform: translateY(-1px);
+}
+
+.header-link:hover::before {
+  width: 100%;
+}
+
+.header-link.active {
+  font-weight: 600;
+  color: var(--color-naranja);
+}
+
+.header-link.active::before {
+  width: 100%;
+  background: var(--color-naranja);
+}
+
+/* Style for the active navigation link */
+.header-link.active-nav {
+  color: #FFA500; /* Orange color for the active link */
+  font-weight: bold;
+}
+
+/* Hamburger menu button */
+.header-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 8px;
+  transition: var(--transition);
+  position: relative;
+  z-index: 1001;
+}
+
+.header-toggle:hover {
+  background: rgba(238, 119, 67, 0.1);
+}
+
+.header-toggle-line {
+  width: 24px;
+  height: 2.5px;
+  background-color: var(--color-naranja);
+  border-radius: 3px;
+  transition: var(--transition);
+  transform-origin: center;
+}
+
+.header-toggle.active .header-toggle-line:nth-child(1) {
+  transform: rotate(45deg) translate(6px, 6px);
+  background: var(--color-naranja);
+}
+
+.header-toggle.active .header-toggle-line:nth-child(2) {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.header-toggle.active .header-toggle-line:nth-child(3) {
+  transform: rotate(-45deg) translate(6px, -6px);
+  background: var(--color-naranja);
+}
+
+/* Modal de contacto */
+.modal-contacto {
+  position: absolute;
+  top: calc(1% + 10px);
+  right: 0;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-top: 3px solid var(--color-naranja);
+  padding: 2rem;
+  min-width: 320px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  margin-top: 0;
+  z-index: 999;
+  display: none;
+  backdrop-filter: blur(10px);
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-contacto.active {
+  display: block;
+}
+
+.contacto-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-naranja);
+  margin-bottom: 1.5rem;
+  position: relative;
+  padding-bottom: 0.75rem;
+  font-family: var(--font-primary);
+}
+
+.contacto-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--color-gradient);
+  border-radius: 3px;
+}
+
+.modal-contacto p {
+  font-size: 0.95rem;
+  color: var(--color-plomo);
+  margin-bottom: 0.2rem;
+  line-height: 1.6;
+  font-family: var(--font-primary);
+}
+
+.modal-contacto a {
+  color: var(--color-naranja);
+  text-decoration: none;
+  width: 100%;
+  font-weight: 500;
+  transition: var(--transition);
+  position: relative;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #fff9f5 0%, #fef8f4 100%);
+  display: inline-block;
+  overflow: hidden;
+}
+
+/* Efecto de reflejo solar */
+.modal-contacto a::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.8) 50%,
+    transparent 70%
+  );
+  transform: rotate(45deg) translateX(-100%);
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+}
+
+.modal-contacto a:hover {
+  color: var(--color-naranja);
+  background: linear-gradient(135deg, #fff5f0 0%, #fff0e6 100%);
+  border-color: #ffd1b3;
+  box-shadow: 
+    0 4px 15px rgba(238, 119, 67, 0.2),
+    inset 0 1px 2px rgba(255, 255, 255, 0.8);
+  transform: translateY(-2px);
+  padding-left: 1rem;
+}
+
+/* Activar el reflejo solar al hover */
+.modal-contacto a:hover::before {
+  transform: rotate(45deg) translateX(100%);
+  opacity: 1;
+}
+
+/* Efecto de pulsación al hacer click */
+.modal-contacto a:active {
+  transform: translateY(0) scale(0.98);
+  background: linear-gradient(135deg, #ffefe6 0%, #ffe8d9 100%);
+  box-shadow: 
+    0 2px 8px rgba(238, 119, 67, 0.3),
+    inset 0 2px 4px rgba(255, 255, 255, 0.6);
+  transition: all 0.1s ease;
+}
+
+.contacto-subtitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-plomo);
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+  font-family: var(--font-primary);
+}
+
+.social-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+}
+
+.social-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-plomo);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: var(--transition);
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-family: var(--font-primary);
+}
+
+.social-link:hover {
+  color: var(--color-white);
+  background: var(--color-gradient);
+  transform: translateX(5px);
+  border-color: var(--color-naranja);
+  box-shadow: var(--shadow-sm);
+}
+
+.social-link i {
+  width: 18px;
+  text-align: center;
+  transition: var(--transition);
+}
+
+.social-link:hover i {
+  transform: scale(1.2);
+}
+
+@media (min-width: 1024px){
+  .header-menu{
+    gap: 2rem;
+  }
+}
+
+/* Responsive design - Breakpoint at 768px */
+@media (max-width: 768px) {
+  .header-container {
+    height: 70px;
+    padding: 0 1.25rem;
+  }
+
+  .header-logo {
+    height: 45px;
+  }
+
+  .header-title-line {
+    font-size: 15px;
+  }
+
+  .header-title-highlight {
+    font-size: 21px;
+  }
+
+  .header-toggle {
+    display: flex;
+  }
+
+  /* Menú responsivo */
+  .header-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 85%;
+    max-width: 400px;
+    height: 100vh;
+    background: linear-gradient(135deg, var(--color-white) 0%, #fafafa 100%);
+    border-right: none;
+    flex-direction: column;
+    gap: 0;
+    align-items: stretch;
+    transform: translateX(-100%);
+    transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    padding: 1rem 0 2rem 0;
+    overflow-y: auto;
+    z-index: 999;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .header-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: var(--color-gradient);
+  }
+
+  .header-menu.active {
+    transform: translateX(0);
+  }
+
+  .header-link {
+    padding: 1.25rem 2rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    margin: 0;
+    font-size: 16px;
+    transition: var(--transition);
+  }
+
+  .header-link:hover {
+    background: rgba(238, 119, 67, 0.08);
+    transform: none;
+    padding-left: 2.5rem;
+  }
+
+  .header-link::before {
+    display: none;
+  }
+
+  .header-link.active {
+    background: rgba(238, 119, 67, 0.12);
+    border-left: 4px solid var(--color-naranja);
+    padding-left: calc(2rem - 4px);
+  }
+
+  /* Modal de contacto en móvil */
+  .modal-contacto {
+    position: relative;
+    border: none;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    margin: 1rem 2rem;
+    padding: 2rem;
+    min-width: auto;
+    box-shadow: none;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.8);
+    display: block;
+    animation: none;
+  }
+
+  .social-link {
+    padding: 0.8rem;
+    font-size: 15px;
+  }
+}
+
+/* Overlay para menú móvil */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.menu-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .header-container {
+    height: 65px;
+    padding: 0 1rem;
+  }
+
+  .header-brand {
+    gap: 0.75rem;
+  }
+
+  .header-logo {
+    height: 40px;
+  }
+
+  .header-title-line {
+    font-size: 13px;
+  }
+
+  .header-title-highlight {
+    font-size: 18px;
+  }
+
+  .header-menu {
+    width: 80%;
+    max-width: 280px;
+  }
+
+  .modal-contacto {
+    margin: 0.3rem;
+    padding: 1rem;
+  }
+}

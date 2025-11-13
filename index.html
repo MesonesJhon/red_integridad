@@ -5,37 +5,83 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red de Integridad Lambayeque - Estándares de Integridad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/inicio.css">
     <link rel="stylesheet" href="css/carruseles.css">
+    <link rel="stylesheet" href="css/footer.css">
 </head>
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="navbar-brand">
-                <img src="img/RED INTERQUORUM LAMBAYEQUE.jpg" alt="logo" class="navbar-icon">
-                <span class="navbar-title">Red de Integridad</span>
-            </div>
+<!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <!-- LOGO + NOMBRE -->
+            <a href="index.html" class="header-brand">
+                <img src="img/LOGO-PRINCIPAL-INTEGRIDAD.png" alt="Logo Red de Integridad" class="header-logo">
+                <span class="header-title">
+                    <span class="header-title-line">Red de Integridad</span>
+                    <span class="header-title-highlight">LAMBAYEQUE</span>
+                </span>
+            </a>
 
-            <div class="navbar-menu" id="navbarMenu">
-                <a href="index.html" class="nav-link active">Inicio</a>
-                <a href="pages/nosotros.html" class="nav-link">Nosotros</a>
-                <a href="pages/estandares.html" class="nav-link">Estándares</a>
-                <a href="pages/biblioteca.html" class="nav-link">Biblioteca</a>
-                <a href="pages/contacto.html" class="nav-link">Contacto</a>
-            </div>
+            <!-- MENÚ DE NAVEGACIÓN -->
+            <nav class="header-nav" aria-label="Menú principal">
+                <!-- BOTÓN TOGGLE (menú responsive) -->
+                <button class="header-toggle" id="navbarToggle" aria-label="Abrir menú">
+                    <span class="header-toggle-line"></span>
+                    <span class="header-toggle-line"></span>
+                    <span class="header-toggle-line"></span>
+                </button>
 
-            <button class="navbar-toggle" id="navbarToggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+                <!-- ENLACES DEL MENÚ -->
+                <div class="header-menu" id="navbarMenu">
+                    <a href="index.html" class="header-link">Inicio</a>
+                    <a href="pages/quienes-somos.html" class="header-link">¿Quiénes somos?</a>
+                    <a href="pages/que-hacemos.html" class="header-link">¿Qué hacemos?</a>
+                    <a href="pages/publicaciones.html" class="header-link">Publicaciones</a>
+                    <a href="pages/observatorio.html" class="header-link">Observatorio</a>
+                    <a href="pages/contacto.html" class="header-link">Contacto</a>
+
+                    <!-- MODAL DE CONTACTO -->
+                    <div class="modal-contacto" id="contactModal" aria-hidden="true">
+                        <h2 class="contacto-title">Cuentas de contacto</h2>
+
+                        <p>
+                            <strong>Gmail:</strong>
+                            <p>rintegridad2023@gmail.com</p>
+                        </p>
+
+                        <h3 class="contacto-subtitle">Redes sociales</h3>
+
+                        <ul class="social-links">
+                            <li>
+                                <a href="https://www.facebook.com/RedDelntegridadLambayeque" target="_blank" class="social-link">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/Integridad19046" target="_blank" class="social-link">
+                                    <i class="fab fa-x-twitter"></i> Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/@ReddelntegridadLambayeque" target="_blank" class="social-link">
+                                    <i class="fab fa-youtube"></i> YouTube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
         </div>
-    </nav>
-
+    </header>
     <!-- Main Content -->
     <main class="main-content">
         <!-- Hero Section -->
@@ -48,7 +94,8 @@
 
             <div class="hero-inner">
                 <div class="hero-content">
-                    <h1 class="hero-title">Red de Integridad Lambayeque: Monitoreando la Inversión Pública por la Integridad</h1>
+                    <h1 class="hero-title">Red de Integridad Lambayeque: Monitoreando la Inversión Pública por la
+                        Integridad</h1>
                     <p class="hero-subtitle">Espacio de colaboración de organizaciones sociales, públicas y privadas
                         comprometidas con la transparencia, el gobierno abierto y la rendición de cuentas en obras
                         públicos en Lambayeque.</p>
@@ -87,27 +134,31 @@
             <div class="container-impacto">
                 <h2 class="section-title">Red de Integridad Lambayeque</h2>
                 <div class="impact-intro-wrapper">
-                <div class="impact-intro-text">
-                    <p class="section-intro">
-                        La Red de Integridad Lambayeque impulsa acciones de veeduría
-                        multiactor en los procesos de contratación e inversión de obras públicas, aplicando
-                        la metodología de Estándares de Integridad. Este proceso ha permitido fortalecer las
-                        capacidades de sus integrantes, quienes han desarrollado diversas veedurías orientadas
-                        a promover la transparencia y la rendición de cuentas en la gestión pública. A través de estas
-                        acciones, la Red contribuye activamente a restablecer
-                        la confianza ciudadana en las instituciones públicas y en el sector privado, especialmente en
-                        lo relacionado con la ejecución de obras de infraestructura.
-                        Asimismo, la Red de Integridad Lambayeque realiza la verificación del
-                        cumplimiento de los Estándares de Integridad en las obras públicas, mediante la ejecución de
-                        veedurías y visitas técnicas. El cumplimiento de estos estándares representa una disminución de
-                        los riesgos de corrupción y de ineficiencia en la inversión pública, promoviendo así una gestión
-                        más ética, eficiente y orientada al bienestar ciudadano.
-                    </p>
+                    <div class="impact-intro-text">
+                        <p class="section-intro">
+                            La Red de Integridad Lambayeque impulsa acciones de veeduría
+                            multiactor en los procesos de contratación e inversión de obras públicas, aplicando
+                            la metodología de Estándares de Integridad. Este proceso ha permitido fortalecer las
+                            capacidades de sus integrantes, quienes han desarrollado diversas veedurías orientadas
+                            a promover la transparencia y la rendición de cuentas en la gestión pública. A través de
+                            estas
+                            acciones, la Red contribuye activamente a restablecer
+                            la confianza ciudadana en las instituciones públicas y en el sector privado, especialmente
+                            en
+                            lo relacionado con la ejecución de obras de infraestructura.
+                            Asimismo, la Red de Integridad Lambayeque realiza la verificación del
+                            cumplimiento de los Estándares de Integridad en las obras públicas, mediante la ejecución de
+                            veedurías y visitas técnicas. El cumplimiento de estos estándares representa una disminución
+                            de
+                            los riesgos de corrupción y de ineficiencia en la inversión pública, promoviendo así una
+                            gestión
+                            más ética, eficiente y orientada al bienestar ciudadano.
+                        </p>
+                    </div>
+                    <div class="impact-intro-image">
+                        <img src="img/imagen-section-intro.svg" alt="Imagen ilustrativa de impacto">
+                    </div>
                 </div>
-                <div class="impact-intro-image">
-                    <img src="img/imagen-section-intro.svg" alt="Imagen ilustrativa de impacto">
-                </div>
-            </div>
 
                 <div class="impact-grid">
                     <div class="impact-card">
@@ -161,7 +212,8 @@
                             <div class="decoration-dot"></div>
                         </div>
                         <h2 class="section-title">Ejes Estratégicos de Acción</h2>
-                        <p class="section-subtitle">Un enfoque integral para la transparencia y gobernanza en Lambayeque</p>
+                        <p class="section-subtitle">Un enfoque integral para la transparencia y gobernanza en Lambayeque
+                        </p>
                     </div>
                 </div>
 
@@ -182,7 +234,8 @@
                         </div>
                         <h3>Veeduría Multiactor</h3>
                         <p class="card-description">
-                            Sistema colaborativo de supervisión que integra diversos actores sociales en el monitoreo de obras públicas con metodologías internacionales validadas.
+                            Sistema colaborativo de supervisión que integra diversos actores sociales en el monitoreo de
+                            obras públicas con metodologías internacionales validadas.
                         </p>
                         <div class="card-features">
                             <div class="feature-item">
@@ -205,7 +258,7 @@
                         <div class="card-cta" onclick="openModal('eje1')">
                             <span>Más información</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                                <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </div>
                     </div>
@@ -225,7 +278,8 @@
                         </div>
                         <h3>Comunidad de Aprendizaje</h3>
                         <p class="card-description">
-                            Red interdisciplinaria de especialistas que comparten conocimientos y desarrollan capacidades para la implementación de sistemas de integridad.
+                            Red interdisciplinaria de especialistas que comparten conocimientos y desarrollan
+                            capacidades para la implementación de sistemas de integridad.
                         </p>
                         <div class="card-features">
                             <div class="feature-item">
@@ -248,7 +302,7 @@
                         <div class="card-cta" onclick="openModal('eje2')">
                             <span>Más información</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                                <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </div>
                     </div>
@@ -266,7 +320,8 @@
                         </div>
                         <h3>Desarrollo de Capacidades</h3>
                         <p class="card-description">
-                            Fortalecimiento sistemático de competencias técnicas para implementar sistemas de integridad, transparencia y rendición de cuentas.
+                            Fortalecimiento sistemático de competencias técnicas para implementar sistemas de
+                            integridad, transparencia y rendición de cuentas.
                         </p>
                         <div class="card-features">
                             <div class="feature-item">
@@ -289,7 +344,7 @@
                         <div class="card-cta" onclick="openModal('eje3')">
                             <span>Más información</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
+                                <path d="M5 12h14M12 5l7 7-7 7" />
                             </svg>
                         </div>
                     </div>
@@ -299,7 +354,8 @@
                 <div class="methodology-cta">
                     <div class="cta-content">
                         <h3>¿Listo para implementar estándares de integridad?</h3>
-                        <p>Descarga nuestra guía completa y comienza a transformar la gestión pública en tu organización.</p>
+                        <p>Descarga nuestra guía completa y comienza a transformar la gestión pública en tu
+                            organización.</p>
                         <a href="enlaces-externos/guia.html" class="btn btn-primary">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -316,7 +372,7 @@
         <!-- Modales de Información Detallada -->
         <div class="modal-overlay" id="modalOverlay">
             <!-- Modal Eje 1 - Veeduría Multiactor -->
-            <div class="modal" id="modalEje1">
+            <div class="modal" id="modalEje1" data-phase="blue">
                 <div class="modal-header">
                     <div class="modal-badge">
                         <span class="badge-number">01</span>
@@ -331,17 +387,20 @@
                     </div>
                     <button class="modal-close" onclick="closeModal()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
+                            <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="modal-content">
                     <h2>Veeduría Multiactor con Estándares de Integridad</h2>
-                    
+
                     <div class="modal-section">
                         <h3>¿Qué es?</h3>
-                        <p>La Veeduría Multiactor es un sistema colaborativo de supervisión que integra a diversos actores sociales (sociedad civil, sector privado, academia y entidades públicas) en el monitoreo de obras públicas, aplicando la metodología de Estándares de Integridad validada internacionalmente.</p>
+                        <p>La Veeduría Multiactor es un sistema colaborativo de supervisión que integra a diversos
+                            actores sociales (sociedad civil, sector privado, academia y entidades públicas) en el
+                            monitoreo de obras públicas, aplicando la metodología de Estándares de Integridad validada
+                            internacionalmente.</p>
                     </div>
 
                     <div class="modal-section">
@@ -362,28 +421,32 @@
                                 <div class="step-number">1</div>
                                 <div class="step-content">
                                     <h4>Selección de Obras</h4>
-                                    <p>Identificación de proyectos prioritarios basada en criterios de impacto social, monto de inversión y riesgo de corrupción.</p>
+                                    <p>Identificación de proyectos prioritarios basada en criterios de impacto social,
+                                        monto de inversión y riesgo de corrupción.</p>
                                 </div>
                             </div>
                             <div class="step">
                                 <div class="step-number">2</div>
                                 <div class="step-content">
                                     <h4>Análisis de Expedientes</h4>
-                                    <p>Revisión exhaustiva de documentación técnica, estudios de preinversión y procesos de contratación.</p>
+                                    <p>Revisión exhaustiva de documentación técnica, estudios de preinversión y procesos
+                                        de contratación.</p>
                                 </div>
                             </div>
                             <div class="step">
                                 <div class="step-number">3</div>
                                 <div class="step-content">
                                     <h4>Visitas de Campo</h4>
-                                    <p>Supervisión in situ del avance de obras, calidad de materiales y cumplimiento de especificaciones técnicas.</p>
+                                    <p>Supervisión in situ del avance de obras, calidad de materiales y cumplimiento de
+                                        especificaciones técnicas.</p>
                                 </div>
                             </div>
                             <div class="step">
                                 <div class="step-number">4</div>
                                 <div class="step-content">
                                     <h4>Informes y Recomendaciones</h4>
-                                    <p>Elaboración de reportes técnicos con hallazgos y propuestas de mejora para las entidades ejecutoras.</p>
+                                    <p>Elaboración de reportes técnicos con hallazgos y propuestas de mejora para las
+                                        entidades ejecutoras.</p>
                                 </div>
                             </div>
                         </div>
@@ -407,7 +470,7 @@
             </div>
 
             <!-- Modal Eje 2 - Comunidad de Aprendizaje -->
-            <div class="modal" id="modalEje2">
+            <div class="modal" id="modalEje2" data-phase="red">
                 <div class="modal-header">
                     <div class="modal-badge">
                         <span class="badge-number">02</span>
@@ -422,17 +485,19 @@
                     </div>
                     <button class="modal-close" onclick="closeModal()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
+                            <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="modal-content">
                     <h2>Comunidad de Aprendizaje y Defensores de Estándares</h2>
-                    
+
                     <div class="modal-section">
                         <h3>¿Qué es?</h3>
-                        <p>Una red interdisciplinaria de especialistas comprometidos con la integridad pública que comparten conocimientos, desarrollan capacidades y promueven buenas prácticas en la gestión de inversiones a través del intercambio continuo de experiencias.</p>
+                        <p>Una red interdisciplinaria de especialistas comprometidos con la integridad pública que
+                            comparten conocimientos, desarrollan capacidades y promueven buenas prácticas en la gestión
+                            de inversiones a través del intercambio continuo de experiencias.</p>
                     </div>
 
                     <div class="modal-section">
@@ -441,17 +506,20 @@
                             <div class="feature-card">
                                 <div class="feature-icon">👥</div>
                                 <h4>Red de Especialistas</h4>
-                                <p>Integración de profesionales de diversas disciplinas (ingeniería, derecho, economía, ciencias sociales) comprometidos con la integridad.</p>
+                                <p>Integración de profesionales de diversas disciplinas (ingeniería, derecho, economía,
+                                    ciencias sociales) comprometidos con la integridad.</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">📚</div>
                                 <h4>Intercambio de Conocimientos</h4>
-                                <p>Espacios de diálogo, seminarios y talleres para compartir experiencias y mejores prácticas en supervisión de obras públicas.</p>
+                                <p>Espacios de diálogo, seminarios y talleres para compartir experiencias y mejores
+                                    prácticas en supervisión de obras públicas.</p>
                             </div>
                             <div class="feature-card">
                                 <div class="feature-icon">🛠️</div>
                                 <h4>Herramientas Técnicas</h4>
-                                <p>Desarrollo y socialización de metodologías, guías y instrumentos para la veeduría ciudadana y control social.</p>
+                                <p>Desarrollo y socialización de metodologías, guías y instrumentos para la veeduría
+                                    ciudadana y control social.</p>
                             </div>
                         </div>
                     </div>
@@ -470,7 +538,7 @@
             </div>
 
             <!-- Modal Eje 3 - Desarrollo de Capacidades -->
-            <div class="modal" id="modalEje3">
+            <div class="modal" id="modalEje3" data-phase="green">
                 <div class="modal-header">
                     <div class="modal-badge">
                         <span class="badge-number">03</span>
@@ -483,17 +551,19 @@
                     </div>
                     <button class="modal-close" onclick="closeModal()">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M18 6L6 18M6 6l12 12"/>
+                            <path d="M18 6L6 18M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
-                
+
                 <div class="modal-content">
                     <h2>Desarrollo de Capacidades para la Integridad</h2>
-                    
+
                     <div class="modal-section">
                         <h3>Enfoque Estratégico</h3>
-                        <p>Programa integral de fortalecimiento de competencias técnicas e institucionales para la implementación efectiva de sistemas de integridad, transparencia y rendición de cuentas en la gestión pública regional.</p>
+                        <p>Programa integral de fortalecimiento de competencias técnicas e institucionales para la
+                            implementación efectiva de sistemas de integridad, transparencia y rendición de cuentas en
+                            la gestión pública regional.</p>
                     </div>
 
                     <div class="modal-section">
@@ -531,15 +601,18 @@
                         <div class="benefits-grid">
                             <div class="benefit">
                                 <strong>Para Entidades Públicas:</strong>
-                                <p>Mejora en la gestión de proyectos, reducción de riesgos y fortalecimiento de la confianza ciudadana.</p>
+                                <p>Mejora en la gestión de proyectos, reducción de riesgos y fortalecimiento de la
+                                    confianza ciudadana.</p>
                             </div>
                             <div class="benefit">
                                 <strong>Para Sociedad Civil:</strong>
-                                <p>Capacidades técnicas para ejercer veeduría efectiva y participación informada en la gestión pública.</p>
+                                <p>Capacidades técnicas para ejercer veeduría efectiva y participación informada en la
+                                    gestión pública.</p>
                             </div>
                             <div class="benefit">
                                 <strong>Para el Sector Privado:</strong>
-                                <p>Herramientas para implementar prácticas de integridad en contrataciones con el Estado.</p>
+                                <p>Herramientas para implementar prácticas de integridad en contrataciones con el
+                                    Estado.</p>
                             </div>
                         </div>
                     </div>
@@ -597,46 +670,45 @@
                         <img class="collab-logo" src="img/ACIL.jpg" alt="ACIL">
                     </a>
                     <a href="https://www.cip.org.pe/" target="_blank">
-                        <img class="collab-logo" src="img/COLEGIO DE ING DEL PERU.png"
-                            alt="Colegio de Ingenieros del Perú">
+                        <img class="collab-logo" src="img/COL-DE-ING-DEL-PERU.png" alt="Colegio de Ingenieros del Perú">
                     </a>
                     <a href="https://www.gob.pe/institucion/regionlambayeque-grps/noticias/968065-gore-lambayeque-entrego-credenciales-a-jovenes-integrantes-del-coreju"
                         target="_blank">
-                        <img class="collab-logo" src="img/COREJU NUEVO.jpg" alt="COREJU">
+                        <img class="collab-logo" src="img/COREJU-NUEVO.png" alt="COREJU">
                     </a>
                     <a href="https://www.facebook.com/COVAG.JLO/?locale=es_LA" target="_blank">
-                        <img class="collab-logo" src="img/COVAG.jpg" alt="COVAG">
+                        <img class="collab-logo" src="img/COVAG.png" alt="COVAG">
                     </a>
                     <a href="https://www.facebook.com/EMSOLAMpcd/" target="_blank">
-                        <img class="collab-logo" src="img/EMSOLAM.jpg" alt="EMSOLAM">
+                        <img class="collab-logo" src="img/EMSOLAM.png" alt="EMSOLAM">
                     </a>
                     <a href="https://www.regionlambayeque.gob.pe" target="_blank">
-                        <img class="collab-logo" src="img/GOBIERNO REGIONAL DE LAMBAYEQUE.png"
+                        <img class="collab-logo" src="img/GOBIERNO-REGIONAL-DE-LAMBAYEQUE.png"
                             alt="Gobierno Regional de Lambayeque">
                     </a>
                     <a href="https://www.facebook.com/jovenesdelmileniolambayeque/" target="_blank">
-                        <img class="collab-logo" src="img/JM.jpg" alt="JM">
+                        <img class="collab-logo" src="img/JM.png" alt="JM">
                     </a>
                     <a href="https://cefoprohsantaangela.org/" target="_blank">
-                        <img class="collab-logo" src="img/LOGO oficial - SANTA ÁNGELA SIN FONDO.png" alt="Santa Ángela">
+                        <img class="collab-logo" src="img/LOGO-SANTA-ANGELA.png" alt="Santa Ángela">
                     </a>
                     <a href="https://www.mesadeconcertacion.org.pe/mesas/lambayeque" target="_blank">
-                        <img class="collab-logo" src="img/MESA DE CONCERTACION.jpg" alt="Mesa de Concertación">
+                        <img class="collab-logo" src="img/MESA-DE-CONCERTACION.png" alt="Mesa de Concertación">
                     </a>
                     <a href="https://www.facebook.com/mancomunidad.mmuvall/?locale=es_LA" target="_blank">
-                        <img class="collab-logo" src="img/MMUVAL.webp" alt="MMUVAL">
+                        <img class="collab-logo" src="img/MMUVAL.png" alt="MMUVAL">
                     </a>
                     <a href="https://www.facebook.com/p/Red-de-Mujeres-Lideresas-de-la-Regi%C3%B3n-Lambayeque-100070311271331/"
                         target="_blank">
-                        <img class="collab-logo" src="img/RED DE MUJERES LIDERESAS DE LAMBAYEQUE.png"
+                        <img class="collab-logo" src="img/RED-DE-MUJERES-LIDERESAS-DE-LAMBAYEQUE.png"
                             alt="Red de Mujeres Líderes">
                     </a>
                     <a href="https://www.uss.edu.pe/uss/Inicio" target="_blank">
-                        <img class="collab-logo" src="img/USS.jpg" alt="USS">
+                        <img class="collab-logo" src="img/USS.png" alt="USS">
                     </a>
                     <a href="https://www.facebook.com/p/Veedores-Ciudadanos-por-la-Integridad-61575084145985/"
                         target="_blank">
-                        <img class="collab-logo" src="img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg"
+                        <img class="collab-logo" src="img/VEEDORES-CIUDADANOS-POR-LA-INTEGRIDAD.png"
                             alt="Veedores Ciudadanos">
                     </a>
 
@@ -645,46 +717,45 @@
                         <img class="collab-logo" src="img/ACIL.jpg" alt="ACIL">
                     </a>
                     <a href="https://www.cip.org.pe/" target="_blank">
-                        <img class="collab-logo" src="img/COLEGIO DE ING DEL PERU.png"
-                            alt="Colegio de Ingenieros del Perú">
+                        <img class="collab-logo" src="img/COL-DE-ING-DEL-PERU.png" alt="Colegio de Ingenieros del Perú">
                     </a>
                     <a href="https://www.gob.pe/institucion/regionlambayeque-grps/noticias/968065-gore-lambayeque-entrego-credenciales-a-jovenes-integrantes-del-coreju"
                         target="_blank">
-                        <img class="collab-logo" src="img/COREJU NUEVO.jpg" alt="COREJU">
+                        <img class="collab-logo" src="img/COREJU-NUEVO.png" alt="COREJU">
                     </a>
                     <a href="https://www.facebook.com/COVAG.JLO/?locale=es_LA" target="_blank">
-                        <img class="collab-logo" src="img/COVAG.jpg" alt="COVAG">
+                        <img class="collab-logo" src="img/COVAG.png" alt="COVAG">
                     </a>
                     <a href="https://www.facebook.com/EMSOLAMpcd/" target="_blank">
-                        <img class="collab-logo" src="img/EMSOLAM.jpg" alt="EMSOLAM">
+                        <img class="collab-logo" src="img/EMSOLAM.png" alt="EMSOLAM">
                     </a>
                     <a href="https://www.regionlambayeque.gob.pe" target="_blank">
-                        <img class="collab-logo" src="img/GOBIERNO REGIONAL DE LAMBAYEQUE.png"
+                        <img class="collab-logo" src="img/GOBIERNO-REGIONAL-DE-LAMBAYEQUE.png"
                             alt="Gobierno Regional de Lambayeque">
                     </a>
                     <a href="https://www.facebook.com/jovenesdelmileniolambayeque/" target="_blank">
-                        <img class="collab-logo" src="img/JM.jpg" alt="JM">
+                        <img class="collab-logo" src="img/JM.png" alt="JM">
                     </a>
                     <a href="https://cefoprohsantaangela.org/" target="_blank">
-                        <img class="collab-logo" src="img/LOGO oficial - SANTA ÁNGELA SIN FONDO.png" alt="Santa Ángela">
+                        <img class="collab-logo" src="img/LOGO-SANTA-ANGELA.png" alt="Santa Ángela">
                     </a>
                     <a href="https://www.mesadeconcertacion.org.pe/mesas/lambayeque" target="_blank">
-                        <img class="collab-logo" src="img/MESA DE CONCERTACION.jpg" alt="Mesa de Concertación">
+                        <img class="collab-logo" src="img/MESA-DE-CONCERTACION.png" alt="Mesa de Concertación">
                     </a>
                     <a href="https://www.facebook.com/mancomunidad.mmuvall/?locale=es_LA" target="_blank">
-                        <img class="collab-logo" src="img/MMUVAL.webp" alt="MMUVAL">
+                        <img class="collab-logo" src="img/MMUVAL.png" alt="MMUVAL">
                     </a>
                     <a href="https://www.facebook.com/p/Red-de-Mujeres-Lideresas-de-la-Regi%C3%B3n-Lambayeque-100070311271331/"
                         target="_blank">
-                        <img class="collab-logo" src="img/RED DE MUJERES LIDERESAS DE LAMBAYEQUE.png"
+                        <img class="collab-logo" src="img/RED-DE-MUJERES-LIDERESAS-DE-LAMBAYEQUE.png"
                             alt="Red de Mujeres Líderes">
                     </a>
                     <a href="https://www.uss.edu.pe/uss/Inicio" target="_blank">
-                        <img class="collab-logo" src="img/USS.jpg" alt="USS">
+                        <img class="collab-logo" src="img/USS.png" alt="USS">
                     </a>
                     <a href="https://www.facebook.com/p/Veedores-Ciudadanos-por-la-Integridad-61575084145985/"
                         target="_blank">
-                        <img class="collab-logo" src="img/VEEDORES CIUDADANOS POR LA INTEGRIDAD.jpg"
+                        <img class="collab-logo" src="img/VEEDORES-CIUDADANOS-POR-LA-INTEGRIDAD.png"
                             alt="Veedores Ciudadanos">
                     </a>
                 </div>
@@ -692,44 +763,61 @@
         </div>
     </main>
 
-    <!-- Footer -->
+<!-- FOOTER -->
     <footer class="footer">
-        <div class="footer-content">
-            <div class="footer-section">
-                <h4>Red de Integridad</h4>
-                <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.</p>
+        <div class="footer-container">
+
+            <!-- LOGO + NOMBRE + ACERCA DE NOSOTROS -->
+            <div class="footer-brand-about">
+                <a href="index.html" class="footer-brand">
+                    <img src="img/LOGO-PRINCIPAL-INTEGRIDAD.png" alt="Logo Red de Integridad" class="footer-logo">
+                    <span class="footer-title">
+                        <span class="footer-title-line">Red de Integridad</span>
+                        <span class="footer-title-highlight">LAMBAYEQUE</span>
+                    </span>
+                </a>
+                <div class="footer-about">
+                    <h3 class="footer-section-title">Acerca de Nosotros</h3>
+                    <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.
+                    </p>
+                </div>
             </div>
-            <div class="footer-section">
-                <h4>Servicios</h4>
-                <ul>
-                    <li><a href="#">Sistemas de Integridad</a></li>
-                    <li><a href="#">Capacitación</a></li>
-                    <li><a href="#">Auditorías</a></li>
-                    <li><a href="#">Compliance</a></li>
-                </ul>
+
+            <!-- ENLACES DEL FOOTER -->
+            <nav class="footer-nav" aria-label="Enlaces principales">
+                <h3 class="footer-section-title">Enlaces</h3>
+                <a href="index.html" class="footer-link">Inicio</a>
+                <a href="pages/quienes-somos.html" class="footer-link">¿Quiénes somos?</a>
+                <a href="pages/que-hacemos.html" class="footer-link">¿Qué hacemos?</a>
+                <a href="pages/publicaciones.html" class="footer-link">Publicaciones</a>
+                <a href="pages/observatorio.html" class="footer-link">Observatorio</a>
+                <a href="pages/contacto.html" class="footer-link">Contacto</a>
+            </nav>
+
+            <!-- REDES SOCIALES -->
+            <div class="footer-social">
+                <h3 class="footer-section-title">Redes Sociales</h3>
+                <a href="https://www.facebook.com/RedDelntegridadLambayeque" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://x.com/Integridad19046" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.youtube.com/@ReddeIntegridadLambayeque" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
             </div>
-            <div class="footer-section">
-                <h4>Empresa</h4>
-                <ul>
-                    <li><a href="#">Sobre nosotros</a></li>
-                    <li><a href="#">Equipo</a></li>
-                    <li><a href="#">Casos de éxito</a></li>
-                    <li><a href="#">Blog</a></li>
-                </ul>
+
+            <!-- COPYRIGHT -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
             </div>
-            <div class="footer-section">
-                <h4>Contacto</h4>
-                <ul>
-                    <li>info@redintegridad.org</li>
-                    <li>+51 987 456 321</li>
-                    <li>Chiclayo, Lambayeque</li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
         </div>
     </footer>
+
 
     <!-- JavaScript -->
     <script>
@@ -737,12 +825,12 @@
         function openModal(modalId) {
             const modalOverlay = document.getElementById('modalOverlay');
             const modals = document.querySelectorAll('.modal');
-            
+
             // Ocultar todos los modales
             modals.forEach(modal => {
                 modal.style.display = 'none';
             });
-            
+
             // Mostrar el modal específico
             const modal = document.getElementById('modal' + modalId.charAt(0).toUpperCase() + modalId.slice(1));
             if (modal) {
@@ -756,7 +844,7 @@
             const modalOverlay = document.getElementById('modalOverlay');
             modalOverlay.classList.remove('active');
             document.body.style.overflow = '';
-            
+
             setTimeout(() => {
                 const modals = document.querySelectorAll('.modal');
                 modals.forEach(modal => {
@@ -766,14 +854,14 @@
         }
 
         // Cerrar modal al hacer clic fuera
-        document.getElementById('modalOverlay').addEventListener('click', function(e) {
+        document.getElementById('modalOverlay').addEventListener('click', function (e) {
             if (e.target === this) {
                 closeModal();
             }
         });
 
         // Cerrar modal con tecla Escape
-        document.addEventListener('keydown', function(e) {
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Escape') {
                 closeModal();
             }
@@ -781,13 +869,13 @@
     </script>
     <script src="js/main.js"></script>
     <script src="js/carruseles.js"></script>
-    <script src="js/navbar.js"></script>
+    <script src="js/header.js"></script>
     <script>
         // Agregar evento de descarga al botón "Descargar Guía Completa"
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const downloadBtn = document.querySelector('a[href*="guia.html"]');
             if (downloadBtn) {
-                downloadBtn.addEventListener('click', function(e) {
+                downloadBtn.addEventListener('click', function (e) {
                     e.preventDefault();
                     // Simular descarga y mostrar notificación
                     if (typeof showDownloadNotification === 'function') {

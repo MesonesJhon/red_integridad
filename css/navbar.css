@@ -30,7 +30,7 @@
 .navbar-icon {
   width: 32px;
   height: 32px;
-  color: var(--primary-blue);
+  color: var(--verde);
 }
 
 .navbar-title {
@@ -39,11 +39,19 @@
   font-weight: 700;
   color: var(--text-dark);
 }
+.navbar-title2 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: orange;
+  margin-right: -15rem;
+}
 
 .navbar-menu {
   display: flex;
   gap: 28px;
   align-items: center;
+  margin-right: -10rem;
 }
 
 .nav-link {
@@ -58,7 +66,7 @@
 
 .nav-link:hover,
 .nav-link.active {
-  color: var(--primary-blue);
+  color: var(--verde);
 }
 
 .nav-link::after {
@@ -68,7 +76,7 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(90deg, var(--primary-blue) 0%, var(--celeste) 100%);
+  background: linear-gradient(90deg, var(--verde) 0%, var(--verde-dark) 100%);
   border-radius: 2px;
   transform: scaleX(0);
   transform-origin: center;

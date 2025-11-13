@@ -109,23 +109,18 @@
 }
 
 
-
-
-
-
-
-
-
-
 /* Collaborators carousel */
 .collab-section {
     background: linear-gradient(180deg, #f8fafc 0%, #e2ebf1 100%);
+    padding: 20px 0;
 }
 
 .collab-strip {
     position: relative;
     overflow: hidden;
-    padding: 24px 0;
+    padding: 12px 0;
+    transform: translateZ(0);
+    backface-visibility: hidden;
 }
 
 .collab-strip::before,
@@ -134,193 +129,166 @@
     position: absolute;
     top: 0;
     bottom: 0;
-    width: 40px;
+    width: 80px;
     pointer-events: none;
     z-index: 2;
+    /* <CHANGE> Gradientes más suaves y extensos para mejor fade */
 }
 
-.collab-strip::before { left: 0; background: linear-gradient(90deg, rgba(247,249,253,0.95) 0%, rgba(247,249,253,0) 100%); }
-.collab-strip::after  { right: 0; background: linear-gradient(270deg, rgba(247,249,253,0.95) 0%, rgba(247,249,253,0) 100%); }
+.collab-strip::before { 
+    left: 0; 
+    background: linear-gradient(90deg, 
+        rgba(248, 250, 252, 1) 0%, 
+        rgba(248, 250, 252, 0.8) 40%,
+        rgba(248, 250, 252, 0) 100%
+    ); 
+}
+
+.collab-strip::after { 
+    right: 0; 
+    background: linear-gradient(270deg, 
+        rgba(248, 250, 252, 1) 0%, 
+        rgba(248, 250, 252, 0.8) 40%,
+        rgba(248, 250, 252, 0) 100%
+    ); 
+}
 
 .collab-track {
     display: flex;
     align-items: center;
-    gap: 48px;
+    gap: 56px;
     width: max-content;
+    /* <CHANGE> Optimizado para mejor performance con GPU acceleration */
     will-change: transform;
-    animation: collab-marquee 40s linear infinite;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    animation: collab-marquee 50s linear infinite;
 }
 
-.collab-strip:hover .collab-track { animation-play-state: paused; }
+.collab-strip:hover .collab-track { 
+    animation-play-state: paused;
+    /* <CHANGE> Transición suave al pausar */
+    transition: animation 0.3s ease;
+}
 
 .collab-logo {
     width: 200px;
     height: 90px;
+    flex-shrink: 0;
     object-fit: contain;
     object-position: center;
-    filter: drop-shadow(0 4px 12px rgba(0,0,0,0.1));
-    opacity: 0.85;
-    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
-    border-radius: 12px;
+    /* <CHANGE> Estilos mejorados: bordes suaves, mejor sombra, mejor transición */
+    opacity: 0.8;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border-radius: 16px;
     background: #fff;
-    padding: 12px 20px;
-    border: 1px solid rgba(0,0,0,0.08);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 16px 24px;
+    border: 1.5px solid rgba(0, 0, 0, 0.06);
+    box-shadow: 
+        0 2px 8px rgba(0, 0, 0, 0.04),
+        0 4px 16px rgba(0, 0, 0, 0.08);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.05));
     cursor: pointer;
+    /* <CHANGE> Hardware acceleration para animaciones suaves */
+    transform: translateZ(0) scale(1);
+    backface-visibility: hidden;
 }
 
 .collab-logo:hover { 
-    transform: scale(1.15); 
-    opacity: 1; 
-    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
-    border-color: rgba(47, 111, 224, 0.2);
-    filter: drop-shadow(0 6px 16px rgba(0,0,0,0.12));
+    /* <CHANGE> Animación más elegante con cubic-bezier */
+    transform: translateZ(0) scale(1.12) translateY(-2px);
+    opacity: 1;
+        box-shadow: 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 12px 32px rgba(146, 180, 89, 0.15),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    border-color: rgba(146, 180, 89, 0.25);
+    filter: drop-shadow(0 6px 12px rgba(146, 180, 89, 0.12));
 }
 
+/* <CHANGE> Animación optimizada con GPU acceleration */
 @keyframes collab-marquee {
-    0%   { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% { 
+        transform: translate3d(0, 0, 0);
+    }
+    100% { 
+        transform: translate3d(-50%, 0, 0);
+    }
 }
 
-/* ---------- Home content sections (index.html 166-255) ---------- */
-.intro {
-    max-width: 1100px;
-    margin: 24px auto 40px;
-    padding: 0 20px;
-    color: var(--text-dark);
+/* <CHANGE> Responsividad mejorada */
+@media (max-width: 1024px) {
+    .collab-track {
+        gap: 40px;
+        animation-duration: 40s;
+    }
+    
+    .collab-logo {
+        width: 160px;
+        height: 75px;
+        padding: 12px 18px;
+    }
+    
+    .collab-strip::before,
+    .collab-strip::after {
+        width: 60px;
+    }
 }
-
-.intro h2 {
-    margin-bottom: 14px;
-}
-
-.intro p {
-    font-size: 1.05rem;
-    color: var(--text-light);
-    margin-bottom: 10px;
-}
-
-/* Estándares grid */
-.standards-grid {
-    max-width: 1200px;
-    margin: 0 auto 32px;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 18px;
-}
-
-.standard-card {
-    background: var(--surface);
-    border: 1px solid var(--smoke-dark);
-    border-radius: var(--border-radius);
-    padding: 20px 18px 18px 18px;
-    box-shadow: var(--shadow-md);
-    transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
-}
-
-.standard-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
-    border-color: rgba(47, 111, 224, 0.25);
-}
-
-.standard-number {
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--celeste) 100%);
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    margin-bottom: 10px;
-    box-shadow: 0 6px 16px rgba(47,111,224,0.25);
-}
-
-.standard-title { margin-bottom: 8px; color: var(--text-dark); }
-.standard-description { color: var(--text-light); }
-
-/* Fases */
-.phases {
-    max-width: 1100px;
-    margin: 8px auto 40px;
-    padding: 0 20px;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 16px;
-}
-
-.phase {
-    background: linear-gradient(180deg, #ffffff 0%, #f7f9fd 100%);
-    border: 1px solid var(--smoke-dark);
-    border-radius: 14px;
-    padding: 18px;
-    box-shadow: var(--shadow-md);
-}
-
-.phase-title {
-    font-weight: 700;
-    color: var(--text-dark);
-    margin-bottom: 6px;
-}
-
-.phase-description { color: var(--text-light); font-size: .98rem; }
-
-/* Partners */
-.partners {
-    max-width: 1100px;
-    margin: 8px auto 40px;
-    padding: 0 20px;
-}
-
-.partners h2 { margin-bottom: 14px; }
-
-.partner-logos {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 12px;
-}
-
-.partner-logos > div {
-    background: #fff;
-    border: 1px solid var(--smoke-dark);
-    border-radius: 12px;
-    padding: 12px 16px;
-    color: var(--text-dark);
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-/* CTA */
-.cta {
-    max-width: 1100px;
-    margin: 8px auto 56px;
-    padding: 24px 20px;
-    background: linear-gradient(135deg, #0f1f35 0%, #12243d 100%);
-    color: #fff;
-    border-radius: 16px;
-    box-shadow: 0 16px 40px rgba(17, 35, 70, 0.25);
-}
-
-.cta h2 { margin-bottom: 10px; }
-.cta p { margin-bottom: 16px; color: rgba(255,255,255,0.85); }
-
-.cta-button {
-    display: inline-block;
-    background: linear-gradient(135deg, var(--primary-blue) 0%, var(--celeste) 100%);
-    color: #fff;
-    padding: 12px 20px;
-    border-radius: 12px;
-    text-decoration: none;
-    border: 1px solid rgba(47,111,224,0.25);
-    box-shadow: 0 10px 24px rgba(47,111,224,0.25);
-    transition: transform .2s ease, box-shadow .2s ease;
-}
-
-.cta-button:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(47,111,224,0.35); }
 
 @media (max-width: 768px) {
-    .cta { padding: 20px 16px; }
+    .collab-section {
+        padding: 32px 0;
+    }
+    
+    .collab-strip {
+        padding: 24px 0;
+    }
+    
+    .collab-track {
+        gap: 32px;
+        animation-duration: 35s;
+    }
+    
+    .collab-logo {
+        width: 140px;
+        height: 65px;
+        padding: 10px 14px;
+        border-radius: 12px;
+    }
+    
+    .collab-strip::before,
+    .collab-strip::after {
+        width: 50px;
+    }
 }
 
+@media (max-width: 480px) {
+    .collab-section {
+        padding: 24px 0;
+    }
+    
+    .collab-strip {
+        padding: 16px 0;
+    }
+    
+    .collab-track {
+        gap: 24px;
+        animation-duration: 30s;
+    }
+    
+    .collab-logo {
+        width: 110px;
+        height: 55px;
+        padding: 8px 12px;
+        font-size: 0.85rem;
+    }
+    
+    .collab-strip::before,
+    .collab-strip::after {
+        width: 40px;
+    }
+    
+    .collab-logo:hover {
+        transform: translateZ(0) scale(1.08) translateY(-1px);
+    }
+}

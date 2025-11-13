@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PUBLICACIONES - Red de Integridad</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="../css/publicaciones.css">
+    <link rel="stylesheet" href="../css/footer.css">
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header">
+        <div class="header-container">
+            <!-- LOGO + NOMBRE -->
+            <a href="../index.html" class="header-brand">
+                <img src="../img/LOGO-PRINCIPAL-INTEGRIDAD.png" alt="Logo Red de Integridad" class="header-logo">
+                <span class="header-title">
+                    <span class="header-title-line">Red de Integridad</span>
+                    <span class="header-title-highlight">LAMBAYEQUE</span>
+                </span>
+            </a>
+
+            <!-- MENÚ DE NAVEGACIÓN -->
+            <nav class="header-nav" aria-label="Menú principal">
+                <!-- BOTÓN TOGGLE (menú responsive) -->
+                <button class="header-toggle" id="navbarToggle" aria-label="Abrir menú">
+                    <span class="header-toggle-line"></span>
+                    <span class="header-toggle-line"></span>
+                    <span class="header-toggle-line"></span>
+                </button>
+
+                <!-- ENLACES DEL MENÚ -->
+                <div class="header-menu" id="navbarMenu">
+                    <a href="../index.html" class="header-link">Inicio</a>
+                    <a href="quienes-somos.html" class="header-link">¿Quiénes somos?</a>
+                    <a href="../pages/que-hacemos.html" class="header-link">¿Qué hacemos?</a>
+                    <a href="../pages/publicaciones.html" class="header-link active">Publicaciones</a>
+                    <a href="../pages/observatorio.html" class="header-link">Observatorio</a>
+                    <a href="../pages/contacto.html" class="header-link">Contacto</a>
+
+                    <!-- MODAL DE CONTACTO -->
+                    <div class="modal-contacto" id="contactModal" aria-hidden="true">
+                        <h2 class="contacto-title">Cuentas de contacto</h2>
+
+                        <p>
+                            <strong>Gmail:</strong>
+                            <p>rintegridad2023@gmail.com</p>
+                        </p>
+
+                        <h3 class="contacto-subtitle">Redes sociales</h3>
+
+                        <ul class="social-links">
+                            <li>
+                                <a href="https://www.facebook.com/RedDelntegridadLambayeque" target="_blank" class="social-link">
+                                    <i class="fab fa-facebook-f"></i> Facebook
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" class="social-link">
+                                    <i class="fab fa-instagram"></i> Instagram
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://x.com/Integridad19046" target="_blank" class="social-link">
+                                    <i class="fab fa-x-twitter"></i> Twitter
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.youtube.com/@ReddelntegridadLambayeque" target="_blank" class="social-link">
+                                    <i class="fab fa-youtube"></i> YouTube
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="section-header">
+            <h2 class="publicaciones-title">
+                <!-- <span class="title-icon">📚</span> -->
+                PUBLICACIONES
+            </h2>
+            <p>Repositorio de documentos, guías, reportes y multimedia de la Red de Integridad</p>
+        </div>
+
+
+        <!-- BÚSQUEDA -->
+<div class="search-box">
+    <input type="text" id="searchInput" class="search-input" placeholder="Buscar documentos, publicaciones...">
+    <div class="search-icon">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+    </div>
+    <button class="search-clear" id="clearSearch" style="display: none;">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+    </button>
+</div>
+
+
+
+        <!-- Reemplaza solo la parte de los filtros en tu HTML con esto: -->
+<div class="filters-section">
+    <div class="category-filters">
+        <button class="filter-btn active" data-filter="all">
+            <i class="fas fa-layer-group"></i>
+            Todos
+            <span class="filter-count">12</span>
+        </button>
+        <button class="filter-btn" data-filter="PDF">
+            <i class="fas fa-file-pdf"></i>
+            PDF
+            <span class="filter-count">6</span>
+        </button>
+        <button class="filter-btn" data-filter="Imagen">
+            <i class="fas fa-image"></i>
+            Imagen
+            <span class="filter-count">2</span>
+        </button>
+        <button class="filter-btn" data-filter="Video">
+            <i class="fas fa-video"></i>
+            Video
+            <span class="filter-count">2</span>
+        </button>
+        <button class="filter-btn" data-filter="Informe">
+            <i class="fas fa-file-alt"></i>
+            Informe
+            <span class="filter-count">2</span>
+        </button>
+    </div>
+</div>
+
+
+
+        <div class="documents-grid" id="documentsGrid">
+            <!-- Documento 1 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/guia-estandares.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Guía de Estándares de Integridad</h3>
+                    <p class="document-description">Documento completo con los 15 estándares de integridad y su aplicación en proyectos de inversión pública.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">15 Enero 2024</span>
+                            <span class="document-size">2.4 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 2 -->
+            <div class="document-card" data-type="Informe">
+                <div class="document-image" style="background-image: url('/images/documentos/matriz-cumplimiento.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">Informe</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Matriz de Cumplimiento</h3>
+                    <p class="document-description">Herramienta Excel para evaluar cumplimiento de estándares en proyectos específicos.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">10 Enero 2024</span>
+                            <span class="document-size">856 KB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 3 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/informe-transparencia.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Informe de Transparencia 2023</h3>
+                    <p class="document-description">Reporte anual sobre transparencia en proyectos de inversión pública en Lambayeque.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">5 Enero 2024</span>
+                            <span class="document-size">3.1 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 4 -->
+            <div class="document-card" data-type="Video">
+                <div class="document-image" style="background-image: url('/images/documentos/introduccion-integridad.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">Video</div>
+                        <button class="document-action" title="Ver">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Introducción a Integridad</h3>
+                    <p class="document-description">Capacitación introductoria sobre conceptos de integridad y transparencia.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">20 Diciembre 2023</span>
+                            <span class="document-size">45 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 5 -->
+            <div class="document-card" data-type="Imagen">
+                <div class="document-image" style="background-image: url('/images/documentos/casos-exito.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">Imagen</div>
+                        <button class="document-action" title="Ver">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Casos de Éxito</h3>
+                    <p class="document-description">Galería de proyectos exitosos implementando estándares de integridad.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">15 Diciembre 2023</span>
+                            <span class="document-size">12 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 6 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/manual-veeduria.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Manual de Veeduría</h3>
+                    <p class="document-description">Guía práctica para veedores en la supervisión de proyectos de inversión.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">10 Diciembre 2023</span>
+                            <span class="document-size">1.8 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 7 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/protocolo-auditoria.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Protocolo de Auditoría</h3>
+                    <p class="document-description">Procedimientos estandarizados para auditorías de integridad en proyectos.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">8 Diciembre 2023</span>
+                            <span class="document-size">2.1 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 8 -->
+            <div class="document-card" data-type="Informe">
+                <div class="document-image" style="background-image: url('/images/documentos/estadisticas-cumplimiento.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">Informe</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Estadísticas de Cumplimiento</h3>
+                    <p class="document-description">Datos sobre cumplimiento de estándares por sector y región.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">5 Diciembre 2023</span>
+                            <span class="document-size">624 KB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 9 -->
+            <div class="document-card" data-type="Video">
+                <div class="document-image" style="background-image: url('/images/documentos/webinar-conflictos.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">Video</div>
+                        <button class="document-action" title="Ver">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Webinar: Gestión de Conflictos</h3>
+                    <p class="document-description">Sesión en línea sobre gestión de conflictos de interés en proyectos.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">30 Noviembre 2023</span>
+                            <span class="document-size">128 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 10 -->
+            <div class="document-card" data-type="Imagen">
+                <div class="document-image" style="background-image: url('/images/documentos/infografia-estandares.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">Imagen</div>
+                        <button class="document-action" title="Ver">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                <circle cx="12" cy="12" r="3"></circle>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Infografía: Estándares Clave</h3>
+                    <p class="document-description">Resumen visual de los estándares más importantes para proyectos.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">25 Noviembre 2023</span>
+                            <span class="document-size">8.5 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 11 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/politica-transparencia.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Política de Transparencia</h3>
+                    <p class="document-description">Política institucional de transparencia y acceso a información pública.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">20 Noviembre 2023</span>
+                            <span class="document-size">1.2 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Documento 12 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/guia-participacion.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <button class="document-action" title="Descargar">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <div class="document-content">
+                    <h3 class="document-title">Guía de Participación</h3>
+                    <p class="document-description">Metodología para participación ciudadana en proyectos de inversión.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">15 Noviembre 2023</span>
+                            <span class="document-size">1.5 MB</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination-container" id="paginationContainer">
+            <div class="pagination">
+                <button class="pagination-btn pagination-prev" id="prevBtn" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                    <span>Anterior</span>
+                </button>
+                
+                <div class="pagination-numbers" id="paginationNumbers">
+                    <button class="pagination-number active" data-page="1">1</button>
+                    <button class="pagination-number" data-page="2">2</button>
+                    <button class="pagination-number" data-page="3">3</button>
+                    <button class="pagination-number" data-page="4">4</button>
+                    <button class="pagination-number" data-page="5">5</button>
+                    <span class="pagination-ellipsis">...</span>
+                    <button class="pagination-number" data-page="12">12</button>
+                </div>
+                
+                <button class="pagination-btn pagination-next" id="nextBtn">
+                    <span>Siguiente</span>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="pagination-info">
+                <span>Mostrando <strong id="showingFrom">1</strong> - <strong id="showingTo">12</strong> de <strong id="totalItems">12</strong> documentos</span>
+            </div>
+        </div>
+
+        <div class="no-results" id="noResults" style="display: none;">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <h3>No se encontraron documentos</h3>
+            <p>Intenta con otros términos de búsqueda o filtros</p>
+        </div>
+    </main>
+
+   <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- LOGO + NOMBRE + ACERCA DE NOSOTROS -->
+            <div class="footer-brand-about">
+                <a href="index.html" class="footer-brand">
+                    <img src="../img/LOGO-PRINCIPAL-INTEGRIDAD.png" alt="Logo Red de Integridad" class="footer-logo">
+                    <span class="footer-title">
+                        <span class="footer-title-line">Red de Integridad</span>
+                        <span class="footer-title-highlight">LAMBAYEQUE</span>
+                    </span>
+                </a>
+                <div class="footer-about">
+                    <h3 class="footer-section-title">Acerca de Nosotros</h3>
+                    <p>Líderes en consultoría de integridad y anticorrupción para organizaciones públicas y privadas.
+                    </p>
+                </div>
+            </div>
+
+            <!-- ENLACES DEL FOOTER -->
+            <nav class="footer-nav" aria-label="Enlaces principales">
+                <h3 class="footer-section-title">Enlaces</h3>
+                <a href="../index.html" class="footer-link">Inicio</a>
+                <a href="../pages/quienes-somos.html" class="footer-link">¿Quiénes somos?</a>
+                <a href="../pages/que-hacemos.html" class="footer-link">¿Qué hacemos?</a>
+                <a href="../pages/publicaciones.html" class="footer-link">Publicaciones</a>
+                <a href="../pages/observatorio.html" class="footer-link">Observatorio</a>
+                <a href="../pages/contacto.html" class="footer-link">Contacto</a>
+            </nav>
+
+            <!-- REDES SOCIALES -->
+            <div class="footer-social">
+                <h3 class="footer-section-title">Redes Sociales</h3>
+                <a href="https://www.facebook.com/RedDelntegridadLambayeque" target="_blank" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
+                </a>
+                <a href="https://www.instagram.com/reddeintegridadlambayeque/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i> Instagram
+                </a>
+                <a href="https://x.com/Integridad19046" target="_blank" aria-label="Twitter">
+                    <i class="fab fa-x-twitter"></i> Twitter
+                </a>
+                <a href="https://www.youtube.com/@ReddelntegridadLambayeque" target="_blank" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i> YouTube
+                </a>
+            </div>
+
+            <!-- COPYRIGHT -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Red de Integridad. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/publicaciones.js"></script>
+</body>
+</html>
