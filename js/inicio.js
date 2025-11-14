@@ -9,42 +9,40 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Función para abrir modal
     window.openModal = function(modalId) {
+        console.log('Abriendo modal:', modalId); // Para debug
+        
         // Cerrar todos los modales primero
         Object.values(modals).forEach(modal => {
-            if (modal) modal.style.display = 'none';
+            if (modal) {
+                modal.style.display = 'none';
+                console.log('Cerrando modal:', modal.id);
+            }
         });
 
         // Mostrar el modal específico
-        const modalKey = 'modal' + modalId.charAt(0).toUpperCase() + modalId.slice(1);
         const modal = modals[modalId];
         if (modal) {
             modal.style.display = 'block';
+            modalOverlay.style.display = 'flex';
             modalOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevenir scroll del body
+            document.body.style.overflow = 'hidden';
+            console.log('Mostrando modal:', modal.id);
         }
     }
 
     // Función para cerrar modal
     window.closeModal = function() {
         modalOverlay.classList.remove('active');
-        document.body.style.overflow = ''; // Restaurar scroll del body
+        document.body.style.overflow = '';
         
-        // Ocultar todos los modales después de la animación
+        // Ocultar después de la animación
         setTimeout(() => {
+            modalOverlay.style.display = 'none';
             Object.values(modals).forEach(modal => {
                 if (modal) modal.style.display = 'none';
             });
         }, 300);
     }
-
-    // Event Listeners para los botones "Más información"
-    document.querySelectorAll('.card-cta').forEach((button, index) => {
-        button.addEventListener('click', function(e) {
-            e.preventDefault();
-            const modalId = `eje${index + 1}`;
-            openModal(modalId);
-        });
-    });
 
     // Cerrar modal al hacer clic fuera del contenido
     modalOverlay.addEventListener('click', function(e) {
@@ -69,3 +67,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// ⛔ ELIMINA COMPLETAMENTE ESTA FUNCIÓN ⛔
+// function togglePanel(panelNumber) { ... }
