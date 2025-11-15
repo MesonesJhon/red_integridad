@@ -531,3 +531,49 @@ function descargarPDF(event, url, filename) {
             document.body.removeChild(link);
         });
 }
+
+
+// Funciones para el modal de video
+function abrirVideo(videoUrl) {
+    const modal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+    
+    // Establecer la URL del video
+    videoFrame.src = videoUrl;
+    
+    // Mostrar el modal
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+    
+    // Prevenir scroll del body
+    document.body.style.overflow = 'hidden';
+}
+
+function cerrarVideo() {
+    const modal = document.getElementById('videoModal');
+    const videoFrame = document.getElementById('videoFrame');
+    
+    // Ocultar el modal
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+    
+    // Pausar el video y limpiar la URL
+    videoFrame.src = '';
+    
+    // Restaurar scroll del body
+    document.body.style.overflow = '';
+}
+
+// Cerrar modal al hacer clic fuera del contenido
+document.getElementById('videoModal').addEventListener('click', function(e) {
+    if (e.target === this) {
+        cerrarVideo();
+    }
+});
+
+// Cerrar modal con tecla ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        cerrarVideo();
+    }
+});

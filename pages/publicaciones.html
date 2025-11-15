@@ -187,7 +187,7 @@
                     <img src="/img/contraloria.png" alt="Reporte Trimestral de Actividades">
                     <div class="document-overlay">
                         <div class="document-type">Reporte</div>
-                         <a href="../pdf/ReporteN01.pdf" class="document-action" title="Descargar" 
+                         <a href="../pdf/ReporteN02.pdf" class="document-action" title="Descargar" 
                             onclick="descargarPDF(event, '../pdf/ReporteN02.pdf', 'IE 11524 y 11173 CAYALTI - reporte 2 - agosto 2023.pdf')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
@@ -200,14 +200,14 @@
                 
 
                 <div class="document-content">
-                    <h3 class="document-title">Reporte IE 10081 Canchachala</h3>
+                    <h3 class="document-title">Reporte IE 11524 y 11173 CAYALTI</h3>
                     <p class="document-description">
-                    Obra: Mejoramiento del servicio educativo del nivel primaria y secundaria de la IE N° 10081 centro
-                    poblado Canchachalá distrito de Incahuasi provincia de Ferreñafe, Departamento de
-                    Lambayeque.</p>
+                    Obra:“Creación de los servicios de educación inicial escolarizada en las II.EE 11524 Cayaltí y 11173 C.P
+                    Guayaquil del distrito de Cayaltí provincia de Chiclayo departamento de Lambayeque”.
+                    </p>
                     <div class="document-footer">
                         <div class="document-meta">
-                            <span class="document-date">1 Junio 2025</span>
+                            <span class="document-date">1 Agosto 2023</span>
                             <span class="document-size">1.4 MB</span>
                         </div>
                     </div>
@@ -295,29 +295,51 @@
                 </div>
             </div>
 
-            <!-- Documento 4 -->
+           
+                                            <!-- Documento 4 -->
             <div class="document-card" data-type="Video">
-                <div class="document-image" style="background-image: url('/images/documentos/introduccion-integridad.jpg')">
+                <div class="document-image video-thumbnail">
+                    <img src="https://img.youtube.com/vi/S3tjp7bAhWk/maxresdefault.jpg" alt="Introducción a Integridad">
+                    <!-- Play button overlay -->
+                    <div class="video-play-overlay">
+                        <div class="play-button">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                            </svg>
+                        </div>
+                    </div>
                     <div class="document-overlay">
                         <div class="document-type">Video</div>
-                        <button class="document-action" title="Ver">
+                        <button class="document-action" title="Ver" onclick="abrirVideo('https://www.youtube.com/embed/S3tjp7bAhWk?si=ww4W28nm3pphNkC3')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <polygon points="5 3 19 12 5 21 5 3"></polygon>
                             </svg>
                         </button>
                     </div>
                 </div>
-                <div class="document-content">
-                    <h3 class="document-title">Introducción a Integridad</h3>
-                    <p class="document-description">Capacitación introductoria sobre conceptos de integridad y transparencia.</p>
-                    <div class="document-footer">
-                        <div class="document-meta">
-                            <span class="document-date">20 Diciembre 2023</span>
-                            <span class="document-size">45 MB</span>
+                    <div class="document-content">
+                        <h3 class="document-title">Introducción a Integridad</h3>
+                        <p class="document-description">Capacitación introductoria sobre conceptos de integridad y transparencia.</p>
+                        <div class="document-footer">
+                            <div class="document-meta">
+                                <span class="document-date">20 Diciembre 2023</span>
+                                <span class="document-size">45 MB</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>   
+                
+                <div id="videoModal" class="video-modal">
+                    <div class="video-modal-content">
+                        <span class="video-close" onclick="cerrarVideo()">&times;</span>
+                        <div class="video-container">
+                            <iframe id="videoFrame" width="560" height="315" frameborder="0" 
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                                    allowfullscreen>
+                            </iframe>
                         </div>
                     </div>
                 </div>
-            </div>
 
             <!-- Documento 5 -->
             <div class="document-card" data-type="Imagen">
