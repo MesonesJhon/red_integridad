@@ -118,7 +118,7 @@
         </button>
         <button class="filter-btn" data-filter="PDF">
             <i class="fas fa-file-pdf"></i>
-            PDF
+            Boletin
             <span class="filter-count">6</span>
         </button>
         <button class="filter-btn" data-filter="Imagen">
@@ -136,24 +136,99 @@
             Informe
             <span class="filter-count">2</span>
         </button>
+        <button class="filter-btn" data-filter="Reporte">
+            <i class="fas fa-chart-bar"></i>
+            Reportes
+            <span class="filter-count">1</span>
+        </button>
     </div>
 </div>
+        <!-- GRID DE DOCUMENTOS -->
 
-
-
-        <div class="documents-grid" id="documentsGrid">
-            <!-- Documento 1 -->
-            <div class="document-card" data-type="PDF">
-                <div class="document-image" style="background-image: url('/images/documentos/guia-estandares.jpg')">
+             <div class="documents-grid" id="documentsGrid">
+                        
+                <!-- Documento -  Reporte 01 -->
+                <div class="document-card" data-type="Reporte">
+                     <div class="document-image">
+                    <img src="/img/contraloria.png" alt="Reporte Trimestral de Actividades">
                     <div class="document-overlay">
-                        <div class="document-type">PDF</div>
-                        <button class="document-action" title="Descargar">
+                        <div class="document-type">Reporte</div>
+                         <a href="../pdf/ReporteN01.pdf" class="document-action" title="Descargar" 
+                            onclick="descargarPDF(event, '../pdf/ReporteN02.pdf', 'IE 11524 y 11173 CAYALTI - reporte 2 - agosto 2023.pdf')">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
                                 <polyline points="7 10 12 15 17 10"></polyline>
                                 <line x1="12" y1="15" x2="12" y2="3"></line>
                             </svg>
-                        </button>
+                        </a>
+                    </div>
+                </div>
+                
+
+                <div class="document-content">
+                    <h3 class="document-title">Reporte IE 10081 Canchachala</h3>
+                    <p class="document-description">
+                    Obra: Mejoramiento del servicio educativo del nivel primaria y secundaria de la IE N° 10081 centro
+                    poblado Canchachalá distrito de Incahuasi provincia de Ferreñafe, Departamento de
+                    Lambayeque.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">1 Junio 2025</span>
+                            <span class="document-size">1.4 MB</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+
+               <!-- Documento -  Reporte 02 -->
+                <div class="document-card" data-type="Reporte">
+                     <div class="document-image">
+                    <img src="/img/contraloria.png" alt="Reporte Trimestral de Actividades">
+                    <div class="document-overlay">
+                        <div class="document-type">Reporte</div>
+                         <a href="../pdf/ReporteN01.pdf" class="document-action" title="Descargar" 
+                            onclick="descargarPDF(event, '../pdf/ReporteN02.pdf', 'IE 11524 y 11173 CAYALTI - reporte 2 - agosto 2023.pdf')">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+
+                <div class="document-content">
+                    <h3 class="document-title">Reporte IE 10081 Canchachala</h3>
+                    <p class="document-description">
+                    Obra: Mejoramiento del servicio educativo del nivel primaria y secundaria de la IE N° 10081 centro
+                    poblado Canchachalá distrito de Incahuasi provincia de Ferreñafe, Departamento de
+                    Lambayeque.</p>
+                    <div class="document-footer">
+                        <div class="document-meta">
+                            <span class="document-date">1 Junio 2025</span>
+                            <span class="document-size">1.4 MB</span>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+                    
+
+
+            <!-- Documento 1 -->
+            <div class="document-card" data-type="PDF">
+                <div class="document-image" style="background-image: url('/images/documentos/guia-estandares.jpg')">
+                    <div class="document-overlay">
+                        <div class="document-type">PDF</div>
+                        <a href="../pdf/ReporteN02.pdf" class="document-action" title="Descargar" download>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                                <polyline points="7 10 12 15 17 10"></polyline>
+                                <line x1="12" y1="15" x2="12" y2="3"></line>
+                            </svg>
+                        </a>
                     </div>
                 </div>
                 <div class="document-content">
@@ -560,3 +635,4 @@
     <script src="../js/publicaciones.js"></script>
 </body>
 </html>
+
