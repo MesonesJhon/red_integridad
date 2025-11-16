@@ -55,6 +55,7 @@ function initSearch() {
 }
 
 // Filter functionality with enhanced animations
+// Filter functionality with enhanced animations
 function initFilters() {
   const filterBtns = document.querySelectorAll(".filter-btn");
 
@@ -78,6 +79,9 @@ function initFilters() {
         this.style.transform = "scale(1)";
       }, 150);
 
+      // CORRECCIÓN: Resetear siempre a página 1 al cambiar filtro
+      currentPage = 1;
+      
       // Filter documents
       filterAndSearchDocuments(searchTerm, filter);
     });
@@ -85,7 +89,12 @@ function initFilters() {
 }
 
 // Filter and search documents - CORREGIDO
+// Filter and search documents - CORREGIDO CON PAGINACIÓN
+// Filter and search documents - VERSIÓN CORREGIDA
+// Filter and search documents - VERSIÓN CORREGIDA CON ANIMACIONES Y PAGINACIÓN
 function filterAndSearchDocuments(searchTerm, filterType) {
+  console.log(`🔍 Filtrando: "${searchTerm}", Categoría: "${filterType}"`);
+  
   const documentCards = document.querySelectorAll(".document-card");
   const noResults = document.getElementById("noResults");
   const resultsCount = document.getElementById("resultsCount");
@@ -96,14 +105,13 @@ function filterAndSearchDocuments(searchTerm, filterType) {
     const title = card.querySelector(".document-title")?.textContent.toLowerCase() || "";
     const description = card.querySelector(".document-description")?.textContent.toLowerCase() || "";
     
-    // CORRECCIÓN: Cambiar "todos" por "all"
     const matchesFilter = filterType === "all" || cardType === filterType;
     const matchesSearch = !searchTerm || 
                          title.includes(searchTerm) || 
                          description.includes(searchTerm);
     
     if (matchesFilter && matchesSearch) {
-      // Mark as visible
+      // Marcar como visible y MOSTRAR con animación
       card.setAttribute("data-visible", "true");
       card.style.opacity = "0";
       card.style.transform = "translateY(20px)";
@@ -117,7 +125,7 @@ function filterAndSearchDocuments(searchTerm, filterType) {
       
       visibleCount++;
     } else {
-      // Mark as hidden
+      // Marcar como oculto y OCULTAR con animación
       card.setAttribute("data-visible", "false");
       card.style.transition = "all 0.3s ease";
       card.style.opacity = "0";
@@ -129,33 +137,36 @@ function filterAndSearchDocuments(searchTerm, filterType) {
     }
   });
 
-  // Show/hide no results message
+  console.log(`✅ Elementos visibles después de filtrar: ${visibleCount}`);
+
+  // Mostrar/ocultar mensaje de no resultados
   setTimeout(() => {
-    if (visibleCount === 0 && noResults) {
-      noResults.style.display = "flex";
-      noResults.style.animation = "fadeInUp 0.5s ease";
-    } else if (noResults) {
-      noResults.style.display = "none";
+    if (noResults) {
+      if (visibleCount === 0) {
+        noResults.style.display = "flex";
+        noResults.style.animation = "fadeInUp 0.5s ease";
+      } else {
+        noResults.style.display = "none";
+      }
     }
   }, 400);
 
-  // Update results counter
+  // Actualizar contador de resultados
   if (resultsCount) {
     resultsCount.textContent = visibleCount;
   }
 
-  // Update pagination after filtering
+  // CORRECCIÓN: Resetear a página 1 y actualizar paginación después de las animaciones
   setTimeout(() => {
-    currentPage = 1; // Reset to first page when filtering
+    currentPage = 1;
     updatePagination();
   }, 500);
 
-  // Update filter counts only if not filtering
+  // Actualizar contadores de filtros solo si no hay búsqueda
   if (!searchTerm) {
     updateFilterCounts(filterType);
   }
 }
-
 // Update filter counts - CORREGIDO
 function updateFilterCounts(activeFilter = null) {
   const filterBtns = document.querySelectorAll(".filter-btn");
@@ -315,11 +326,47 @@ let itemsPerPage = 9;
 let totalItems = 0;
 
 function initPagination() {
-  // Initialize pagination after a short delay to ensure DOM is ready
+  console.log('🚀 Inicializando paginación...');
+  
+  // Inicializar variables
+  currentPage = 1;
+  itemsPerPage = 9;
+  
+  // Configurar event listeners
+  setupPaginationListeners();
+  
+  // Aplicar paginación inicial (después de un pequeño delay para asegurar que el DOM esté listo)
   setTimeout(() => {
     updatePagination();
-    setupPaginationListeners();
   }, 100);
+}
+
+function setupPaginationListeners() {
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        updatePagination();
+        scrollToTop();
+      }
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const totalItems = document.querySelectorAll('.document-card[data-visible="true"]').length;
+      const totalPages = Math.ceil(totalItems / itemsPerPage);
+      
+      if (currentPage < totalPages) {
+        currentPage++;
+        updatePagination();
+        scrollToTop();
+      }
+    });
+  }
 }
 
 function setupPaginationListeners() {
@@ -362,116 +409,137 @@ function setupPaginationListeners() {
     });
   }
 }
-
+//maneja mejor los cmabios de filtro y busqueda
 function updatePagination() {
-  // Get all document cards that are visible (not hidden by filters/search)
+  console.log('🔄 Actualizando paginación...');
+  
+  // Obtener SOLO las tarjetas visibles (que pasaron el filtro)
   const allCards = document.querySelectorAll(".document-card");
-  const documentCards = Array.from(allCards).filter(card => {
-    // Only include cards marked as visible by filters/search
-    const isVisible = card.getAttribute("data-visible") !== "false";
+  const visibleCards = Array.from(allCards).filter(card => {
+    const isVisible = card.getAttribute("data-visible") === "true";
     return isVisible;
   });
   
-  totalItems = documentCards.length;
+  totalItems = visibleCards.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   
-  // Hide pagination if no items
+  console.log(`📊 Total visible: ${totalItems}, Páginas: ${totalPages}, Página actual: ${currentPage}`);
+  
+  // Ocultar paginación si no hay elementos o solo una página
   const paginationContainer = document.getElementById("paginationContainer");
-  if (totalItems === 0 && paginationContainer) {
-    paginationContainer.style.display = "none";
-    return;
-  }
   
-  if (totalItems <= itemsPerPage && paginationContainer) {
-    // Show all cards if they fit in one page
-    documentCards.forEach(card => {
-      card.style.display = "flex";
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
-    });
+  if (totalItems === 0) {
     if (paginationContainer) paginationContainer.style.display = "none";
+    console.log('❌ No hay elementos, ocultando paginación');
     return;
   }
   
-  if (paginationContainer) {
-    paginationContainer.style.display = "flex";
+  // Mostrar u ocultar paginación según sea necesario
+  if (totalPages <= 1) {
+    if (paginationContainer) paginationContainer.style.display = "none";
+    // Mostrar todas las tarjetas visibles
+    visibleCards.forEach((card, index) => {
+      card.style.display = "flex";
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 50 * index);
+    });
+    console.log('✅ Una sola página, mostrando todos los elementos');
+    return;
+  } else {
+    if (paginationContainer) paginationContainer.style.display = "flex";
   }
   
-  // Calculate visible range
+  // Calcular rango visible para la página actual
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
   
-  // Show/hide cards based on pagination
-  documentCards.forEach((card, index) => {
+  console.log(`📖 Mostrando elementos ${startIndex + 1} a ${endIndex} de ${totalItems}`);
+  
+  // Aplicar paginación: mostrar solo los elementos de la página actual
+  visibleCards.forEach((card, index) => {
     if (index >= startIndex && index < endIndex) {
+      // Elemento está en la página actual - MOSTRAR con animación
       card.style.display = "flex";
-      card.style.opacity = "1";
-      card.style.transform = "translateY(0)";
+      setTimeout(() => {
+        card.style.opacity = "1";
+        card.style.transform = "translateY(0)";
+      }, 50 * (index - startIndex));
     } else {
-      card.style.display = "none";
+      // Elemento NO está en la página actual - OCULTAR con animación
+      card.style.opacity = "0";
+      card.style.transform = "translateY(10px)";
+      setTimeout(() => {
+        card.style.display = "none";
+      }, 300);
     }
   });
   
-  // Update pagination buttons
-  const prevBtn = document.getElementById("prevBtn");
-  const nextBtn = document.getElementById("nextBtn");
-  
-  if (prevBtn) {
-    prevBtn.disabled = currentPage === 1;
-  }
-  
-  if (nextBtn) {
-    nextBtn.disabled = currentPage >= totalPages;
-  }
-  
-  // Update pagination numbers
-  updatePaginationNumbers(totalPages);
-  
-  // Update info text
+  // Actualizar controles de paginación
+  updatePaginationControls(totalPages);
   updatePaginationInfo(startIndex + 1, endIndex, totalItems);
 }
 
-function updatePaginationNumbers(totalPages) {
+function updatePaginationControls(totalPages) {
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
   const paginationNumbers = document.getElementById("paginationNumbers");
-  if (!paginationNumbers) return;
   
-  let html = "";
-  const maxVisible = 5; // Number of page buttons to show before ellipsis
+  if (!prevBtn || !nextBtn || !paginationNumbers) return;
   
-  if (totalPages <= maxVisible + 2) {
-    // Show all pages if not too many
+  // Actualizar botones anterior/siguiente
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage >= totalPages;
+  
+  // Actualizar números de página
+  let paginationHTML = '';
+  const maxVisiblePages = 5;
+  
+  if (totalPages <= maxVisiblePages) {
+    // Mostrar todas las páginas
     for (let i = 1; i <= totalPages; i++) {
-      html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+      paginationHTML += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
     }
   } else {
-    // Show first page
-    html += `<button class="pagination-number ${currentPage === 1 ? 'active' : ''}" data-page="1">1</button>`;
-    
+    // Lógica para mostrar páginas con elipsis
     if (currentPage <= 3) {
-      // Show pages 2-5
-      for (let i = 2; i <= 5; i++) {
-        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+      for (let i = 1; i <= 4; i++) {
+        paginationHTML += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
       }
-      html += `<span class="pagination-ellipsis">...</span>`;
-      html += `<button class="pagination-number" data-page="${totalPages}">${totalPages}</button>`;
+      paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+      paginationHTML += `<button class="pagination-number" data-page="${totalPages}">${totalPages}</button>`;
     } else if (currentPage >= totalPages - 2) {
-      // Show pages near the end
-      html += `<span class="pagination-ellipsis">...</span>`;
-      for (let i = totalPages - 4; i <= totalPages; i++) {
-        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+      paginationHTML += `<button class="pagination-number" data-page="1">1</button>`;
+      paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+      for (let i = totalPages - 3; i <= totalPages; i++) {
+        paginationHTML += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
       }
     } else {
-      // Show pages around current page
-      html += `<span class="pagination-ellipsis">...</span>`;
+      paginationHTML += `<button class="pagination-number" data-page="1">1</button>`;
+      paginationHTML += `<span class="pagination-ellipsis">...</span>`;
       for (let i = currentPage - 1; i <= currentPage + 1; i++) {
-        html += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+        paginationHTML += `<button class="pagination-number ${i === currentPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
       }
-      html += `<span class="pagination-ellipsis">...</span>`;
-      html += `<button class="pagination-number" data-page="${totalPages}">${totalPages}</button>`;
+      paginationHTML += `<span class="pagination-ellipsis">...</span>`;
+      paginationHTML += `<button class="pagination-number" data-page="${totalPages}">${totalPages}</button>`;
     }
   }
   
-  paginationNumbers.innerHTML = html;
+  paginationNumbers.innerHTML = paginationHTML;
+  
+  // Agregar event listeners a los nuevos botones de página
+  const pageButtons = paginationNumbers.querySelectorAll('.pagination-number');
+  pageButtons.forEach(button => {
+    button.addEventListener('click', (e) => {
+      const page = parseInt(e.target.getAttribute('data-page'));
+      if (page && page !== currentPage) {
+        currentPage = page;
+        updatePagination();
+        scrollToTop();
+      }
+    });
+  });
 }
 
 function updatePaginationInfo(from, to, total) {
@@ -577,3 +645,251 @@ document.addEventListener('keydown', function(e) {
         cerrarVideo();
     }
 });
+
+
+
+// Función para mostrar notificación de descarga
+
+// SOLUCIÓN DIRECTA PARA MINIATURAS PDF
+console.log('=== INICIANDO CARGA DE MINIATURAS PDF ===');
+
+// Esperar a que PDF.js esté completamente cargado
+function initializePDFMiniatures() {
+    if (typeof pdfjsLib === 'undefined') {
+        console.log('❌ PDF.js no cargado, reintentando...');
+        setTimeout(initializePDFMiniatures, 500);
+        return;
+    }
+    
+    console.log('✅ PDF.js cargado, configurando...');
+    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.worker.min.js';
+    
+    // Cargar miniaturas de TODOS los PDFs
+    loadAllPDFThumbnails();
+}
+
+function loadAllPDFThumbnails() {
+    // Array con la información de todos los PDFs
+    const pdfs = [
+        {
+            containerId: 'pdfThumbnail1',
+            pdfUrl: '../pdf/ReporteN01.pdf',
+            pageNumber: 1
+        },
+        {
+            containerId: 'pdfThumbnail2', 
+            pdfUrl: '../pdf/ReporteN02.pdf',
+            pageNumber: 1
+        },
+                {
+            containerId: 'pdfThumbnail3', 
+            pdfUrl: '../pdf/ReporteN03.pdf',
+            pageNumber: 1
+        },
+              {
+            containerId: 'pdfThumbnail4', 
+            pdfUrl: '../pdf/ReporteN04.pdf',
+            pageNumber: 1
+        },
+                {
+            containerId: 'pdfThumbnail5', 
+            pdfUrl: '../pdf/ReporteN05.pdf',
+            pageNumber: 1
+        },
+          {
+            containerId: 'pdfThumbnail6', 
+            pdfUrl: '../pdf/ReporteN06.pdf',
+            pageNumber: 1
+        },
+        {
+            containerId: 'pdfThumbnail7', 
+            pdfUrl: '../pdf/ReporteN07.pdf',
+            pageNumber: 1
+        },
+        {
+            containerId: 'pdfThumbnail8', 
+            pdfUrl: '../pdf/ReporteN08.pdf',
+            pageNumber: 1
+        },
+        {
+            containerId: 'pdfThumbnail9', 
+            pdfUrl: '../pdf/ReporteN09.pdf',
+            pageNumber: 1
+        },
+        {
+            containerId: 'pdfThumbnail10', 
+            pdfUrl: '../pdf/BOLETIN_INTEGRIDAD.pdf',
+            pageNumber: 1
+        }
+        
+
+    ];
+    
+    // Cargar cada PDF
+    pdfs.forEach(pdf => {
+        loadPDFThumbnailDirect(pdf.containerId, pdf.pdfUrl, pdf.pageNumber);
+    });
+}
+
+function loadPDFThumbnailDirect(containerId, pdfUrl, pageNumber = 1) {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.error('❌ No se encuentra el contenedor:', containerId);
+        return;
+    }
+    
+    console.log('🔄 Cargando miniatura para:', pdfUrl);
+    
+    container.innerHTML = `
+        <div class="pdf-loading">
+            <div class="pdf-spinner"></div>
+            <span>Cargando PDF...</span>
+        </div>
+    `;
+    
+    // Cargar PDF directamente
+    pdfjsLib.getDocument(pdfUrl).promise
+        .then(pdfDoc => {
+            console.log('✅ PDF cargado:', pdfUrl, 'Páginas:', pdfDoc.numPages);
+            return pdfDoc.getPage(pageNumber);
+        })
+        .then(page => {
+            const viewport = page.getViewport({ scale: 0.6 });
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            canvas.width = viewport.width;
+            canvas.height = viewport.height;
+            canvas.className = 'pdf-thumbnail';
+            
+            return page.render({
+                canvasContext: context,
+                viewport: viewport
+            }).promise.then(() => {
+                container.innerHTML = '';
+                container.appendChild(canvas);
+                console.log('🎉 Miniatura cargada exitosamente para:', containerId);
+            });
+        })
+        .catch(error => {
+            console.error('❌ Error cargando PDF:', pdfUrl, error);
+            container.innerHTML = `
+                <div class="pdf-error">
+                    <div>❌ Error al cargar PDF</div>
+                    <small>${error.message}</small>
+                </div>
+            `;
+        });
+}
+
+// Iniciar cuando la página cargue
+document.addEventListener('DOMContentLoaded', initializePDFMiniatures);
+
+
+
+// FUNCIÓN SIMPLE Y CONFIABLE PARA DESCARGAR
+function descargarPDF(pdfUrl) {
+    console.log('🔄 Iniciando descarga:', pdfUrl);
+    
+    // Verificar si la URL es válida
+    if (!pdfUrl || !pdfUrl.includes('.pdf')) {
+        console.error('❌ URL de PDF inválida:', pdfUrl);
+        alert('Error: URL de archivo inválida');
+        return;
+    }
+    
+    // Crear enlace temporal
+    const link = document.createElement('a');
+    link.href = pdfUrl;
+    
+    // Extraer nombre del archivo de la URL
+    const nombreArchivo = pdfUrl.split('/').pop() || 'documento.pdf';
+    link.download = nombreArchivo;
+    
+    // Configurar para abrir en nueva pestaña si falla
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    
+    // Agregar al DOM y hacer clic
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    console.log('✅ Descarga iniciada para:', nombreArchivo);
+    
+    // Verificar después de un tiempo si se descargó
+    setTimeout(() => {
+        verificarDescarga(pdfUrl);
+    }, 2000);
+}
+
+// Verificar si el archivo se puede descargar
+function verificarDescarga(url) {
+    fetch(url, { method: 'HEAD' })
+        .then(response => {
+            if (response.ok) {
+                console.log('✅ Archivo accesible:', url);
+            } else {
+                console.error('❌ Archivo no accesible:', url, 'Status:', response.status);
+                alert('El archivo no está disponible. Código: ' + response.status);
+            }
+        })
+        .catch(error => {
+            console.error('❌ Error verificando archivo:', url, error);
+            alert('Error al acceder al archivo: ' + error.message);
+        });
+}
+
+// Verificar TODOS los archivos al cargar la página
+function verificarTodosLosArchivos() {
+    const archivos = [
+        '../pdf/ReporteN01.pdf',
+        '../pdf/ReporteN02.pdf', 
+        '../pdf/ReporteN03.pdf',
+        '../pdf/ReporteN04.pdf',
+        '../pdf/ReporteN05.pdf',
+        '../pdf/ReporteN06.pdf',
+        '../pdf/ReporteN07.pdf',
+        '../pdf/ReporteN08.pdf',
+        '../pdf/ReporteN09.pdf',
+        '../pdf/BOLETIN_INTEGRIDAD.pdf',
+        '../pdf/Instituto%20L%C3%B3pez%20Alb%C3%BAjar%20-%20reporte%201%20-%20junio%202023.pdf'
+    ];
+    
+    console.log('🔍 Verificando archivos PDF...');
+    archivos.forEach(archivo => {
+        fetch(archivo, { method: 'HEAD' })
+            .then(response => {
+                console.log(response.ok ? '✅' : '❌', archivo, '- Status:', response.status);
+            })
+            .catch(error => {
+                console.log('❌', archivo, '- Error:', error.message);
+            });
+    });
+}
+
+// Ejecutar cuando cargue la página
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('🚀 Página cargada - Iniciando verificaciones');
+    verificarTodosLosArchivos();
+});
+
+
+// abrir panel de imagenes
+function abrirImagen(imagenUrl, titulo) {
+    const modal = document.getElementById('imageModal');
+    const imagen = document.getElementById('imageModalImg');
+    const tituloElement = document.getElementById('imageModalTitle');
+    
+    imagen.src = imagenUrl;
+    imagen.alt = titulo;
+    tituloElement.textContent = titulo;
+    
+    modal.style.display = 'block';
+    document.body.classList.add('modal-open');
+}
+
+function cerrarImagen() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = 'none';
+    document.body.classList.remove('modal-open');
+}

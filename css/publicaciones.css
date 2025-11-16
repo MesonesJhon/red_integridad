@@ -385,6 +385,7 @@ padding: 10px 20px;
   color: var(--verde);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(10px);
+  outline: none;
 }
 
 .document-action svg {
@@ -476,9 +477,7 @@ padding: 10px 20px;
   color: white;
 }
 
-.document-card[data-type="Video"] .document-image::before {
-  background: linear-gradient(135deg, rgba(214, 158, 46, 0.9) 0%, rgba(183, 121, 31, 0.7) 100%);
-}
+
 
 .document-card[data-type="Video"] .document-type {
   background: rgba(214, 158, 46, 0.95);
@@ -992,4 +991,263 @@ body.modal-open {
     bottom: 0;
     background: linear-gradient(135deg, rgba(146, 180, 89, 0.3) 0%, rgba(122, 154, 73, 0.1) 100%);
     pointer-events: none;
+}
+
+
+
+
+
+
+
+/* ===== ESTILOS PARA MINIATURAS DE PDF ===== */
+.pdf-thumbnail-container {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: #f8fafc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.pdf-thumbnail {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: white;
+    transition: transform 0.3s ease;
+    transform: scale(1.50); /* 10% más grande */
+    transform-origin: center center;
+}
+
+.pdf-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    gap: 12px;
+}
+
+.pdf-spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(146, 180, 89, 0.2);
+    border-radius: 50%;
+    border-top-color: var(--verde);
+    animation: spin 1s linear infinite;
+}
+
+
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.pdf-error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    gap: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.pdf-error svg {
+    width: 48px;
+    height: 48px;
+    color: #e53e3e;
+}
+
+.pdf-page-info {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    z-index: 2;
+}
+
+/* Override para documentos PDF */
+.document-card[data-type="PDF"] .document-image::before,
+.document-card[data-type="Reporte"] .document-image::before {
+    background: linear-gradient(135deg, rgba(146, 180, 89, 0.9) 0%, rgba(122, 154, 74, 0.7) 100%);
+}
+
+.document-card[data-type="PDF"] .document-type,
+.document-card[data-type="Reporte"] .document-type {
+    background: rgba(146, 180, 89, 0.95);
+    color: white;
+}
+
+.document-card[data-type="PDF"]:hover .document-action,
+.document-card[data-type="Reporte"]:hover .document-action {
+    background: rgba(146, 180, 89, 0.95);
+    color: white;
+}
+
+/* Estados de carga específicos para PDF */
+.pdf-thumbnail-container.loading {
+    background: linear-gradient(90deg, #f0f4f8 25%, #e5e9f0 50%, #f0f4f8 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+    0% { background-position: 200% 0; }
+    100% { background-position: -200% 0; }
+}
+
+/* Asegurar que el overlay funcione con las miniaturas PDF */
+.document-image .document-overlay {
+    z-index: 3; /* Por encima de la miniatura */
+}
+
+/* Responsive para miniaturas PDF */
+@media (max-width: 768px) {
+    .pdf-thumbnail-container {
+        height: 160px;
+    }
+    
+    .pdf-spinner {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .pdf-error svg {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Override para asegurar que funcione en todos los PDFs */
+.document-card[data-type="Reporte"] .pdf-thumbnail,
+.document-card[data-type="PDF"] .pdf-thumbnail {
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.document-card[data-type="Reporte"]:hover .pdf-thumbnail,
+.document-card[data-type="PDF"]:hover .pdf-thumbnail {
+    transform: scale(1.2);
+}
+
+
+
+/*para las imagenes
+
+/* ===== MODAL PARA IMÁGENES ===== */
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(5px);
+    animation: fadeIn 0.3s ease;
+}
+
+.image-modal-content {
+    position: relative;
+    margin: 2% auto;
+    padding: 20px;
+    width: 90%;
+    max-width: 1000px;
+    max-height: 90vh;
+    animation: slideIn 0.3s ease;
+}
+
+.image-close {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+    color: white;
+    font-size: 35px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+}
+
+.image-close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.image-container img {
+    max-width: 100%;
+    max-height: 70vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.image-caption {
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+}
+
+.image-caption h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+/* Responsive para modal de imágenes */
+@media (max-width: 768px) {
+    .image-modal-content {
+        margin: 5% auto;
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .image-close {
+        right: 15px;
+        top: 10px;
+        font-size: 30px;
+        width: 35px;
+        height: 35px;
+    }
+    
+    .image-caption h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .image-modal-content {
+        margin: 10% auto;
+        width: 98%;
+        padding: 10px;
+    }
 }
